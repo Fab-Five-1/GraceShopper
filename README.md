@@ -1,5 +1,4 @@
 # FS-App-Template
-Ivan - Pull Request
 
 ## Setup
 
@@ -46,6 +45,10 @@ Sync and seed your database by running `npm run seed`. Running `npm run start:de
 
 Names....
 
+Ivan
+
 Caleb
 
 Michelle
+
+Jovan
