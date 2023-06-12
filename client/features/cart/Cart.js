@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 /**
  * COMPONENT
@@ -9,8 +10,12 @@ const Cart = () => {
 
   return (
     <div>
-      <h1>YO</h1>
-      <h3>Welcome, {username} to your cart</h3>
+      <h1>YO {username}</h1>
+      <h3>Welcome to your cart</h3>
+      <h3>Ready to checkout?</h3>
+      <Link to="/checkout">
+        <button type="button">Checkout</button>
+      </Link>
     </div>
   );
 };
