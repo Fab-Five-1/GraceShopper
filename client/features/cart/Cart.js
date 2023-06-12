@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 /**
  * COMPONENT
  */
-const Cart = (props) => {
+const Cart = () => {
   const username = useSelector((state) => state.auth.me.username);
 
   return (

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 /**
  * COMPONENT
  */
-const Checkout = (props) => {
+const Checkout = () => {
   const username = useSelector((state) => state.auth.me.username);
 
   return (
