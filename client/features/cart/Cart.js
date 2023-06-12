@@ -9,7 +9,8 @@ const Cart = () => {
 
   return (
     <div>
-      <h3>Welcome, {username}</h3>
+      <h1>YO</h1>
+      <h3>Welcome, {username} to your cart</h3>
     </div>
   );
 };
