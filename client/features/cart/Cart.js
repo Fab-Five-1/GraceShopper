@@ -21,3 +21,6 @@ const Cart = () => {
 };
 
 export default Cart;
+
+
+// michelle 
