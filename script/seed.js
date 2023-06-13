@@ -17,86 +17,92 @@ async function seed() {
   const users = await Promise.all([
     User.create({
       username: "XxcodyxX",
+      password: "123",
       email: "CJohnson@gmail.com",
       firstName: "cody",
       lastName: "Johnson",
     }),
     User.create({
       username: "XxCalebxX",
+      password: "123",
       email: "cjbel@gmail.com",
       firstName: "Caleb",
       lastName: "Bellmyer",
     }),
     User.create({
       username: "XxIvanxX",
+      password: "123",
       email: "ILeon@gmail.com",
       firstName: "Ivan",
       lastName: "Leon",
     }),
     User.create({
       username: "XxJovanxX",
+      password: "123",
       email: "JStosic@gmail.com",
       firstName: "Jovan",
       lastName: "Stosic",
     }),
     User.create({
       username: "XxMichellexX",
+      password: "123",
       email: "MAberizk@gmail.com",
       firstName: "Michelle",
       lastName: "Aberizk",
     }),
     User.create({
       username: "XxSuzyxX",
+      password: "123",
       email: "SCollins@hotmail.com",
       firstName: "Suzy",
       lastName: "Collins",
     }),
     User.create({
       username: "XxJonnyBlazexX",
+      password: "123",
       email: "JonnyBlaze@gmail.com",
       firstName: "Jonny",
       lastName: "Blaze",
     }),
   ]);
 
-  const product = await Promise.all([
+  const products = await Promise.all([
     Product.create({
       name: "Test Product",
-      descritption: "This is a  description I don't know how to spell",
-      price: 4.99,
+      description: "This is a  description I don't know how to spell",
+      price: 499,
       quantity: 15,
       category: "toys",
     }),
     Product.create({
       name: "Product for testing",
-      descritption: "This is another product that is fake",
-      price: 17.99,
+      description: "This is another product that is fake",
+      price: 1799,
       quantity: 35,
       category: "phones",
     }),
     Product.create({
       name: "I am fake",
-      descritption: "Hello welcome to fake prodcut page with fake info",
-      price: 521.99,
+      description: "Hello welcome to fake prodcut page with fake info",
+      price: 52199,
       quantity: 5,
       category: "toys",
     }),
     Product.create({
       name: "Product10000",
-      descritption: "HIIIIIIIII",
-      price: 34.99,
+      description: "HIIIIIIIII",
+      price: 3499,
       quantity: 40,
       category: "shoes",
     }),
   ]);
 
   console.log(`seeded ${users.length} users`);
+  console.log(`seeded ${products.length} products`);
   console.log(`seeded successfully`);
   return {
-    users: {
-      cody: users[0],
-      murphy: users[1],
-    },
+    users,
+    products,
   };
 }
 
