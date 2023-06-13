@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <h1>Grandads Tech</h1>
+      <h1>Grandad's Tech</h1>
       <nav>
         {isLoggedIn ? (
           <div>
