@@ -30,15 +30,14 @@ const AllProducts = () => {
 
   return (
     <div id="products" className="column">
-      {console.log("this is products", products)}
-      {/* {products && products.length ? (
+      {products && products.length ? (
         renderProducts()
       ) : (
         <div>
           {console.log(products)}
           <p>No products found.</p>
         </div>
-      )} */}
+      )}
     </div>
   );
 };
