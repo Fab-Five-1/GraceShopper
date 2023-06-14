@@ -73,6 +73,7 @@ async function seed() {
       price: 499,
       quantity: 15,
       category: "toys",
+      // orderProductId: 1
     }),
     Product.create({
       name: "Product for testing",
@@ -97,12 +98,29 @@ async function seed() {
     }),
   ]);
 
+  const orderProducts = await Promise.all([
+    OrderProduct.create({
+      numberOfItems: 2,
+      totalPrice: 2000,
+    }),
+  ]);
+  const orders = await Promise.all([
+    Order.create({
+      fulfilled: false,
+    }),
+  ]);
+
   console.log(`seeded ${users.length} users`);
   console.log(`seeded ${products.length} products`);
+  console.log(`seeded ${orderProducts.length} orderProducts`);
+  console.log(`seeded ${orders.length} orders`);
+
   console.log(`seeded successfully`);
   return {
     users,
     products,
+    orderProducts,
+    orders,
   };
 }
 
