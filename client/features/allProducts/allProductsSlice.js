@@ -8,6 +8,7 @@ export const fetchProductsAsync = createAsyncThunk(
   async () => {
     try {
       const { data } = await axios.get(`/api/products`);
+      //   console.log("Were inside of redux state", data);
       return data;
     } catch (error) {
       console.log(error);
@@ -21,7 +22,7 @@ const productsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchProductsAsync.fulfilled, (state, action) => {
-      return action.payload;
+      state = action.payload;
     });
   },
 });
