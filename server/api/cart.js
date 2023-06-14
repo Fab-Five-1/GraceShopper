@@ -6,10 +6,10 @@ const Product = require("../db/models/Product");
 
 router.get("/", async (req, res, next) => {
   try {
-    const currentUser = await User.findByToken(req.headers.authorization);
-    const order = await currentUser.getOrder();
-    console.log("HEY", currentUser, order);
-    res.send({ currentUser, order });
+    const user = await User.findByToken(req.headers.authorization);
+    const order = await user.getOrder();
+    console.log("HEY", user, order);
+    res.send({ user, order });
   } catch (err) {
     next(err);
   }
