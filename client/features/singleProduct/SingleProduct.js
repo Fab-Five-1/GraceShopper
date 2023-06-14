@@ -13,9 +13,9 @@ const singleProduct = () => {
         dispatch(fetchSingleProduct(productId));
     })
 
-    return(
+    return (
         <div>
-
+            <p>testing</p>
         </div>
     )
 
