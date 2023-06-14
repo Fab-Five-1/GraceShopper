@@ -66,35 +66,10 @@ async function seed() {
     }),
   ]);
 
-  const products = await Promise.all([
-    Product.create({
-      name: "Test Product",
-      description: "This is a  description I don't know how to spell",
-      price: 499,
-      quantity: 15,
-      category: "toys",
-      // orderProductId: 1
-    }),
-    Product.create({
-      name: "Product for testing",
-      description: "This is another product that is fake",
-      price: 1799,
-      quantity: 35,
-      category: "phones",
-    }),
-    Product.create({
-      name: "I am fake",
-      description: "Hello welcome to fake prodcut page with fake info",
-      price: 52199,
-      quantity: 5,
-      category: "toys",
-    }),
-    Product.create({
-      name: "Product10000",
-      description: "HIIIIIIIII",
-      price: 3499,
-      quantity: 40,
-      category: "shoes",
+  const orders = await Promise.all([
+    Order.create({
+      fulfilled: false,
+      userId:1
     }),
   ]);
 
@@ -102,13 +77,47 @@ async function seed() {
     OrderProduct.create({
       numberOfItems: 2,
       totalPrice: 2000,
+      orderId:1
     }),
   ]);
-  const orders = await Promise.all([
-    Order.create({
-      fulfilled: false,
+
+  const products = await Promise.all([
+    Product.create({
+      name: "Test Product",
+      description: "This is a  description I don't know how to spell",
+      price: 499,
+      quantity: 15,
+      category: "toys",
+      orderProductId: 1,
+    }),
+    Product.create({
+      name: "Product for testing",
+      description: "This is another product that is fake",
+      price: 1799,
+      quantity: 35,
+      category: "phones",
+      orderProductId: 1,
+    }),
+    Product.create({
+      name: "I am fake",
+      description: "Hello welcome to fake prodcut page with fake info",
+      price: 52199,
+      quantity: 5,
+      category: "toys",
+      orderProductId: 1,
+    }),
+    Product.create({
+      name: "Product10000",
+      description: "HIIIIIIIII",
+      price: 3499,
+      quantity: 40,
+      category: "shoes",
+      orderProductId: 1,
     }),
   ]);
+
+
+  
 
   console.log(`seeded ${users.length} users`);
   console.log(`seeded ${products.length} products`);
