@@ -8,7 +8,7 @@ import { fetchUsersCart, selectCart } from "./CartSlice";
  */
 const Cart = () => {
   const dispatch = useDispatch();
-  const usersStuff = useSelector(selectCart);
+  const usersInfo = useSelector(selectCart);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const username = useSelector((state) => state.auth.me.username);
 
@@ -16,7 +16,11 @@ const Cart = () => {
     dispatch(fetchUsersCart());
   }, []);
 
-  console.log("STUFF", usersStuff);
+  const { user, order, orderProducts, products } = usersInfo;
+
+  // user is not an array the rest are
+
+  console.log("STUFF", user, order, orderProducts, products);
 
   return (
     <div>
@@ -24,7 +28,7 @@ const Cart = () => {
         <div>
           <h1>Welcome to your cart, {username}!</h1>
           <section style={{ border: "5px solid red" }}>
-            ITEMS<h3>TOTAL</h3>
+            <h2>Items:</h2>
           </section>
           <h3>Ready to checkout?</h3>
           <Link to="/checkout">

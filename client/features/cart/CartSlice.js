@@ -7,12 +7,12 @@ export const fetchUsersCart = createAsyncThunk("cart", async () => {
   const token = window.localStorage.getItem(TOKEN);
   try {
     if (token) {
-      const test = await axios.get("/api/cart", {
+      const { data } = await axios.get("/api/cart", {
         headers: {
           authorization: token,
         },
       });
-      return test;
+      return data;
     } else {
       return {};
     }
@@ -25,7 +25,7 @@ export const fetchUsersCart = createAsyncThunk("cart", async () => {
 const cartSlice = createSlice({
   name: "cartSlice",
   initialState: {
-    user: {},
+    userInfo: {},
   },
   reducers: {},
   extraReducers: (builder) => {

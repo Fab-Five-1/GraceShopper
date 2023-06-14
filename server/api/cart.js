@@ -19,7 +19,7 @@ router.get("/", async (req, res, next) => {
     const products = await Product.findAll({
       where: { orderProductId },
     });
-    res.send([user, order, orderProducts, products]);
+    res.send({ user, order, orderProducts, products });
   } catch (err) {
     next(err);
   }
