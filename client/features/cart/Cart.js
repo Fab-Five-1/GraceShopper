@@ -18,9 +18,19 @@ const Cart = () => {
 
   const { user, orders, orderProducts, products } = usersInfo;
 
-  // user is not an array the rest are
+  let test;
 
-  console.log(orders);
+  if (Array.isArray(orders) && orders.length > 0) {
+    test = orders;
+    console.log(orders[0].id);
+    console.log("fulfilled", orders[0].fulfilled);
+  } else {
+    console.log("No orders available or 'orders' is not an array.");
+  }
+  // HOW IS THIS POSSIBLE
+  console.log(typeof orders);
+  console.log(Array.isArray(orders));
+  console.log("TEST", typeof test);
 
   for (const obj in orders) {
     console.log(obj);
