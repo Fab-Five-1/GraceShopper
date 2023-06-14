@@ -1,4 +1,5 @@
 {
+  "homepage": "https://fab-five-1.github.io/GraceShopper/",
   "name": "graceshopper",
   "version": "2.0.0",
   "description": "Retro tech ecommerce site",
@@ -6,6 +7,8 @@
   "scripts": {
     "build": "webpack",
     "build:dev": "npm run build -- --watch --mode=development",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "seed": "node script/seed.js",
     "start": "node server",
     "start:dev": "npm run build:dev & npm run start-server",
@@ -39,6 +42,7 @@
     "babel-loader": "^8.2.5",
     "chai": "^4.3.6",
     "esm": "^3.2.25",
+    "gh-pages": "^5.0.0",
     "mocha": "^10.1.0",
     "nodemon": "^2.0.20",
     "react": "^18.2.0",
