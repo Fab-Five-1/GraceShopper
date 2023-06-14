@@ -69,7 +69,7 @@ async function seed() {
   const orders = await Promise.all([
     Order.create({
       fulfilled: false,
-      userId:1
+      userId: 1
     }),
   ]);
 
@@ -77,47 +77,70 @@ async function seed() {
     OrderProduct.create({
       numberOfItems: 2,
       totalPrice: 2000,
-      orderId:1
+      orderId: 1
     }),
   ]);
 
   const products = await Promise.all([
     Product.create({
-      name: "Test Product",
-      description: "This is a  description I don't know how to spell",
-      price: 499,
+      name: "Apple iPod",
+      description: "The original iPod, introduced on October 23, 2001, was the first MP3 player to pack a mind-blowing 1,000 songs and a 10-hour battery into a stunning 6.5-ounce package. iPod mini, introduced on February 20, 2004, brought everything users loved about iPod into a smaller design at just 3.6 ounces",
+      price: 9800,
       quantity: 15,
-      category: "toys",
+      category: "audio",
+      imageUrl: "https://hips.hearstapps.com/bpc.h-cdn.co/assets/16/42/2001-apple-ipod.jpg?crop=1xw:1.0xh;center,top&resize=980:*",
       orderProductId: 1,
     }),
     Product.create({
-      name: "Product for testing",
-      description: "This is another product that is fake",
-      price: 1799,
+      name: "Sony Playstation",
+      description: "PlayStation is a brand of a series of game consoles created and developed by Sony Computer Entertainment. PlayStation was first introduced in December 1994 in Japan, when Sony released the first PlayStation console. The first PlayStation console was the first console to sell 100 million units, which it accomplished in less than 10 years. The PlayStation 2 is the best-selling console to date, with 150 million in sales as of January 31, 2011.",
+      price: 39900,
       quantity: 35,
-      category: "phones",
+      category: "gaming",
+      imageUrl: "https://hips.hearstapps.com/bpc.h-cdn.co/assets/16/42/1994-sony-playstation.jpg?crop=1xw:1.0xh;center,top&resize=980:*",
       orderProductId: 1,
     }),
     Product.create({
-      name: "I am fake",
-      description: "Hello welcome to fake prodcut page with fake info",
-      price: 52199,
+      name: "Motorola MicroTAC",
+      description: "The Motorola MicroTAC, introduced in 1989, was a significant milestone in the history of mobile phones. It was one of the first commercially available flip phones and gained popularity for its compact size and advanced features at the time.",
+      price: 70000,
       quantity: 5,
-      category: "toys",
+      category: "phone",
+      imageUrl: "https://hips.hearstapps.com/bpc.h-cdn.co/assets/16/42/1989-motorola-microtac.jpg?crop=1xw:1.0xh;center,top&resize=980:*",
       orderProductId: 1,
     }),
     Product.create({
-      name: "Product10000",
-      description: "HIIIIIIIII",
-      price: 3499,
+      name: "Sony Walkman",
+      description: "The Sony Walkman, introduced in 1979, revolutionized the way people listened to music and became an iconic cultural symbol. It was a portable cassette player that allowed users to listen to their favorite music on the go.",
+      price: 29800,
       quantity: 40,
-      category: "shoes",
+      category: "audio",
+      imageUrl: "https://hips.hearstapps.com/bpc.h-cdn.co/assets/16/42/1979-sony-walkman.jpg?crop=1xw:1.0xh;center,top&resize=980:*",
+      orderProductId: 1,
+    }),
+
+    Product.create({
+      name: "Atari 2600",
+      description: "The Atari 2600 is credited with taking video game consoles mainstream almost 40 years ago. Each console shipped with a duo of joysticks and a game cartridge. The Atari 2600 remained in production for almost a quarter of a century.",
+      price: 4000,
+      quantity: 24,
+      category: "gaming",
+      imageUrl: "https://hips.hearstapps.com/bpc.h-cdn.co/assets/16/42/480x480/square-1477059131-1977-atari-2600.jpg?resize=980:*",
+      orderProductId: 1,
+    }),
+    Product.create({
+      name: "Apple PowerBook 100",
+      description: "The PowerBook 100 by Apple was an entry-level model when it debuted in 1991. However, it impressed with its compact design and built-in trackball. The latter made navigating through the System OS an easy affair.",
+      price: 39900,
+      quantity: 4,
+      category: "computer",
+      imageUrl: "https://hips.hearstapps.com/bpc.h-cdn.co/assets/16/42/1991-apple-powerbook-100.jpg?crop=1xw:1.0xh;center,top&resize=980:*",
       orderProductId: 1,
     }),
   ]);
 
 
-  
+
 
   console.log(`seeded ${users.length} users`);
   console.log(`seeded ${products.length} products`);
