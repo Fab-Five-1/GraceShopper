@@ -15,9 +15,11 @@ router.get("/", async (req, res, next) => {
     const orderProducts = await OrderProduct.findAll({
       where: { orderId },
     });
-    console.log("Prodcut", orderProducts);
-    console.log("HEY", order);
-    res.send({ user, order });
+    const orderProductId = orderProducts[0].dataValues.id;
+    const products = await Product.findAll({
+      where: { orderProductId },
+    });
+    res.send([user, order, orderProducts, products]);
   } catch (err) {
     next(err);
   }
