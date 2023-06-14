@@ -8,7 +8,12 @@ router.get("/", async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
     const order = await user.getOrder();
-    console.log("HEY", user, order);
+    const orderId = order[0].dataValues.id;
+    const orderProducts = await OrderProduct.findAll({
+      where: { orderId },
+    });
+    console.log("Prodcut", orderProducts);
+    console.log("HEY", order[0].dataValues.id);
     res.send({ user, order });
   } catch (err) {
     next(err);
