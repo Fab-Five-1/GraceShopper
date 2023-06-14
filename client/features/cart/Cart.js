@@ -13,8 +13,10 @@ const Cart = () => {
     <div>
       {isLoggedIn ? (
         <div>
-          <h1>YO {username}</h1>
-          <h3>Welcome to your cart</h3>
+          <h1>Welcome to your cart, {username}!</h1>
+          <section style={{ border: "5px solid red" }}>
+            ITEMS<h3>TOTAL</h3>
+          </section>
           <h3>Ready to checkout?</h3>
           <Link to="/checkout">
             <button type="button">Checkout</button>
@@ -37,5 +39,4 @@ const Cart = () => {
 
 export default Cart;
 
-
-// michelle 
+// michelle
