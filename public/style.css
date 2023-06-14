@@ -19,3 +19,15 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+
+/* single product page */
+
+#singleProductContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#singleProdText {
+  width: 50%
+}
