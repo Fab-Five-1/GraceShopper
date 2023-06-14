@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
-import { selectSingleProduct } from "./SingleProduct";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSingleProduct } from "./SingleProduct";
+import { fetchSingleProduct, selectSingleProduct } from "./singleProductSlice";
 
 
-const singleProduct = () => {
+const SingleProduct = () => {
     const { productId } = useParams();
     const singleProduct = useSelector(selectSingleProduct);
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(fetchSingleProduct(productId));
-    })
+    }, [])
 
     return (
         <div>
@@ -21,4 +21,4 @@ const singleProduct = () => {
 
 }
 
-export default singleProduct; 
+export default SingleProduct; 

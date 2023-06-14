@@ -34,3 +34,5 @@ router.get("/:productId", async (req, res) => {
         console.log(err)
     }
 });
+
+
