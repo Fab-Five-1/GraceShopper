@@ -7,12 +7,13 @@ export const fetchUsersCart = createAsyncThunk("cart", async () => {
   const token = window.localStorage.getItem(TOKEN);
   try {
     if (token) {
-      const res = await axios.get("/auth/me", {
+      const test = await axios.get("/api/cart", {
         headers: {
           authorization: token,
         },
       });
-      return res.data;
+      console.log(test);
+      return test.data;
     } else {
       return {};
     }

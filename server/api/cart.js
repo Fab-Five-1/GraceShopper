@@ -4,19 +4,12 @@ const Order = require("../db/models/Order");
 const OrderProduct = require("../db/models/OrderProduct");
 const Product = require("../db/models/Product");
 
-router.get("/cart", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    const currentUser = await User.findByToken(req.headers.authorization, {
-      include: [
-        {
-          model: Order,
-          include: [OrderProduct],
-        },
-      ],
-    });
-
-    console.log(currentUser);
-    res.send(currentUser);
+    const currentUser = await User.findByToken(req.headers.authorization);
+    const order = await currentUser.getOrder();
+    console.log("HEY", currentUser, order);
+    res.send(currentUser, order);
   } catch (err) {
     next(err);
   }
