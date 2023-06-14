@@ -4,7 +4,6 @@ import axios from "axios"
 export const fetchSingleProduct = createAsyncThunk(
     "singleProduct", async (productId) => {
         try {
-            console.log("this is the front end route working")
             const { data } = await axios.get(`/api/products/${productId}`);
             return data
         }

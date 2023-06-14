@@ -12,18 +12,21 @@ const SingleProduct = () => {
 
     // hard coded productId - need to edit in later
     useEffect(() => {
-        dispatch(fetchSingleProduct(2));
+        dispatch(fetchSingleProduct(1));
     }, [])
 
     return (
         <div id="singleProductContainer">
-            {/* <h1>Name</h1>
-            <p>Description</p> */}
-            <h1>{name}</h1>
-            <p>{description}</p>
-            <p>${price}</p>
-            {/* <p>{quantity}</p> */}
-            <p>{imageUrl}</p>
+            <div id="singleProdText">
+                <h1>{name}</h1>
+                <p>{description}</p>
+                <p>${price / 100}</p>
+                <p>Quantity:</p>
+                <button>Add to Cart</button>
+            </div>
+            <div>
+                <img src={imageUrl} />
+            </div>
         </div>
     )
 
