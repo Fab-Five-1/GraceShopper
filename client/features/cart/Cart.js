@@ -16,11 +16,15 @@ const Cart = () => {
     dispatch(fetchUsersCart());
   }, []);
 
-  const { user, order, orderProducts, products } = usersInfo;
+  const { user, orders, orderProducts, products } = usersInfo;
 
   // user is not an array the rest are
 
-  console.log("STUFF", user, order, orderProducts, products);
+  console.log(orders);
+
+  for (const obj in orders) {
+    console.log(obj);
+  }
 
   return (
     <div>
