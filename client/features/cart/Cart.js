@@ -22,10 +22,13 @@ const Cart = () => {
         </div>
       ) : (
         <div>
-          <Link to="/home">Home</Link>
-          <Link to="/cart">Cart🛒</Link>
+          <h1>Hi you're not signed in!</h1>
+          <h3>Would you like to login or sign up?</h3>
           <Link to="/login">Login</Link>
+          <br></br>
           <Link to="/signup">Sign Up</Link>
+          <h3>Or continue as guest</h3>
+          <Link to="/guestcheckout">Continue</Link>
         </div>
       )}
     </div>
