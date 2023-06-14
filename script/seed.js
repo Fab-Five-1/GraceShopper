@@ -16,6 +16,13 @@ async function seed() {
   // Creating Users
   const users = await Promise.all([
     User.create({
+      username: "a",
+      password: "a",
+      email: "a@gmail.com",
+      firstName: "a",
+      lastName: "a",
+    }),
+    User.create({
       username: "XxcodyxX",
       password: "123",
       email: "CJohnson@gmail.com",
@@ -69,7 +76,7 @@ async function seed() {
   const orders = await Promise.all([
     Order.create({
       fulfilled: false,
-      userId:1
+      userId: 1,
     }),
   ]);
 
@@ -77,7 +84,7 @@ async function seed() {
     OrderProduct.create({
       numberOfItems: 2,
       totalPrice: 2000,
-      orderId:1
+      orderId: 1,
     }),
   ]);
 
@@ -115,9 +122,6 @@ async function seed() {
       orderProductId: 1,
     }),
   ]);
-
-
-  
 
   console.log(`seeded ${users.length} users`);
   console.log(`seeded ${products.length} products`);
