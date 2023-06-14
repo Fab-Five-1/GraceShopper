@@ -12,7 +12,6 @@ export const fetchUsersCart = createAsyncThunk("cart", async () => {
           authorization: token,
         },
       });
-      console.log(test);
       return test;
     } else {
       return {};
