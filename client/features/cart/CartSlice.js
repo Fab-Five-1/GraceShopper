@@ -13,7 +13,7 @@ export const fetchUsersCart = createAsyncThunk("cart", async () => {
         },
       });
       console.log(test);
-      return test.data;
+      return test;
     } else {
       return {};
     }

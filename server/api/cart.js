@@ -9,7 +9,7 @@ router.get("/", async (req, res, next) => {
     const currentUser = await User.findByToken(req.headers.authorization);
     const order = await currentUser.getOrder();
     console.log("HEY", currentUser, order);
-    res.send(currentUser, order);
+    res.send({ currentUser, order });
   } catch (err) {
     next(err);
   }

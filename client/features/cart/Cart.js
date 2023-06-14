@@ -8,7 +8,7 @@ import { fetchUsersCart, selectCart } from "./CartSlice";
  */
 const Cart = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectCart);
+  const usersStuff = useSelector(selectCart);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const username = useSelector((state) => state.auth.me.username);
 
@@ -16,7 +16,7 @@ const Cart = () => {
     dispatch(fetchUsersCart());
   }, []);
 
-  console.log(user);
+  console.log("STUFF", usersStuff);
 
   return (
     <div>
