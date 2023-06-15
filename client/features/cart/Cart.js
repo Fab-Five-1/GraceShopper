@@ -18,6 +18,8 @@ const Cart = () => {
 
   const { user, orders, orderProducts, products } = usersInfo;
 
+  console.log("this is the console log", user)
+
   const orderProductsQ = orderProducts.map(
     (orderProduct) => orderProduct.numberOfItems
   );
@@ -40,12 +42,11 @@ const Cart = () => {
                         value={orderProductsQ[product.orderProductId - 1]}
                       />
                       <span style={{ marginRight: "5px" }}>{product.name}</span>
-                      <span style={{ marginRight: "5px" }}>{`$ ${
-                        (orderProductsQ[product.orderProductId - 1] *
-                          product.price) /
+                      <span style={{ marginRight: "5px" }}>{`$ ${(orderProductsQ[product.orderProductId - 1] *
+                        product.price) /
                         100
-                      }`}</span>
-                      <Link to={`/product/${product.id}`}>
+                        }`}</span>
+                      <Link to={`/products/${product.id}`}>
                         <img
                           src={product.imageUrl}
                           width={"50px"}

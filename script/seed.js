@@ -21,6 +21,7 @@ async function seed() {
       email: "a@gmail.com",
       firstName: "a",
       lastName: "a",
+      isAdmin: true,
     }),
     User.create({
       username: "XxcodyxX",
