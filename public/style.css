@@ -1,9 +1,11 @@
 body {
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
+  font-family: 'Spline Sans Mono', monospace;
 }
 
 a {
   text-decoration: none;
+  color: black
 }
 
 label {
@@ -19,6 +21,26 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+.logo {
+  font-family: 'VT323', monospace;
+}
+
+
+/* all product */
+
+#products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* margin: 0 10%; */
+}
+
+.product {
+  margin: 0 24px;
+  text-align: center;
+}
+
 
 
 /* single product page */

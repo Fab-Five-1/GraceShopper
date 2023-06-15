@@ -18,10 +18,10 @@ const AllProducts = () => {
       <div className="product" key={`All Products ${product.id}`}>
         <NavLink to={`/products/${product.id}`} className="product">
           <div className="product">
+            <img className="productImg" src={product.imageUrl} alt={product.name} />
             <h3>
               {product.name} {product.price}
             </h3>
-            <img src={product.imageUrl} alt={product.name} />
           </div>
         </NavLink>
       </div>
