@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchUsersCart, selectCart, updateOrderProducts } from "./CartSlice";
+import {
+  fetchUsersCart,
+  selectCart,
+  updateOrderProducts,
+  deleteOrderProduct,
+} from "./CartSlice";
 
 const Cart = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);

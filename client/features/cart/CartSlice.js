@@ -35,6 +35,19 @@ export const updateOrderProducts = createAsyncThunk(
   }
 );
 
+export const deleteOrderProduct = createAsyncThunk(
+  "deleteOrderProduct",
+  async (id) => {
+    try {
+      const { data } = await axios.delete(`/api/cart`);
+      return data;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+);
+
 const cartSlice = createSlice({
   name: "cartSlice",
   initialState: {
@@ -53,6 +66,9 @@ const cartSlice = createSlice({
       state.products = products;
     });
     builder.addCase(updateOrderProducts.fulfilled, (state, action) => {
+      state.orderProducts = action.payload;
+    });
+    builder.addCase(deleteOrderProduct.fulfilled, (state, action) => {
       state.orderProducts = action.payload;
     });
   },
