@@ -51,14 +51,6 @@ User.prototype.generateToken = function () {
   return jwt.sign({ id: this.id }, process.env.JWT);
 };
 
-User.prototype.getOrder = async function () {
-  const userId = this.getDataValue("id");
-  const order = await Order.findAll({
-    where: { userId },
-  });
-  return order;
-};
-
 /**
  * classMethods
  */
