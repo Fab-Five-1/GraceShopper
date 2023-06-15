@@ -9,8 +9,6 @@ const Cart = () => {
   const dispatch = useDispatch();
   const { products, orderProducts } = useSelector(selectCart);
 
-  console.log(products);
-
   useEffect(() => {
     if (isLoggedIn) {
       dispatch(fetchUsersCart());
@@ -51,7 +49,6 @@ const Cart = () => {
                     const orderProduct = orderProducts.find(
                       (op) => op.id === product.orderProductId
                     );
-                    console.log("THIS ONE", orderProduct);
                     const productTotal =
                       (orderProduct.numberOfItems * product.price) / 100;
 

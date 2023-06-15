@@ -27,7 +27,6 @@ export const updateOrderProducts = createAsyncThunk(
   async (orderProduct) => {
     try {
       const { data } = await axios.put("/api/cart", { orderProduct });
-      console.log("HELLOOOO", data);
       return data;
     } catch (err) {
       console.error(err);
