@@ -25,7 +25,8 @@ const Cart = () => {
 
     const handleQuantityChange = (event, orderProductId) => {
       const newQuantity = parseInt(event.target.value);
-      const updatedOrderProducts = orderProducts.map((orderProduct) => {
+      console.log(newQuantity);
+      const newOrderProducts = orderProducts.map((orderProduct) => {
         if (orderProduct.id === orderProductId) {
           return {
             ...orderProduct,
@@ -34,7 +35,7 @@ const Cart = () => {
         }
         return orderProduct;
       });
-      dispatch(updateOrderProducts(updatedOrderProducts));
+      dispatch(updateOrderProducts(newOrderProducts));
     };
 
     let total = 0;
