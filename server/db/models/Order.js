@@ -6,6 +6,10 @@ const Orders = db.define("orders", {
     type: Sequelize.BOOLEAN,
     defaultValue: false,
   },
+  total: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
+  },
 });
 
 module.exports = Orders;

@@ -18,9 +18,23 @@ const Cart = () => {
 
   const { user, orders, orderProducts, products } = usersInfo;
 
-  const orderProductsQ = orderProducts.map(
+  const orderProductsQuantity = orderProducts.map(
     (orderProduct) => orderProduct.numberOfItems
   );
+
+  const handleQuantityChange = (event, orderProductsId) => {
+    const newQuantity = parseInt(event.target.value);
+    const updatedOrderPros = orderProducts.map((orderProduct) => {
+      if (orderProduct.id === orderProductId) {
+        return {
+          ...orderProduct,
+          numberOfItems: newQuantity,
+        };
+      }
+      return orderProduct;
+    });
+    dispatch(updateOrderProducts(updatedOrderPros));
+  };
 
   return (
     <div>
@@ -37,11 +51,16 @@ const Cart = () => {
                       <input
                         style={{ margin: "0px 5px", width: "25px" }}
                         type="number"
-                        value={orderProductsQ[product.orderProductId - 1]}
+                        defaultValue={
+                          orderProductsQuantity[product.orderProductId - 1]
+                        }
+                        onChange={(event) =>
+                          handleQuantityChange(event, orderProduct.id)
+                        }
                       />
                       <span style={{ marginRight: "5px" }}>{product.name}</span>
                       <span style={{ marginRight: "5px" }}>{`$ ${
-                        (orderProductsQ[product.orderProductId - 1] *
+                        (orderProductsQuantity[product.orderProductId - 1] *
                           product.price) /
                         100
                       }`}</span>

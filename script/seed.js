@@ -84,7 +84,6 @@ async function seed() {
   const orderProducts = await Promise.all([
     OrderProduct.create({
       numberOfItems: 2,
-      totalPrice: 2000,
       orderId: 1,
     }),
   ]);
