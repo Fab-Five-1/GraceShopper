@@ -16,7 +16,7 @@ const AllProducts = () => {
   const renderProducts = () => {
     return products.map((product) => (
       <div className="product" key={`All Products ${product.id}`}>
-        <NavLink to={`/product/${product.id}`} className="product">
+        <NavLink to={`/products/${product.id}`} className="product">
           <div className="product">
             <h3>
               {product.name} {product.price}
