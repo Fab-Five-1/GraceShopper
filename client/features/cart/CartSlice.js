@@ -12,6 +12,8 @@ export const fetchUsersCart = createAsyncThunk("cart", async () => {
           authorization: token,
         },
       });
+      const { user, orders, orderProducts, products } = data;
+      console.log("LOG", user, orders, orderProducts, products);
       return data;
     } else {
       return {};
@@ -25,7 +27,7 @@ export const fetchUsersCart = createAsyncThunk("cart", async () => {
 const cartSlice = createSlice({
   name: "cartSlice",
   initialState: {
-    user: {},
+    data: [],
   },
   reducers: {},
   extraReducers: (builder) => {

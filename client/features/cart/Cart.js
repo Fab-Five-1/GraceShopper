@@ -15,7 +15,7 @@ const Cart = () => {
   useEffect(() => {
     dispatch(fetchUsersCart());
   }, []);
-
+  console.log("INFO", usersInfo);
   const { user, orders, orderProducts, products } = usersInfo;
 
   let test;
