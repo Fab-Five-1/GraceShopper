@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { fetchUsersCart, selectCart } from "./CartSlice";
 
 /**
@@ -10,15 +10,13 @@ const Cart = () => {
   const dispatch = useDispatch();
   const usersInfo = useSelector(selectCart);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  const username = useSelector((state) => state.auth.me.name);
+  const firstName = useSelector((state) => state.auth.me.firstName);
 
   useEffect(() => {
     dispatch(fetchUsersCart());
   }, []);
 
   const { user, orders, orderProducts, products } = usersInfo;
-
-  console.log("this is the console log", user)
 
   const orderProductsQ = orderProducts.map(
     (orderProduct) => orderProduct.numberOfItems
@@ -28,7 +26,7 @@ const Cart = () => {
     <div>
       {isLoggedIn ? (
         <div>
-          <h1>Welcome to your cart, {username}!</h1>
+          <h1>Welcome to your cart, {firstName}!</h1>
           <section style={{ border: "5px solid red" }}>
             {products.length > 0 ? (
               <div>
@@ -42,10 +40,11 @@ const Cart = () => {
                         value={orderProductsQ[product.orderProductId - 1]}
                       />
                       <span style={{ marginRight: "5px" }}>{product.name}</span>
-                      <span style={{ marginRight: "5px" }}>{`$ ${(orderProductsQ[product.orderProductId - 1] *
-                        product.price) /
+                      <span style={{ marginRight: "5px" }}>{`$ ${
+                        (orderProductsQ[product.orderProductId - 1] *
+                          product.price) /
                         100
-                        }`}</span>
+                      }`}</span>
                       <Link to={`/products/${product.id}`}>
                         <img
                           src={product.imageUrl}
