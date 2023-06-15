@@ -16,26 +16,10 @@ const Cart = () => {
     dispatch(fetchUsersCart());
   }, []);
   const { user, orders, orderProducts, products } = usersInfo;
-  console.log("INFO", user, orders[0], orderProducts[0], products[0]);
-
-  let test;
-
-  if (Array.isArray(orders) && orders.length > 0) {
-    test = orders;
-    console.log(orders[0].id);
-    console.log("fulfilled", orders[0].fulfilled);
-  } else {
-    console.log("No orders available or 'orders' is not an array.");
-  }
-  // HOW IS THIS POSSIBLE
-  console.log(typeof orders);
-  console.log(Array.isArray(orders));
-  console.log("TEST", typeof test);
-
-  for (const obj in orders) {
-    console.log(obj);
-  }
-
+  console.log("INFO", user, orders, orderProducts, products);
+  let order1 = orders[0];
+  console.log(order1);
+  // console.log(Object.keys(order1));
   return (
     <div>
       {isLoggedIn ? (
