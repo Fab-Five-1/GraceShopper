@@ -33,14 +33,16 @@ router.get("/", async (req, res, next) => {
 router.put("/", async (req, res, next) => {
   try {
     const orderProductsData = req.body.orderProduct;
+    let orderProducts = [];
     for (const orderProductData of orderProductsData) {
       const { id, numberOfItems } = orderProductData;
       const orderProduct = await OrderProduct.findByPk(id);
+      orderProducts.push(orderProduct);
       if (orderProduct) {
         await orderProduct.update({ numberOfItems });
       }
     }
-    res.send({ success: true });
+    res.send(orderProducts);
   } catch (err) {
     next(err);
   }

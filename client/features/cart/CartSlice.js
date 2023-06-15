@@ -27,6 +27,7 @@ export const updateOrderProducts = createAsyncThunk(
   async (orderProduct) => {
     try {
       const { data } = await axios.put("/api/cart", { orderProduct });
+      console.log("HELLOOOO", data);
       return data;
     } catch (err) {
       console.error(err);
@@ -51,6 +52,9 @@ const cartSlice = createSlice({
       state.orders = orders;
       state.orderProducts = orderProducts;
       state.products = products;
+    });
+    builder.addCase(updateOrderProducts.fulfilled, (state, action) => {
+      state.orderProducts = action.payload;
     });
   },
 });

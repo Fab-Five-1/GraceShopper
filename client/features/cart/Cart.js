@@ -61,6 +61,7 @@ const Cart = () => {
                           style={{ margin: "0px 5px", width: "25px" }}
                           type="number"
                           value={orderProduct.numberOfItems}
+                          min={1}
                           onChange={(event) =>
                             handleQuantityChange(event, orderProduct.id)
                           }
