@@ -10,7 +10,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const usersInfo = useSelector(selectCart);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  const username = useSelector((state) => state.auth.me.username);
+  const username = useSelector((state) => state.auth.me.name);
 
   useEffect(() => {
     dispatch(fetchUsersCart());
