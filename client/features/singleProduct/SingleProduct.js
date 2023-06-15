@@ -13,7 +13,7 @@ const SingleProduct = () => {
 
     const [count, setCount] = useState(1);
 
-    const isAdmin = useSelector((state) => state.auth.me.isAdmin);
+    const isAdmin = useSelector((state) => state.auth.me.isAdmin);  
 
     useEffect(() => {
         dispatch(fetchSingleProduct(productId.id));
@@ -30,23 +30,41 @@ const SingleProduct = () => {
     }
 
     // if statement for if admin if true
-    return (
-        <div id="singleProductContainer">
-            <div id="singleProdText">
-                <h1>{name}</h1>
-                <p>{description}</p>
-                <p>${price / 100}</p>
-                <button className="countBtn" onClick={handleDecrement}>-</button>
-                <span className="countSpace">{count}</span>
-                <button className="countBtn" onClick={handleIncrement}>+</button>
-                <button className="buttonSpace">Add to Cart</button>
-            </div>
-            <div>
-                <img src={imageUrl} />
-            </div>
-        </div>
-    )
 
+    if (isAdmin) {
+        return (
+
+            <div id="singleProductContainer">
+                <p>ADMIN VIEW</p>
+                <div id="singleProdText">
+                    <h1>{name}</h1>
+                    <p>{description}</p>
+                    <p>${price / 100}</p>
+                </div>
+                <div>
+                    <img src={imageUrl} />
+                </div>
+            </div>
+        )
+    }
+    else {
+        return (
+            <div id="singleProductContainer">
+                <div id="singleProdText">
+                    <h1>{name}</h1>
+                    <p>{description}</p>
+                    <p>${price / 100}</p>
+                    <button className="countBtn" onClick={handleDecrement}>-</button>
+                    <span className="countSpace">{count}</span>
+                    <button className="countBtn" onClick={handleIncrement}>+</button>
+                    <button className="buttonSpace">Add to Cart</button>
+                </div>
+                <div>
+                    <img src={imageUrl} />
+                </div>
+            </div>
+        )
+    }
 }
 
 export default SingleProduct; 
