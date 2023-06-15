@@ -45,16 +45,13 @@ const Cart = () => {
                           product.price) /
                         100
                       }`}</span>
-                      <NavLink
-                        to={`/product/${product.id}`}
-                        className="product"
-                      >
+                      <Link to={`/product/${product.id}`}>
                         <img
                           src={product.imageUrl}
                           width={"50px"}
                           style={{ border: "3px solid black" }}
                         />
-                      </NavLink>
+                      </Link>
                     </div>
                   ))}
                 </div>
