@@ -10,7 +10,7 @@ router.get("/", async (req, res, next) => {
     const user = await User.findByToken(req.headers.authorization);
     const userId = user.dataValues.id;
     const orders = await Order.findAll({
-      where: { userId },
+      where: { userId, fulfilled: false },
     });
     const orderId = orders[0].dataValues.id;
     const orderProducts = await OrderProduct.findAll({
