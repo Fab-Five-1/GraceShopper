@@ -17,16 +17,32 @@ const Cart = () => {
   }, []);
   const { user, orders, orderProducts, products } = usersInfo;
   console.log("INFO", user, orders, orderProducts, products);
-  let order1 = orders[0];
-  console.log(order1);
-  // console.log(Object.keys(order1));
+  console.log("ORDER!!!!!", products);
+
+  const productIds = products.map((product) => product.id);
+
+  console.log("Product IDs", productIds);
+
   return (
     <div>
       {isLoggedIn ? (
         <div>
           <h1>Welcome to your cart, {username}!</h1>
           <section style={{ border: "5px solid red" }}>
-            <h2>Items:</h2>
+            {products.length > 0 ? (
+              <div>
+                <h2>Items:</h2>
+                <div>
+                  {products.map((product) => (
+                    <div>
+                      <h4 key={product.id}>{product.name}</h4>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <h2>Cart is empty</h2>
+            )}
           </section>
           <h3>Ready to checkout?</h3>
           <Link to="/checkout">
@@ -35,12 +51,12 @@ const Cart = () => {
         </div>
       ) : (
         <div>
-          <h1>Hi you're not signed in!</h1>
+          <h1>Hi, you're not signed in!</h1>
           <h3>Would you like to login or sign up?</h3>
           <Link to="/login">Login</Link>
-          <br></br>
+          <br />
           <Link to="/signup">Sign Up</Link>
-          <h3>Or continue as guest</h3>
+          <h3>Or continue as a guest</h3>
           <Link to="/guestcheckout">Continue</Link>
         </div>
       )}
@@ -49,5 +65,3 @@ const Cart = () => {
 };
 
 export default Cart;
-
-// michelle
