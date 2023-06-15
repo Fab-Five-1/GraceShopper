@@ -81,17 +81,6 @@ async function seed() {
     }),
   ]);
 
-  const orderProducts = await Promise.all([
-    OrderProduct.create({
-      numberOfItems: 2,
-      orderId: 1,
-    }),
-    OrderProduct.create({
-      numberOfItems: 4,
-      orderId: 1,
-    }),
-  ]);
-
   const products = await Promise.all([
     Product.create({
       name: "Apple iPod",
@@ -102,7 +91,6 @@ async function seed() {
       category: "audio",
       imageUrl:
         "https://hips.hearstapps.com/bpc.h-cdn.co/assets/16/42/2001-apple-ipod.jpg?crop=1xw:1.0xh;center,top&resize=980:*",
-      orderProductId: 1,
     }),
     Product.create({
       name: "Sony Playstation",
@@ -113,7 +101,6 @@ async function seed() {
       category: "gaming",
       imageUrl:
         "https://hips.hearstapps.com/bpc.h-cdn.co/assets/16/42/1994-sony-playstation.jpg?crop=1xw:1.0xh;center,top&resize=980:*",
-      orderProductId: 2,
     }),
     Product.create({
       name: "Motorola MicroTAC",
@@ -155,6 +142,19 @@ async function seed() {
       category: "computer",
       imageUrl:
         "https://hips.hearstapps.com/bpc.h-cdn.co/assets/16/42/1991-apple-powerbook-100.jpg?crop=1xw:1.0xh;center,top&resize=980:*",
+    }),
+  ]);
+
+  const orderProducts = await Promise.all([
+    OrderProduct.create({
+      numberOfItems: 2,
+      orderId: 1,
+      productId: 1,
+    }),
+    OrderProduct.create({
+      numberOfItems: 4,
+      orderId: 1,
+      productId: 2,
     }),
   ]);
 

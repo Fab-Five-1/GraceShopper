@@ -16,11 +16,11 @@ router.get("/", async (req, res, next) => {
     const orderProducts = await OrderProduct.findAll({
       where: { orderId },
     });
-    const orderProductIds = orderProducts.map((info) => info.dataValues.id);
+    const productIds = orderProducts.map((info) => info.dataValues.productId);
     const products = await Product.findAll({
       where: {
-        orderProductId: {
-          [Op.in]: orderProductIds,
+        id: {
+          [Op.in]: productIds,
         },
       },
     });

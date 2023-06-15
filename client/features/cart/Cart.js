@@ -9,6 +9,8 @@ const Cart = () => {
   const dispatch = useDispatch();
   const { products, orderProducts } = useSelector(selectCart);
 
+  console.log(orderProducts);
+
   useEffect(() => {
     if (isLoggedIn) {
       dispatch(fetchUsersCart());
