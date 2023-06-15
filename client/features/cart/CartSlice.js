@@ -70,7 +70,9 @@ const cartSlice = createSlice({
       state.orderProducts = action.payload;
     });
     builder.addCase(deleteOrderProduct.fulfilled, (state, action) => {
-      state.orderProducts = action.payload;
+      const { orderProducts, products } = action.payload;
+      state.orderProducts = orderProducts;
+      state.products = products;
     });
   },
 });

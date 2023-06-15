@@ -57,7 +57,15 @@ router.delete("/:id", async (req, res, next) => {
       const orderProducts = await OrderProduct.findAll({
         where: { orderId },
       });
-      return res.send(orderProducts);
+      const productIds = orderProducts.map((info) => info.dataValues.productId);
+      const products = await Product.findAll({
+        where: {
+          id: {
+            [Op.in]: productIds,
+          },
+        },
+      });
+      return res.send({ orderProducts, products });
     }
     return;
   } catch (err) {
