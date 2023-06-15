@@ -1,9 +1,13 @@
-body {
-  font-family: sans-serif;
+body,
+button {
+  /* font-family: sans-serif; */
+  font-family: 'Spline Sans Mono', monospace;
+  /* background-color: #f3eee0 */
 }
 
 a {
   text-decoration: none;
+  color: black
 }
 
 label {
@@ -20,6 +24,31 @@ form div {
   display: inline-block;
 }
 
+.logo {
+  font-family: 'VT323', monospace;
+}
+
+
+/* all product */
+
+#products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* margin: 0 10%; */
+}
+
+.product {
+  margin: 0 24px;
+  text-align: center;
+}
+
+.productInfo {
+  display: flex;
+  justify-content: space-around;
+}
+
+
 
 /* single product page */
 
@@ -30,4 +59,9 @@ form div {
 
 #singleProdText {
   width: 50%
+}
+
+.countSpace,
+.buttonSpace {
+  margin: 0 16px;
 }
