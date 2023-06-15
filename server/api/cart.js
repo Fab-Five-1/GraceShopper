@@ -48,4 +48,21 @@ router.put("/", async (req, res, next) => {
   }
 });
 
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const orderProduct = await OrderProduct.findByPk(req.params.id);
+    const orderId = orderProduct.dataValues.orderId;
+    if (orderProduct) {
+      await orderProduct.destroy();
+      const orderProducts = await OrderProduct.findAll({
+        where: { orderId },
+      });
+      return res.send(orderProducts);
+    }
+    return;
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

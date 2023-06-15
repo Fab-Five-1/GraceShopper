@@ -51,7 +51,7 @@ const Cart = () => {
         <div>
           <h1>Welcome to your cart, {firstName}!</h1>
           <section style={{ border: "5px solid red" }}>
-            {products.length > 0 ? (
+            {orderProducts.length > 0 ? (
               <div>
                 <h2>Items:</h2>
                 <div>
