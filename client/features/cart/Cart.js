@@ -15,13 +15,12 @@ const Cart = () => {
   useEffect(() => {
     dispatch(fetchUsersCart());
   }, []);
+
   const { user, orders, orderProducts, products } = usersInfo;
-  console.log("INFO", user, orders, orderProducts, products);
-  console.log("ORDER!!!!!", products);
 
-  const productIds = products.map((product) => product.id);
-
-  console.log("Product IDs", productIds);
+  const orderProductsQ = orderProducts.map(
+    (orderProduct) => orderProduct.numberOfItems
+  );
 
   return (
     <div>
@@ -39,7 +38,9 @@ const Cart = () => {
                         {product.name}
                       </span>
                       <span style={{ marginRight: "5px" }}>{`$ ${
-                        product.price / 100
+                        (orderProductsQ[product.orderProductId - 1] *
+                          product.price) /
+                        100
                       }`}</span>
                       <NavLink
                         to={`/product/${product.id}`}
