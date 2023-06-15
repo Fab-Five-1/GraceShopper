@@ -24,9 +24,9 @@ export const fetchUsersCart = createAsyncThunk("cart", async () => {
 
 export const updateOrderProducts = createAsyncThunk(
   "updateOrderProducts",
-  async (newOrderProducts) => {
+  async (orderProduct) => {
     try {
-      const { data } = await axios.put("/api/cart", { newOrderProducts });
+      const { data } = await axios.put("/api/cart", { orderProduct });
       return data;
     } catch (err) {
       console.error(err);

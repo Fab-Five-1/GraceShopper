@@ -25,4 +25,15 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.put("/", async (req, res, next) => {
+  try {
+    const id = req.body.orderProduct[0].id;
+    const orderProduct = await OrderProduct.findByPk(id);
+    console.log("YOOOOO", orderProduct);
+    res.send(await orderProduct.update(req.body));
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;

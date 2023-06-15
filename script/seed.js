@@ -86,6 +86,10 @@ async function seed() {
       numberOfItems: 2,
       orderId: 1,
     }),
+    OrderProduct.create({
+      numberOfItems: 4,
+      orderId: 1,
+    }),
   ]);
 
   const products = await Promise.all([
@@ -109,7 +113,7 @@ async function seed() {
       category: "gaming",
       imageUrl:
         "https://hips.hearstapps.com/bpc.h-cdn.co/assets/16/42/1994-sony-playstation.jpg?crop=1xw:1.0xh;center,top&resize=980:*",
-      orderProductId: 1,
+      orderProductId: 2,
     }),
     Product.create({
       name: "Motorola MicroTAC",
@@ -120,7 +124,6 @@ async function seed() {
       category: "phone",
       imageUrl:
         "https://hips.hearstapps.com/bpc.h-cdn.co/assets/16/42/1989-motorola-microtac.jpg?crop=1xw:1.0xh;center,top&resize=980:*",
-      orderProductId: 1,
     }),
     Product.create({
       name: "Sony Walkman",
@@ -131,7 +134,6 @@ async function seed() {
       category: "audio",
       imageUrl:
         "https://hips.hearstapps.com/bpc.h-cdn.co/assets/16/42/1979-sony-walkman.jpg?crop=1xw:1.0xh;center,top&resize=980:*",
-      orderProductId: 1,
     }),
 
     Product.create({
@@ -143,7 +145,6 @@ async function seed() {
       category: "gaming",
       imageUrl:
         "https://hips.hearstapps.com/bpc.h-cdn.co/assets/16/42/480x480/square-1477059131-1977-atari-2600.jpg?resize=980:*",
-      orderProductId: 1,
     }),
     Product.create({
       name: "Apple PowerBook 100",
@@ -154,7 +155,6 @@ async function seed() {
       category: "computer",
       imageUrl:
         "https://hips.hearstapps.com/bpc.h-cdn.co/assets/16/42/1991-apple-powerbook-100.jpg?crop=1xw:1.0xh;center,top&resize=980:*",
-      orderProductId: 1,
     }),
   ]);
 
