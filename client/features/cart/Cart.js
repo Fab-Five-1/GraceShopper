@@ -34,9 +34,11 @@ const Cart = () => {
                 <div>
                   {products.map((product) => (
                     <div key={product.id}>
-                      <span style={{ marginRight: "5px" }}>
-                        {orderProductsQ[product.orderProductId - 1]}
-                      </span>
+                      <input
+                        style={{ margin: "0px 5px", width: "25px" }}
+                        type="number"
+                        value={orderProductsQ[product.orderProductId - 1]}
+                      />
                       <span style={{ marginRight: "5px" }}>{product.name}</span>
                       <span style={{ marginRight: "5px" }}>{`$ ${
                         (orderProductsQ[product.orderProductId - 1] *
