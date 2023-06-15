@@ -6,13 +6,16 @@ import {
   selectCart,
   updateOrderProducts,
   deleteOrderProduct,
+  setTotalPrice,
 } from "./CartSlice";
 
 const Cart = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const firstName = useSelector((state) => state.auth.me.firstName);
   const dispatch = useDispatch();
-  const { products, orderProducts } = useSelector(selectCart);
+  const { orders, products, orderProducts } = useSelector(selectCart);
+
+  const orderId = orders.map((info) => info.id);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -43,6 +46,10 @@ const Cart = () => {
   const handleDelete = async (id) => {
     await dispatch(deleteOrderProduct(id));
     dispatch(fetchUsersCart());
+  };
+
+  const handleCheckout = async (total, id) => {
+    dispatch(setTotalPrice(total, id));
   };
 
   return (
@@ -108,7 +115,12 @@ const Cart = () => {
           <h3>Total: ${calculateTotal()}</h3>
           <h3>Ready to checkout?</h3>
           <Link to="/checkout">
-            <button type="button">Checkout</button>
+            <button
+              type="button"
+              onClick={() => handleCheckout(calculateTotal(), orderId[0])}
+            >
+              Checkout
+            </button>
           </Link>
         </div>
       ) : (
