@@ -27,12 +27,19 @@ export const fetchUsersCart = createAsyncThunk("cart", async () => {
 const cartSlice = createSlice({
   name: "cartSlice",
   initialState: {
-    data: [],
+    user: null,
+    orders: [],
+    orderProducts: [],
+    products: [],
   },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchUsersCart.fulfilled, (state, action) => {
-      return action.payload;
+      const { user, orders, orderProducts, products } = action.payload;
+      state.user = user;
+      state.orders = orders;
+      state.orderProducts = orderProducts;
+      state.products = products;
     });
   },
 });
