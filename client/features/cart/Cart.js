@@ -9,8 +9,6 @@ const Cart = () => {
   const dispatch = useDispatch();
   const { products, orderProducts } = useSelector(selectCart);
 
-  console.log(orderProducts);
-
   useEffect(() => {
     if (isLoggedIn) {
       dispatch(fetchUsersCart());
@@ -37,7 +35,9 @@ const Cart = () => {
     }, 0);
   };
 
-  const handleDelete = async (id) => {};
+  const handleDelete = async (id) => {
+    console.log(id);
+  };
 
   return (
     <div>
@@ -84,7 +84,12 @@ const Cart = () => {
                             alt={product.name}
                           />
                         </Link>
-                        <button>x</button>
+                        <button
+                          type="button"
+                          onClick={() => handleDelete(orderProduct.id)}
+                        >
+                          x
+                        </button>
                       </div>
                     );
                   })}
