@@ -4,17 +4,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleProduct, selectSingleProduct } from "./singleProductSlice";
 
 
+
 const SingleProduct = () => {
-    const { productId } = useParams();
+    const productId = useParams();
     const singleProduct = useSelector(selectSingleProduct);
     const dispatch = useDispatch()
     const { name, description, price, quantity, imageUrl } = singleProduct;
 
-    // hard coded productId - need to edit in later
+    const isAdmin = useSelector((state) => state.auth.me.isAdmin);
+
     useEffect(() => {
-        dispatch(fetchSingleProduct(1));
+        dispatch(fetchSingleProduct(productId.id));
     }, [])
 
+    // if statement for if admin if true
     return (
         <div id="singleProductContainer">
             <div id="singleProdText">
