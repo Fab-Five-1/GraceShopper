@@ -32,11 +32,15 @@ router.get("/", async (req, res, next) => {
 
 router.put("/", async (req, res, next) => {
   try {
-    const id = req.body.orderProduct[0].id;
-    const orderProduct = await OrderProduct.findByPk(id);
-    console.log("LOOK LIKE ME", orderProduct);
-    console.log("YOOOOO", req.body.orderProduct);
-    res.send(await orderProduct.update(req.body.orderProduct));
+    const orderProductsData = req.body.orderProduct;
+    for (const orderProductData of orderProductsData) {
+      const { id, numberOfItems } = orderProductData;
+      const orderProduct = await OrderProduct.findByPk(id);
+      if (orderProduct) {
+        await orderProduct.update({ numberOfItems });
+      }
+    }
+    res.send({ success: true });
   } catch (err) {
     next(err);
   }
