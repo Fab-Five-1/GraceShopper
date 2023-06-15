@@ -30,7 +30,7 @@ const Cart = () => {
   const calculateTotal = () => {
     return products.reduce((total, product) => {
       const orderProduct = orderProducts.find(
-        (op) => op.id === product.orderProductId
+        (op) => op.productId === product.id
       );
       const productTotal = (orderProduct.numberOfItems * product.price) / 100;
       return total + productTotal;
@@ -51,7 +51,7 @@ const Cart = () => {
                 <div>
                   {products.map((product) => {
                     const orderProduct = orderProducts.find(
-                      (op) => op.id === product.orderProductId
+                      (op) => op.productId === product.id
                     );
                     const productTotal =
                       (orderProduct.numberOfItems * product.price) / 100;
