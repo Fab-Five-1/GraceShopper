@@ -35,6 +35,8 @@ const Cart = () => {
     }, 0);
   };
 
+  const handleDelete = async (id) => {};
+
   return (
     <div>
       {isLoggedIn ? (
@@ -69,7 +71,10 @@ const Cart = () => {
                         <span style={{ marginRight: "5px" }}>
                           ${productTotal}
                         </span>
-                        <Link to={`/products/${product.id}`}>
+                        <Link
+                          style={{ marginRight: "7px" }}
+                          to={`/products/${product.id}`}
+                        >
                           <img
                             src={product.imageUrl}
                             width="50px"
@@ -77,6 +82,7 @@ const Cart = () => {
                             alt={product.name}
                           />
                         </Link>
+                        <button>x</button>
                       </div>
                     );
                   })}
