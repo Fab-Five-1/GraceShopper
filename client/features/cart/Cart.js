@@ -58,7 +58,7 @@ const Cart = () => {
                     return (
                       <div key={product.id}>
                         <input
-                          style={{ margin: "0px 5px", width: "25px" }}
+                          style={{ margin: "0px 5px", width: "30px" }}
                           type="number"
                           value={orderProduct.numberOfItems}
                           min={1}
