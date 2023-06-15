@@ -22,6 +22,19 @@ export const fetchUsersCart = createAsyncThunk("cart", async () => {
   }
 });
 
+export const updateOrderProducts = createAsyncThunk(
+  "updateOrderProducts",
+  async (newOrderProducts) => {
+    try {
+      const { data } = await axios.put("/api/cart", { newOrderProducts });
+      return data;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+);
+
 const cartSlice = createSlice({
   name: "cartSlice",
   initialState: {

@@ -5,8 +5,9 @@ import { fetchUsersCart, selectCart, updateOrderProducts } from "./CartSlice";
 
 const Cart = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const firstName = useSelector((state) => state.auth.me.firstName);
   const dispatch = useDispatch();
-  const { products, orderProducts, firstName } = useSelector(selectCart);
+  const { products, orderProducts } = useSelector(selectCart);
 
   useEffect(() => {
     if (isLoggedIn) {
