@@ -7,9 +7,19 @@ const Product = require("../db/models/Product");
 router.get("/", async (req, res, next) => {
   try {
     const user = await User.findByToken(req.headers.authorization);
-    const order = await user.getOrder();
-    console.log("HEY", user, order);
-    res.send({ user, order });
+    const userId = user.dataValues.id;
+    const orders = await Order.findAll({
+      where: { userId },
+    });
+    const orderId = orders[0].dataValues.id;
+    const orderProducts = await OrderProduct.findAll({
+      where: { orderId },
+    });
+    const orderProductId = orderProducts[0].dataValues.id;
+    const products = await Product.findAll({
+      where: { orderProductId },
+    });
+    res.send({ user, orders, orderProducts, products });
   } catch (err) {
     next(err);
   }

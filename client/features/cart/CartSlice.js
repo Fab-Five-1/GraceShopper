@@ -7,13 +7,12 @@ export const fetchUsersCart = createAsyncThunk("cart", async () => {
   const token = window.localStorage.getItem(TOKEN);
   try {
     if (token) {
-      const test = await axios.get("/api/cart", {
+      const { data } = await axios.get("/api/cart", {
         headers: {
           authorization: token,
         },
       });
-      console.log(test);
-      return test;
+      return data;
     } else {
       return {};
     }
@@ -26,12 +25,19 @@ export const fetchUsersCart = createAsyncThunk("cart", async () => {
 const cartSlice = createSlice({
   name: "cartSlice",
   initialState: {
-    user: {},
+    user: null,
+    orders: [],
+    orderProducts: [],
+    products: [],
   },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchUsersCart.fulfilled, (state, action) => {
-      return action.payload;
+      const { user, orders, orderProducts, products } = action.payload;
+      state.user = user;
+      state.orders = orders;
+      state.orderProducts = orderProducts;
+      state.products = products;
     });
   },
 });
