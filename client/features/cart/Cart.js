@@ -36,7 +36,8 @@ const Cart = () => {
   };
 
   const handleDelete = async (id) => {
-    console.log(id);
+    await dispatch(deleteOrderProduct(id));
+    dispatch(fetchUsersCart());
   };
 
   return (
