@@ -34,8 +34,18 @@ const Cart = () => {
                 <h2>Items:</h2>
                 <div>
                   {products.map((product) => (
-                    <div>
-                      <h4 key={product.id}>{product.name}</h4>
+                    <div key={product.id}>
+                      <span style={{ marginRight: "5px" }} key={product.id}>
+                        {product.name}
+                      </span>
+                      <span style={{ marginRight: "5px" }}>{`$ ${
+                        product.price / 100
+                      }`}</span>
+                      <img
+                        src={product.imageUrl}
+                        width={"50px"}
+                        style={{ border: "3px solid black" }}
+                      />
                     </div>
                   ))}
                 </div>
