@@ -36,7 +36,7 @@ router.put("/", async (req, res, next) => {
     const orderProduct = await OrderProduct.findByPk(id);
     console.log("LOOK LIKE ME", orderProduct);
     console.log("YOOOOO", req.body.orderProduct);
-    res.send(await orderProduct.update(req.body));
+    res.send(await orderProduct.update(req.body.orderProduct));
   } catch (err) {
     next(err);
   }
