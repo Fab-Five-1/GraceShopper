@@ -7,38 +7,39 @@ import { fetchUsersCart, selectCart } from "./CartSlice";
  * COMPONENT
  */
 const Cart = () => {
-  const dispatch = useDispatch();
-  const usersInfo = useSelector(selectCart);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  const firstName = useSelector((state) => state.auth.me.firstName);
+  if (isLoggedIn) {
+    const dispatch = useDispatch();
+    const usersInfo = useSelector(selectCart);
+    const firstName = useSelector((state) => state.auth.me.firstName);
 
-  useEffect(() => {
-    dispatch(fetchUsersCart());
-  }, []);
+    useEffect(() => {
+      dispatch(fetchUsersCart());
+    }, []);
 
-  const { user, orders, orderProducts, products } = usersInfo;
+    const { user, orders, orderProducts, products } = usersInfo;
 
-  const orderProductsQuantity = orderProducts.map(
-    (orderProduct) => orderProduct.numberOfItems
-  );
+    const orderProductsQuantity = orderProducts.map(
+      (orderProduct) => orderProduct.numberOfItems
+    );
 
-  const handleQuantityChange = (event, orderProductsId) => {
-    const newQuantity = parseInt(event.target.value);
-    const updatedOrderPros = orderProducts.map((orderProduct) => {
-      if (orderProduct.id === orderProductId) {
-        return {
-          ...orderProduct,
-          numberOfItems: newQuantity,
-        };
-      }
-      return orderProduct;
-    });
-    dispatch(updateOrderProducts(updatedOrderPros));
-  };
+    const handleQuantityChange = (event, orderProductId) => {
+      const newQuantity = parseInt(event.target.value);
+      const updatedOrderProducts = orderProducts.map((orderProduct) => {
+        if (orderProduct.id === orderProductId) {
+          return {
+            ...orderProduct,
+            numberOfItems: newQuantity,
+          };
+        }
+        return orderProduct;
+      });
+      dispatch(updateOrderProducts(updatedOrderProducts));
+    };
 
-  return (
-    <div>
-      {isLoggedIn ? (
+    let total = 0;
+    return (
+      <div>
         <div>
           <h1>Welcome to your cart, {firstName}!</h1>
           <section style={{ border: "5px solid red" }}>
@@ -46,58 +47,68 @@ const Cart = () => {
               <div>
                 <h2>Items:</h2>
                 <div>
-                  {products.map((product) => (
-                    <div key={product.id}>
-                      <input
-                        style={{ margin: "0px 5px", width: "25px" }}
-                        type="number"
-                        defaultValue={
-                          orderProductsQuantity[product.orderProductId - 1]
-                        }
-                        onChange={(event) =>
-                          handleQuantityChange(event, orderProduct.id)
-                        }
-                      />
-                      <span style={{ marginRight: "5px" }}>{product.name}</span>
-                      <span style={{ marginRight: "5px" }}>{`$ ${
-                        (orderProductsQuantity[product.orderProductId - 1] *
-                          product.price) /
-                        100
-                      }`}</span>
-                      <Link to={`/products/${product.id}`}>
-                        <img
-                          src={product.imageUrl}
-                          width={"50px"}
-                          style={{ border: "3px solid black" }}
+                  {products.map((product) => {
+                    const productTotal =
+                      (orderProductsQuantity[product.orderProductId - 1] *
+                        product.price) /
+                      100;
+                    total += productTotal;
+
+                    return (
+                      <div key={product.id}>
+                        <input
+                          style={{ margin: "0px 5px", width: "25px" }}
+                          type="number"
+                          defaultValue={
+                            orderProductsQuantity[product.orderProductId - 1]
+                          }
+                          onChange={(event) =>
+                            handleQuantityChange(event, product.orderProductId)
+                          }
                         />
-                      </Link>
-                    </div>
-                  ))}
+                        <span style={{ marginRight: "5px" }}>
+                          {product.name}
+                        </span>
+                        <span
+                          style={{ marginRight: "5px" }}
+                        >{`$ ${productTotal}`}</span>
+                        <Link to={`/products/${product.id}`}>
+                          <img
+                            src={product.imageUrl}
+                            width={"50px"}
+                            style={{ border: "3px solid black" }}
+                          />
+                        </Link>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             ) : (
               <h2>Cart is empty</h2>
             )}
           </section>
-          <h3>{`Total: $`}</h3>
+          <h3>{`Total: $${total}`}</h3>
           <h3>Ready to checkout?</h3>
           <Link to="/checkout">
             <button type="button">Checkout</button>
           </Link>
         </div>
-      ) : (
-        <div>
-          <h1>Hi, you're not signed in!</h1>
-          <h3>Would you like to login or sign up?</h3>
-          <Link to="/login">Login</Link>
-          <br />
-          <Link to="/signup">Sign Up</Link>
-          <h3>Or continue as a guest</h3>
-          <Link to="/guestcheckout">Continue</Link>
-        </div>
-      )}
-    </div>
-  );
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h1>Hi, you're not signed in!</h1>
+        <h3>Would you like to login or sign up?</h3>
+        <Link to="/login">Login</Link>
+        <br />
+        <Link to="/signup">Sign Up</Link>
+        <h3>Or continue as a guest</h3>
+        <Link to="/guestcheckout">Continue</Link>
+      </div>
+    );
+  }
 };
 
 export default Cart;
