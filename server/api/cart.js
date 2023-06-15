@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { Op } = require("sequelize");
 const User = require("../db/models/User");
 const Order = require("../db/models/Order");
 const OrderProduct = require("../db/models/OrderProduct");
@@ -15,9 +16,13 @@ router.get("/", async (req, res, next) => {
     const orderProducts = await OrderProduct.findAll({
       where: { orderId },
     });
-    const orderProductId = orderProducts[0].dataValues.id;
+    const orderProductIds = orderProducts.map((info) => info.dataValues.id);
     const products = await Product.findAll({
-      where: { orderProductId },
+      where: {
+        orderProductId: {
+          [Op.in]: orderProductIds,
+        },
+      },
     });
     res.send({ user, orders, orderProducts, products });
   } catch (err) {
