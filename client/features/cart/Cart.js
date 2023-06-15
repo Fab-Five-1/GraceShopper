@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { fetchUsersCart, selectCart } from "./CartSlice";
 
 /**
@@ -41,11 +41,16 @@ const Cart = () => {
                       <span style={{ marginRight: "5px" }}>{`$ ${
                         product.price / 100
                       }`}</span>
-                      <img
-                        src={product.imageUrl}
-                        width={"50px"}
-                        style={{ border: "3px solid black" }}
-                      />
+                      <NavLink
+                        to={`/product/${product.id}`}
+                        className="product"
+                      >
+                        <img
+                          src={product.imageUrl}
+                          width={"50px"}
+                          style={{ border: "3px solid black" }}
+                        />
+                      </NavLink>
                     </div>
                   ))}
                 </div>
@@ -54,6 +59,7 @@ const Cart = () => {
               <h2>Cart is empty</h2>
             )}
           </section>
+          <h3>{`Total: $`}</h3>
           <h3>Ready to checkout?</h3>
           <Link to="/checkout">
             <button type="button">Checkout</button>
