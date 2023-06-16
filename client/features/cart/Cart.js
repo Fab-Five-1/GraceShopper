@@ -49,7 +49,7 @@ const Cart = () => {
   };
 
   const handleCheckout = async (total, id) => {
-    dispatch(setTotalPrice(total, id));
+    dispatch(setTotalPrice({ total, id }));
   };
 
   return (

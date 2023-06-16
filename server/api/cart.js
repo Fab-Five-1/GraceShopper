@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Op } = require("sequelize");
+const { Op, or } = require("sequelize");
 const User = require("../db/models/User");
 const Order = require("../db/models/Order");
 const OrderProduct = require("../db/models/OrderProduct");
@@ -43,6 +43,18 @@ router.put("/", async (req, res, next) => {
       }
     }
     res.send(orderProducts);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { total } = req.body;
+    const order = await Order.findByPk(id);
+    await order.update({ total });
+    res.send(order);
   } catch (err) {
     next(err);
   }

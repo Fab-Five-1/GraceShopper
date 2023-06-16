@@ -40,7 +40,19 @@ export const deleteOrderProduct = createAsyncThunk(
   async (id) => {
     try {
       const { data } = await axios.delete(`/api/cart/${id}`);
-      console.log(data);
+      return data;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+);
+
+export const setTotalPrice = createAsyncThunk(
+  "setTotalPrice",
+  async ({ total, id }) => {
+    try {
+      const { data } = await axios.put(`/api/cart/${id}`, { total });
       return data;
     } catch (err) {
       console.error(err);
@@ -73,6 +85,9 @@ const cartSlice = createSlice({
       const { orderProducts, products } = action.payload;
       state.orderProducts = orderProducts;
       state.products = products;
+    });
+    builder.addCase(updateOrderProducts.fulfilled, (state, action) => {
+      state.orderProducts = action.payload;
     });
   },
 });
