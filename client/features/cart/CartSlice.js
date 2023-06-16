@@ -68,6 +68,7 @@ export const createOrder = createAsyncThunk(
       const { data } = await axios.put(`/api/products/${productId}`, {
         userId,
       });
+      console.log(data);
       return data;
     } catch (err) {
       console.error(err);
