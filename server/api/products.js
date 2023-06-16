@@ -31,9 +31,11 @@ router.get("/:productId", async (req, res, next) => {
 
 router.put("/:id", async (req, res, next) => {
   try {
+    // gets our ids and finds the order with that id
     const productId = req.params.id;
     const { userId } = req.body;
     const orders = await Order.findAll({ where: { userId, fulfilled: false } });
+    // if there is no order that exists with that id we need to make one
     if (orders.length === 0) {
       const newOrder = await Order.create({
         userId: userId,
