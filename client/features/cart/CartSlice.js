@@ -61,13 +61,20 @@ export const setTotalPrice = createAsyncThunk(
   }
 );
 
-export const createOrder = createAsyncThunk("createOrder", async () => {
-  try {
-  } catch (err) {
-    console.error(err);
-    throw err;
+export const createOrder = createAsyncThunk(
+  "createOrder",
+  async ({ userId, productId }) => {
+    try {
+      const { data } = await axios.put(`/api/products/${productId}`, {
+        userId,
+      });
+      return data;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
   }
-});
+);
 
 const cartSlice = createSlice({
   name: "cartSlice",
