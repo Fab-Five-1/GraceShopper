@@ -30,6 +30,19 @@ const Checkout = () => {
       <h3>
         Welcome {name}, you owe {`$ ${orderTotal}`}!
       </h3>
+      <form>
+        <div>
+          <label htmlFor="email"> Email </label>
+          <input type="text" name="email" />
+          <label htmlFor="shipping"> Shipping Address </label>
+          <input type="text" name="shipping" />
+          <label htmlFor="card"> Card Number </label>
+          <input type="text" name="card" />
+          <label htmlFor="cvv"> CVV </label>
+          <input type="text" name="cvv" />
+          <button> Purchase </button>
+        </div>
+      </form>
     </div>
   );
 };
