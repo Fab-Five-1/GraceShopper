@@ -22,7 +22,7 @@ const AppRoutes = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ height: "100%" }}>
       {isLoggedIn ? (
         <Routes>
           <Route path="/*" element={<Home />} />

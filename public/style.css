@@ -1,3 +1,7 @@
+body{
+  height: 100%;
+}
+
 body,
 button {
   /* font-family: sans-serif; */
@@ -64,4 +68,38 @@ form div {
 .countSpace,
 .buttonSpace {
   margin: 0 16px;
+}
+
+/* Cart */
+
+#cart{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-image: url("https://www.rollingstone.com/wp-content/uploads/2022/10/cassette-tape-comeback.jpg");
+  background-size: cover;
+  border: 5px solid black;
+  height: 70vh;
+}
+
+#loginCart{
+  background-color: rgba(240, 248, 255, 0.632);
+  padding: 25px 20%;
+}
+
+.neon {
+  font-size: 1.7rem;
+  margin: 15px;
+  animation: neon 1.2s ease infinite;
+}
+@keyframes neon {
+  0%,
+  100% {
+      text-shadow: 0 0 10px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 2px #fed128, 2px 2px 2px #806914;
+      color: #f5efcb;
+  }
+  50% {
+      text-shadow: 0 0 2px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 2px #800e0b, 4px 4px 2px #40340a;
+      color: #eda0d3;
+  }
 }
