@@ -47,11 +47,26 @@ router.put("/:id", async (req, res, next) => {
         orderId: orderId,
         productId: productId,
       });
-      console.log("HELLO", orders, newOrderProduct);
       res.send({ orders, newOrderProduct });
       return;
     } else {
-      console.log("GOODBYE", orders);
+      const orderId = orders[0].dataValues.id;
+      const orderProducts = await OrderProduct.findAll({
+        where: { orderId, productId },
+      });
+      if (orderProducts.length === 0) {
+        const newOrderProduct = await OrderProduct.create({
+          numberOfItems: 1,
+          orderId: orderId,
+          productId: productId,
+        });
+        res.send({ orders, newOrderProduct });
+        return;
+      }
+      let numberOfItems = orderProducts[0].dataValues.numberOfItems + 1;
+      await orderProducts[0].update({ numberOfItems });
+      res.send(orderProducts);
+      return;
     }
   } catch (err) {
     console.error(err);
