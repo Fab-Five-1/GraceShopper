@@ -86,8 +86,8 @@ const cartSlice = createSlice({
       state.orderProducts = orderProducts;
       state.products = products;
     });
-    builder.addCase(updateOrderProducts.fulfilled, (state, action) => {
-      state.orderProducts = action.payload;
+    builder.addCase(setTotalPrice.fulfilled, (state, action) => {
+      state.orders = action.payload;
     });
   },
 });
