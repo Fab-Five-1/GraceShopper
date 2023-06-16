@@ -40,9 +40,9 @@ const AllProducts = () => {
             </div>
             <button>Edit Product</button>
           </NavLink>
-          {/* <button onClick={() => handleCartCreate(userId, product.id)}>
+          <button onClick={() => handleCartCreate(userId, product.id)}>
             Add to Cart
-          </button> */}
+          </button>
         </div>
       ));
     };

@@ -19,7 +19,6 @@ export const fetchProductsAsync = createAsyncThunk(
 );
 
 export const addProductAsync = createAsyncThunk("products/addProduct", async ({ name, description, price, quantity, category, imageUrl }) => {
-  console.log("!!!!!!", name, price)
   const { data } = await axios.post("/api/products", {
     name,
     description,
@@ -28,7 +27,6 @@ export const addProductAsync = createAsyncThunk("products/addProduct", async ({ 
     category,
     imageUrl
   });
-  console.log(data)
   return data
 })
 
@@ -50,7 +48,5 @@ const productsSlice = createSlice({
 export const selectProducts = (state) => {
   return state.allProducts.data;
 };
-
-// export { addProductAsync }
 
 export default productsSlice.reducer;

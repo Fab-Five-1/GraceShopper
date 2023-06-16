@@ -49,9 +49,9 @@ const SingleProduct = () => {
                 <div>
                     <img src={imageUrl} />
                 </div>
-                {/* <button onClick={() => handleCartCreate(userId, id)}>
+                <button onClick={() => handleCartCreate(userId, id)}>
           Add to Cart
-        </button> */}
+        </button>
             </div>
         );
     } else {
