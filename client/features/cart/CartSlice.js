@@ -22,10 +22,65 @@ export const fetchUsersCart = createAsyncThunk("cart", async () => {
   }
 });
 
+export const updateOrderProducts = createAsyncThunk(
+  "updateOrderProducts",
+  async (orderProduct) => {
+    try {
+      const { data } = await axios.put("/api/cart", { orderProduct });
+      return data;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+);
+
+export const deleteOrderProduct = createAsyncThunk(
+  "deleteOrderProduct",
+  async (id) => {
+    try {
+      const { data } = await axios.delete(`/api/cart/${id}`);
+      return data;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+);
+
+export const setTotalPrice = createAsyncThunk(
+  "setTotalPrice",
+  async ({ total, id }) => {
+    try {
+      const { data } = await axios.put(`/api/cart/${id}`, { total });
+      return data;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+);
+
+export const createOrder = createAsyncThunk(
+  "createOrder",
+  async ({ userId, productId }) => {
+    try {
+      const { data } = await axios.put(`/api/products/${productId}`, {
+        userId,
+      });
+      console.log(data);
+      return data;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+);
+
 const cartSlice = createSlice({
   name: "cartSlice",
   initialState: {
-    user: null,
+    user: [],
     orders: [],
     orderProducts: [],
     products: [],
@@ -38,6 +93,17 @@ const cartSlice = createSlice({
       state.orders = orders;
       state.orderProducts = orderProducts;
       state.products = products;
+    });
+    builder.addCase(updateOrderProducts.fulfilled, (state, action) => {
+      state.orderProducts = action.payload;
+    });
+    builder.addCase(deleteOrderProduct.fulfilled, (state, action) => {
+      const { orderProducts, products } = action.payload;
+      state.orderProducts = orderProducts;
+      state.products = products;
+    });
+    builder.addCase(setTotalPrice.fulfilled, (state, action) => {
+      state.orders = action.payload;
     });
   },
 });

@@ -10,8 +10,8 @@ const Order = require("./models/Order");
 //associations could go here!
 
 // Associations
-Product.belongsTo(OrderProduct); // Each product belongs to an OrderProduct
-OrderProduct.hasMany(Product); // Each OrderProduct has many Products
+OrderProduct.belongsTo(Product); // Each product belongs to an OrderProduct
+Product.hasMany(Product); // Each OrderProduct has many Products
 
 OrderProduct.belongsTo(Order); // Each OrderProduct belongs to Order
 Order.hasMany(OrderProduct); // Each Order has many OrderProduct

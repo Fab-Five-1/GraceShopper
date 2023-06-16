@@ -1,70 +1,136 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
-import { fetchUsersCart, selectCart } from "./CartSlice";
+import { Link } from "react-router-dom";
+import {
+  fetchUsersCart,
+  selectCart,
+  updateOrderProducts,
+  deleteOrderProduct,
+  setTotalPrice,
+} from "./CartSlice";
 
-/**
- * COMPONENT
- */
 const Cart = () => {
-  const dispatch = useDispatch();
-  const usersInfo = useSelector(selectCart);
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  const username = useSelector((state) => state.auth.me.username);
+  const firstName = useSelector((state) => state.auth.me.firstName);
+  const dispatch = useDispatch();
+  const { orders, products, orderProducts } = useSelector(selectCart);
+
+  const orderId = orders.map((info) => info.id);
 
   useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(fetchUsersCart());
+    }
+  }, [dispatch, fetchUsersCart, isLoggedIn]);
+
+  const handleQuantityChange = (event, orderProductId) => {
+    const newQuantity = parseInt(event.target.value);
+    const newOrderProducts = orderProducts.map((orderProduct) =>
+      orderProduct.id === orderProductId
+        ? { ...orderProduct, numberOfItems: newQuantity }
+        : orderProduct
+    );
+    dispatch(updateOrderProducts(newOrderProducts));
+  };
+
+  const calculateTotal = () => {
+    return products.reduce((total, product) => {
+      const orderProduct = orderProducts.find(
+        (op) => op.productId === product.id
+      );
+      const productTotal = (orderProduct.numberOfItems * product.price) / 100;
+      return total + productTotal;
+    }, 0);
+  };
+
+  const handleDelete = async (id) => {
+    await dispatch(deleteOrderProduct(id));
     dispatch(fetchUsersCart());
-  }, []);
+  };
 
-  const { user, orders, orderProducts, products } = usersInfo;
-
-  console.log("this is the console log", user)
-
-  const orderProductsQ = orderProducts.map(
-    (orderProduct) => orderProduct.numberOfItems
-  );
+  const handleCheckout = async (total, id) => {
+    dispatch(setTotalPrice({ total, id }));
+  };
 
   return (
-    <div>
+    <div id="cart">
       {isLoggedIn ? (
-        <div>
-          <h1>Welcome to your cart, {username}!</h1>
-          <section style={{ border: "5px solid red" }}>
-            {products.length > 0 ? (
+        <div id="loginCart">
+          <h1 style={{ borderBottom: "5px solid black" }}>
+            Welcome to your cart, {firstName} 😎
+          </h1>
+          <section>
+            {orderProducts.length > 0 ? (
               <div>
-                <h2>Items:</h2>
-                <div>
-                  {products.map((product) => (
-                    <div key={product.id}>
+                {products.map((product) => {
+                  const orderProduct = orderProducts.find(
+                    (op) => op.productId === product.id
+                  );
+                  const productTotal =
+                    (orderProduct.numberOfItems * product.price) / 100;
+
+                  return (
+                    <div
+                      key={product.id}
+                      style={{
+                        display: "inline-block",
+                        borderBottom: "5px solid rgba(0, 0, 0, 0.53)",
+                        padding: "20px",
+                      }}
+                    >
                       <input
-                        style={{ margin: "0px 5px", width: "25px" }}
+                        style={{
+                          margin: "0px 5px",
+                          width: "30px",
+                          fontSize: "25px",
+                        }}
                         type="number"
-                        value={orderProductsQ[product.orderProductId - 1]}
+                        value={orderProduct.numberOfItems}
+                        min={1}
+                        onChange={(event) =>
+                          handleQuantityChange(event, orderProduct.id)
+                        }
                       />
-                      <span style={{ marginRight: "5px" }}>{product.name}</span>
-                      <span style={{ marginRight: "5px" }}>{`$ ${(orderProductsQ[product.orderProductId - 1] *
-                        product.price) /
-                        100
-                        }`}</span>
-                      <Link to={`/products/${product.id}`}>
+                      <span className="neon">{product.name}</span>
+                      <Link
+                        style={{ marginRight: "7px" }}
+                        to={`/products/${product.id}`}
+                      >
                         <img
                           src={product.imageUrl}
-                          width={"50px"}
-                          style={{ border: "3px solid black" }}
+                          width="70px"
+                          style={{ border: "4px solid black" }}
+                          alt={product.name}
                         />
                       </Link>
+                      <span style={{ margin: "15px", fontSize: "25px" }}>
+                        ${productTotal}
+                      </span>
+                      <button
+                        style={{ fontSize: "20px" }}
+                        type="button"
+                        onClick={() => handleDelete(orderProduct.id)}
+                      >
+                        x
+                      </button>
                     </div>
-                  ))}
-                </div>
+                  );
+                })}
               </div>
             ) : (
               <h2>Cart is empty</h2>
             )}
           </section>
-          <h3>{`Total: $`}</h3>
-          <h3>Ready to checkout?</h3>
+          <h3 style={{ fontSize: "25px" }}>Total: ${calculateTotal()}</h3>
+          <h3 style={{ fontSize: "25px" }}>Ready to checkout?</h3>
           <Link to="/checkout">
-            <button type="button">Checkout</button>
+            <button
+              style={{ fontSize: "20px" }}
+              type="button"
+              onClick={() => handleCheckout(calculateTotal(), orderId[0])}
+            >
+              Checkout
+            </button>
           </Link>
         </div>
       ) : (
