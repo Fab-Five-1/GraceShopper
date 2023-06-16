@@ -54,96 +54,90 @@ const Cart = () => {
 
   return (
     <div id="cart">
-      {isLoggedIn ? (
-        <div id="loginCart">
+      <div id="loginCart">
+        {isLoggedIn ? (
           <h1 style={{ borderBottom: "5px solid black" }}>
             Welcome to your cart, {firstName} 😎
           </h1>
-          <section>
-            {orderProducts.length > 0 ? (
-              <div>
-                {products.map((product) => {
-                  const orderProduct = orderProducts.find(
-                    (op) => op.productId === product.id
-                  );
-                  const productTotal =
-                    (orderProduct.numberOfItems * product.price) / 100;
+        ) : (
+          <h1 style={{ borderBottom: "5px solid black" }}>
+            Welcome to your cart 😎
+          </h1>
+        )}
+        <section>
+          {orderProducts.length > 0 ? (
+            <div>
+              {products.map((product) => {
+                const orderProduct = orderProducts.find(
+                  (op) => op.productId === product.id
+                );
+                const productTotal =
+                  (orderProduct.numberOfItems * product.price) / 100;
 
-                  return (
-                    <div
-                      key={product.id}
+                return (
+                  <div
+                    key={product.id}
+                    style={{
+                      display: "inline-block",
+                      borderBottom: "5px solid rgba(0, 0, 0, 0.53)",
+                      padding: "20px",
+                    }}
+                  >
+                    <input
                       style={{
-                        display: "inline-block",
-                        borderBottom: "5px solid rgba(0, 0, 0, 0.53)",
-                        padding: "20px",
+                        margin: "0px 5px",
+                        width: "30px",
+                        fontSize: "25px",
                       }}
+                      type="number"
+                      value={orderProduct.numberOfItems}
+                      min={1}
+                      onChange={(event) =>
+                        handleQuantityChange(event, orderProduct.id)
+                      }
+                    />
+                    <span className="neon">{product.name}</span>
+                    <Link
+                      style={{ marginRight: "7px" }}
+                      to={`/products/${product.id}`}
                     >
-                      <input
-                        style={{
-                          margin: "0px 5px",
-                          width: "30px",
-                          fontSize: "25px",
-                        }}
-                        type="number"
-                        value={orderProduct.numberOfItems}
-                        min={1}
-                        onChange={(event) =>
-                          handleQuantityChange(event, orderProduct.id)
-                        }
+                      <img
+                        src={product.imageUrl}
+                        width="70px"
+                        style={{ border: "4px solid black" }}
+                        alt={product.name}
                       />
-                      <span className="neon">{product.name}</span>
-                      <Link
-                        style={{ marginRight: "7px" }}
-                        to={`/products/${product.id}`}
-                      >
-                        <img
-                          src={product.imageUrl}
-                          width="70px"
-                          style={{ border: "4px solid black" }}
-                          alt={product.name}
-                        />
-                      </Link>
-                      <span style={{ margin: "15px", fontSize: "25px" }}>
-                        ${productTotal}
-                      </span>
-                      <button
-                        style={{ fontSize: "20px" }}
-                        type="button"
-                        onClick={() => handleDelete(orderProduct.id)}
-                      >
-                        x
-                      </button>
-                    </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <h2>Cart is empty</h2>
-            )}
-          </section>
-          <h3 style={{ fontSize: "25px" }}>Total: ${calculateTotal()}</h3>
-          <h3 style={{ fontSize: "25px" }}>Ready to checkout?</h3>
-          <Link to="/checkout">
-            <button
-              style={{ fontSize: "20px" }}
-              type="button"
-              onClick={() => handleCheckout(calculateTotal(), orderId[0])}
-            >
-              Checkout
-            </button>
-          </Link>
-        </div>
-      ) : (
-        <div>
-          <h1>Hi, you're not signed in!</h1>
-          <h3>Would you like to login or sign up?</h3>
-          <Link to="/login">Login</Link>
-          <br />
-          <Link to="/signup">Sign Up</Link>
-          <h3>Or continue as a guest</h3>
-          <Link to="/guestcheckout">Continue</Link>
-        </div>
-      )}
+                    </Link>
+                    <span style={{ margin: "15px", fontSize: "25px" }}>
+                      ${productTotal}
+                    </span>
+                    <button
+                      style={{ fontSize: "20px" }}
+                      type="button"
+                      onClick={() => handleDelete(orderProduct.id)}
+                    >
+                      x
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <h2>Cart is empty</h2>
+          )}
+        </section>
+        <h3 style={{ fontSize: "25px" }}>Total: ${calculateTotal()}</h3>
+        <h3 style={{ fontSize: "25px" }}>Ready to checkout?</h3>
+        <Link to="/checkout">
+          <button
+            style={{ fontSize: "20px" }}
+            type="button"
+            onClick={() => handleCheckout(calculateTotal(), orderId[0])}
+          >
+            Checkout
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };
