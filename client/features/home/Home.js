@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import SingleProduct from "../singleProduct/SingleProduct"
 
 import AllProducts from "../allProducts/AllProducts";
+import AddProduct from "../allProducts/AddProduct";
 
 /**
  * COMPONENT
@@ -15,6 +16,7 @@ const Home = (props) => {
     <>
       <div>{isLoggedIn ? <h3>Welcome, {username}</h3> : <h3>Welcome!</h3>}</div>
       <AllProducts />
+      <AddProduct />
     </>
   );
 };
