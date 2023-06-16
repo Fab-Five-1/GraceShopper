@@ -18,7 +18,6 @@ const AllProducts = () => {
   }, [dispatch]);
 
   const handleCartCreate = async (userId, productId) => {
-    console.log(userId, productId);
     dispatch(createOrder({ userId, productId }));
   };
 
