@@ -61,6 +61,14 @@ export const setTotalPrice = createAsyncThunk(
   }
 );
 
+export const createOrder = createAsyncThunk("createOrder", async () => {
+  try {
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+});
+
 const cartSlice = createSlice({
   name: "cartSlice",
   initialState: {
