@@ -29,6 +29,8 @@ router.get("/:productId", async (req, res, next) => {
   }
 });
 
+// router.post()
+
 router.put("/:id", async (req, res, next) => {
   try {
     const productId = req.params.id;
