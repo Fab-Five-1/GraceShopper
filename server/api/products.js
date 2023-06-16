@@ -29,7 +29,15 @@ router.get("/:productId", async (req, res, next) => {
   }
 });
 
-// router.post()
+
+router.post("/products", async (req, res, next) => {
+  try {
+    res.status(201).send(await Product.create(req.body))
+  }
+  catch (err) {
+    console.log(err)
+  }
+})
 
 router.put("/:id", async (req, res, next) => {
   try {
