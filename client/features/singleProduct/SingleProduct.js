@@ -66,14 +66,16 @@ const SingleProduct = () => {
           <button className="countBtn" onClick={handleIncrement}>
             +
           </button>
-          <button className="buttonSpace">Add to Cart</button>
+          <button
+            className="buttonSpace"
+            onClick={() => handleCartCreate(userId, id)}
+          >
+            Add to Cart
+          </button>
         </div>
         <div>
           <img src={imageUrl} />
         </div>
-        <button onClick={() => handleCartCreate(userId, id)}>
-          Add to Cart
-        </button>
       </div>
     );
   }
