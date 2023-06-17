@@ -73,18 +73,23 @@ form div {
 /* Cart */
 
 #cart{
-  display: flex;
-  justify-content: center;
   text-align: center;
-  background-image: url("https://www.rollingstone.com/wp-content/uploads/2022/10/cassette-tape-comeback.jpg");
-  background-size: cover;
-  border: 5px solid black;
-  height: 70vh;
+  height: auto;
 }
 
 #loginCart{
-  background-color: rgba(240, 248, 255, 0.632);
-  padding: 25px 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid black;
+}
+
+#items {
+  border: 5px solid red;
+}
+
+#checkoutCart{
+  border: 5px solid blue;
 }
 
 .neon{

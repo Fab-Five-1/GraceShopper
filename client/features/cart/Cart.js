@@ -57,17 +57,17 @@ const Cart = () => {
 
   return (
     <div id="cart">
+      {firstName ? (
+        <h1 style={{ borderBottom: "5px solid black" }}>
+          Welcome to your cart, {firstName} 😎
+        </h1>
+      ) : (
+        <h1 style={{ borderBottom: "5px solid black" }}>
+          Welcome to your cart 😎
+        </h1>
+      )}
       <div id="loginCart">
-        {firstName ? (
-          <h1 style={{ borderBottom: "5px solid black" }}>
-            Welcome to your cart, {firstName} 😎
-          </h1>
-        ) : (
-          <h1 style={{ borderBottom: "5px solid black" }}>
-            Welcome to your cart 😎
-          </h1>
-        )}
-        <section>
+        <section id="items">
           {orderProducts.length > 0 ? (
             <div>
               {products.map((product) => {
@@ -131,17 +131,19 @@ const Cart = () => {
             <h2>Cart is empty</h2>
           )}
         </section>
-        <h3 style={{ fontSize: "25px" }}>Total: ${calculateTotal()}</h3>
-        <h3 style={{ fontSize: "25px" }}>Ready to checkout?</h3>
-        <Link to="/checkout">
-          <button
-            style={{ fontSize: "20px" }}
-            type="button"
-            onClick={() => handleCheckout(calculateTotal())}
-          >
-            Checkout
-          </button>
-        </Link>
+        <section id="checkoutCart">
+          <h3 style={{ fontSize: "25px" }}>Total: ${calculateTotal()}</h3>
+          <h3 style={{ fontSize: "25px" }}>Ready to checkout?</h3>
+          <Link to="/checkout">
+            <button
+              style={{ fontSize: "20px" }}
+              type="button"
+              onClick={() => handleCheckout(calculateTotal())}
+            >
+              Checkout
+            </button>
+          </Link>
+        </section>
       </div>
     </div>
   );
