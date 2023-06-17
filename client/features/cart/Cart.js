@@ -99,7 +99,9 @@ const Cart = () => {
                         handleQuantityChange(event, orderProduct.id)
                       }
                     />
-                    <span>{product.name}</span>
+                    <span style={{ margin: "15px", fontSize: "25px" }}>
+                      {product.name}
+                    </span>
                     <Link
                       style={{ marginRight: "7px" }}
                       to={`/products/${product.id}`}
