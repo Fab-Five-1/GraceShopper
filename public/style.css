@@ -87,11 +87,13 @@ form div {
   padding: 25px 20%;
 }
 
-.neon {
-  font-size: 1.7rem;
+.neon:hover {
+  transition: .7s;
+  font-size: 1.1rem;
   margin: 15px;
-  animation: neon 1.2s ease infinite;
+  animation: neon 2.3s ease infinite;
 }
+
 @keyframes neon {
   0%,
   100% {

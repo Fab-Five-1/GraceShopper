@@ -19,8 +19,12 @@ const Navbar = () => {
         {isLoggedIn ? (
           <div>
             {/* The navbar will show these links after you log in */}
-            <Link to="/home">Home</Link>
-            <Link to="/cart">Cart 🛒</Link>
+            <Link className="neon" to="/home">
+              Home
+            </Link>
+            <Link className="neon" to="/cart">
+              Cart 🛒
+            </Link>
             <button type="button" onClick={logoutAndRedirectHome}>
               Logout
             </button>
@@ -28,10 +32,18 @@ const Navbar = () => {
         ) : (
           <div>
             {/* The navbar will show these links before you log in */}
-            <Link to="/home">Home</Link>
-            <Link to="/cart">Cart🛒</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
+            <Link className="neon" to="/home">
+              Home
+            </Link>
+            <Link className="neon" to="/cart">
+              Cart🛒
+            </Link>
+            <Link className="neon" to="/login">
+              Login
+            </Link>
+            <Link className="neon" to="/signup">
+              Sign Up
+            </Link>
           </div>
         )}
       </nav>
