@@ -37,7 +37,7 @@ const Checkout = () => {
     orderId = orderId[0];
 
     dispatch(updateOrder({ orderId, fulfilled: true }));
-    dispatch(fetchUsersCart(userId));
+    // dispatch(fetchUsersCart(userId));
   };
 
   return (

@@ -13,6 +13,17 @@ router.get("/:id", async (req, res, next) => {
     const orders = await Order.findAll({
       where: { userId, fulfilled: false },
     });
+    if (orders.length === 0) {
+      const newOrder = await Order.create({
+        userId: userId,
+      });
+      const orders = await Order.findAll({
+        where: { userId, fulfilled: false },
+      });
+      const orderProducts = [];
+      const products = [];
+      res.send({ user, orders, orderProducts, products });
+    }
     const orderId = orders[0].dataValues.id;
     const orderProducts = await OrderProduct.findAll({
       where: { orderId },
