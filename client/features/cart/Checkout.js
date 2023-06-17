@@ -2,16 +2,21 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchUsersCart, selectCart } from "./CartSlice";
+import { updateOrder } from "./CheckoutSlice";
 /**
  * COMPONENT
  */
 const Checkout = () => {
+  let userId = useSelector((state) => state.auth.me.id);
+  if (!userId) {
+    userId = window.localStorage.guest;
+  }
   const name = useSelector((state) => state.auth.me.firstName);
   const dispatch = useDispatch();
   const { orders } = useSelector(selectCart);
 
   useEffect(() => {
-    dispatch(fetchUsersCart());
+    dispatch(fetchUsersCart(userId));
   }, [fetchUsersCart]);
 
   let orderTotal = [];
