@@ -3,7 +3,7 @@ const Order = require("../db/models/Order");
 
 router.put("/:id", async (req, res, next) => {
   try {
-    const { id } = req.params.id;
+    const { id } = req.params;
     const order = await Order.findByPk(id);
     console.log(order);
   } catch (err) {

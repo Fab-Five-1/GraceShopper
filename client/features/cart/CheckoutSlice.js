@@ -5,7 +5,8 @@ export const updateOrder = createAsyncThunk(
   "updateOrder",
   async (orderData) => {
     try {
-      const { id, fulfilled } = orderData;
+      const { orderId, fulfilled } = orderData;
+      const id = orderId;
       const { data } = await axios.put(`/api/checkout/${id}`, { fulfilled });
       return data;
     } catch (err) {
