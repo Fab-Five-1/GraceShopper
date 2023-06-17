@@ -29,31 +29,34 @@ router.get("/:productId", async (req, res, next) => {
   }
 });
 
-
 router.post("/", async (req, res, next) => {
   try {
-    console.log(req.body)
-    const { name, description, price, quantity, category, imageUrl } = req.body
+    console.log(req.body);
+    const { name, description, price, quantity, category, imageUrl } = req.body;
     const newProduct = await Product.create({
       name: name,
       description: description,
       price: price,
       quantity: quantity,
       category: category,
-      imageUrl: imageUrl
-    })
-    res.send(newProduct)
+      imageUrl: imageUrl,
+    });
+    res.send(newProduct);
+  } catch (err) {
+    console.log(err);
   }
-  catch (err) {
-    console.log(err)
-  }
-})
+});
 
 router.put("/:id", async (req, res, next) => {
   try {
     // gets our ids and finds the order with that id
     const productId = req.params.id;
     let { userId } = req.body;
+    let { count } = req.body;
+    if (!count) {
+      count = 1;
+    }
+    console.log(count);
     //create a guest if the userid is null
     let newGuest;
     if (!userId) {
@@ -72,7 +75,7 @@ router.put("/:id", async (req, res, next) => {
       });
       const orderId = orders[0].dataValues.id;
       const newOrderProduct = await OrderProduct.create({
-        numberOfItems: 1,
+        numberOfItems: count,
         orderId: orderId,
         productId: productId,
       });
@@ -90,7 +93,7 @@ router.put("/:id", async (req, res, next) => {
       // if the orderpoduct doesn't exist create one
       if (orderProducts.length === 0) {
         const newOrderProduct = await OrderProduct.create({
-          numberOfItems: 1,
+          numberOfItems: count,
           orderId: orderId,
           productId: productId,
         });
@@ -101,7 +104,7 @@ router.put("/:id", async (req, res, next) => {
         return;
       }
       // if it does update the quanity plus what was added
-      let numberOfItems = orderProducts[0].dataValues.numberOfItems + 1;
+      let numberOfItems = orderProducts[0].dataValues.numberOfItems + count;
       await orderProducts[0].update({ numberOfItems });
       if (newGuest) {
         res.send({ orderProducts, newGuest });
