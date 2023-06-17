@@ -18,12 +18,17 @@ const Cart = () => {
   const dispatch = useDispatch();
   const { orders, products, orderProducts } = useSelector(selectCart);
 
-  let orderId;
-  if (Array.isArray(orders)) {
-    orderId = orders.map((info) => info.total);
-  } else if (orders && typeof orders === "object") {
-    orderId = orders.id;
-  }
+  console.log(orders[0]);
+  const orderId = orders.map((info) => info.id);
+  console.log(orderId[0]);
+  // let orderId;
+  // if (Array.isArray(orders)) {
+  //   console.log(orders);
+  //   orderId = orders.map((info) => info.id);
+  // } else if (orders && typeof orders === "object") {
+  //   console.log(orders);
+  //   orderId = orders.id;
+  // }
 
   useEffect(() => {
     dispatch(fetchUsersCart(userId));
@@ -45,7 +50,8 @@ const Cart = () => {
         (op) => op.productId === product.id
       );
       const productTotal = (orderProduct.numberOfItems * product.price) / 100;
-      return total + productTotal;
+      let results = total + productTotal;
+      return results;
     }, 0);
   };
 
@@ -54,8 +60,8 @@ const Cart = () => {
     dispatch(fetchUsersCart());
   };
 
-  const handleCheckout = async (total, id) => {
-    console.log("HELLO", total);
+  const handleCheckout = async (total) => {
+    const id = orderId[0];
     dispatch(setTotalPrice({ total, id }));
   };
 
@@ -139,7 +145,7 @@ const Cart = () => {
           <button
             style={{ fontSize: "20px" }}
             type="button"
-            onClick={() => handleCheckout(calculateTotal(), orderId[0])}
+            onClick={() => handleCheckout(calculateTotal())}
           >
             Checkout
           </button>
