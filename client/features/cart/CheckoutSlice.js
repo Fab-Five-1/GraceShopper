@@ -1,15 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const updateOrder = createAsyncThunk("updateOrder", async (id) => {
-  try {
-    const { data } = await axios.put("/api/checkout/:id");
-    return data;
-  } catch (err) {
-    console.error(err);
-    throw err;
+export const updateOrder = createAsyncThunk(
+  "updateOrder",
+  async (orderData) => {
+    try {
+      const { id, fulfilled } = orderData;
+      const { data } = await axios.put(`/api/checkout/${id}`, { fulfilled });
+      return data;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
   }
-});
+);
 
 const checkoutSlice = createSlice({
   name: "checkoutSlice",

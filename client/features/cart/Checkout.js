@@ -21,11 +21,23 @@ const Checkout = () => {
 
   let orderTotal = [];
 
+  let orderId;
+
   if (Array.isArray(orders)) {
     orderTotal = orders.map((info) => info.total);
+    orderId = orders.map((info) => info.id);
   } else if (orders && typeof orders === "object") {
     orderTotal = orders.total;
+    orderId = orders.id;
   }
+
+  const handlePurchase = (e) => {
+    e.preventDefault();
+
+    orderId = orderId[0];
+
+    dispatch(updateOrder({ orderId, fulfilled: true }));
+  };
 
   return (
     <div>
@@ -45,7 +57,7 @@ const Checkout = () => {
           <input type="text" name="card" />
           <label htmlFor="cvv"> CVV </label>
           <input type="text" name="cvv" />
-          <button> Purchase </button>
+          <button onClick={handlePurchase}> Purchase </button>
         </div>
       </form>
     </div>
