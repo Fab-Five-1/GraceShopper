@@ -18,7 +18,12 @@ const Cart = () => {
   const dispatch = useDispatch();
   const { orders, products, orderProducts } = useSelector(selectCart);
 
-  const orderId = orders.map((info) => info.id);
+  let orderId;
+  if (Array.isArray(orders)) {
+    orderId = orders.map((info) => info.total);
+  } else if (orders && typeof orders === "object") {
+    orderId = orders.id;
+  }
 
   useEffect(() => {
     dispatch(fetchUsersCart(userId));
