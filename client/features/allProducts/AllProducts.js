@@ -22,7 +22,7 @@ const AllProducts = () => {
     dispatch(createOrder({ userId, productId }));
   };
 
-  console.log(test);
+  console.log("TEST", test);
 
   if (isAdmin) {
     const renderProducts = () => {

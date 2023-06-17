@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const TOKEN = "token";
+const GUEST = "guest";
 
 export const fetchUsersCart = createAsyncThunk("cart", async () => {
   const token = window.localStorage.getItem(TOKEN);
@@ -68,7 +69,9 @@ export const createOrder = createAsyncThunk(
       const { data } = await axios.put(`/api/products/${productId}`, {
         userId,
       });
-      console.log(data);
+      if (data.newGuest) {
+        window.localStorage.setItem(GUEST, data.newGuest.id);
+      }
       return data;
     } catch (err) {
       console.error(err);

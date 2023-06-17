@@ -39,7 +39,6 @@ router.put("/:id", async (req, res, next) => {
     if (!userId) {
       newGuest = await User.create();
       userId = newGuest.dataValues.id;
-      // window.localStorage.setItem(GUEST, newGuest);
     }
     const orders = await Order.findAll({ where: { userId, fulfilled: false } });
     // if there is no order that exists with that id we need to make one
