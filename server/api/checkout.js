@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const { or } = require("sequelize");
 const Order = require("../db/models/Order");
 
 router.put("/:id", async (req, res, next) => {

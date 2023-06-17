@@ -55,6 +55,7 @@ const Cart = () => {
   };
 
   const handleCheckout = async (total, id) => {
+    console.log("HELLO", total);
     dispatch(setTotalPrice({ total, id }));
   };
 
