@@ -8,22 +8,29 @@ import Checkout from "../features/cart/Checkout";
 import { me } from "./store";
 import AddUser from "../features/users/AddUser";
 import SingleProduct from "../features/singleProduct/SingleProduct";
-
-/**
- * COMPONENT
- */
+import AllUsers from "../features/allUsers/allUsers"; // it does work though
 
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const dispatch = useDispatch();
 
+  const isAdmin = useSelector((state) => state.auth.me.isAdmin);
   useEffect(() => {
     dispatch(me());
   }, []);
 
   return (
-    <div style={{ height: "100%" }}>
-      {isLoggedIn ? (
+    <div>
+      {isAdmin ? ( // will only work on 'isAdmin' or localhost:8080/admin
+        <Routes>
+          <Route path="/*" element={<Home />} />
+          <Route to="/home" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/products/:id" element={<SingleProduct />} />
+          <Route path="/admin" element={<AllUsers />} />
+        </Routes>
+      ) : isLoggedIn ? (
         <Routes>
           <Route path="/*" element={<Home />} />
           <Route to="/home" element={<Home />} />
