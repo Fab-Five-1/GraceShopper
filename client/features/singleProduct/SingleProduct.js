@@ -52,15 +52,29 @@ const SingleProduct = () => {
                     <h1>{name}</h1>
                     <p>{description}</p>
                     <p>${price / 100}</p>
+                    <button className="countBtn" onClick={handleDecrement}>
+                        -
+                    </button>
+                    <span className="countSpace">{count}</span>
+                    <button className="countBtn" onClick={handleIncrement}>
+                        +
+                    </button>
+                    <button
+                        className="buttonSpace"
+                        onClick={() => handleCartCreate(userId, id)}
+                    >
+                        Add to Cart
+                    </button>
+                    <br></br>
                     <button>Edit Product</button>
                     <button onClick={() => handleDelete(id)}>Delete Product</button>
                 </div>
                 <div>
                     <img src={imageUrl} />
                 </div>
-                <button onClick={() => handleCartCreate(userId, id)}>
+                {/* <button onClick={() => handleCartCreate(userId, id)}>
                     Add to Cart
-                </button>
+                </button> */}
             </div>
         );
     } else {
