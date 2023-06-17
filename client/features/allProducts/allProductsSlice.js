@@ -39,7 +39,6 @@ const productsSlice = createSlice({
       state.data = action.payload;
     });
     builder.addCase(addProductAsync.fulfilled, (state, action) => {
-      console.log("submit worked")
       state.data.push(action.payload)
     })
   },

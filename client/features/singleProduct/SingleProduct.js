@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSingleProduct, selectSingleProduct } from "./singleProductSlice";
+import { deleteProductAsync, fetchSingleProduct, selectSingleProduct } from "./singleProductSlice";
 import { createOrder } from "../cart/CartSlice";
+import { fetchProductsAsync } from "../allProducts/allProductsSlice";
+import AllProducts from "../allProducts/AllProducts";
+
 
 const SingleProduct = () => {
     const productId = useParams();
@@ -31,9 +34,15 @@ const SingleProduct = () => {
 
     const handleCartCreate = async (userId, productId) => {
         dispatch(createOrder({ userId, productId }));
-    };
+    }
 
-    // if statement for if admin if true
+    const navigate = useNavigate();
+
+    const handleDelete = async (productId) => {
+        await dispatch(deleteProductAsync(productId))
+        navigate("/products");
+    }
+
 
     if (isAdmin) {
         return (
@@ -44,14 +53,14 @@ const SingleProduct = () => {
                     <p>{description}</p>
                     <p>${price / 100}</p>
                     <button>Edit Product</button>
-                    <button>Delete Product</button>
+                    <button onClick={() => handleDelete(id)}>Delete Product</button>
                 </div>
                 <div>
                     <img src={imageUrl} />
                 </div>
                 <button onClick={() => handleCartCreate(userId, id)}>
-          Add to Cart
-        </button>
+                    Add to Cart
+                </button>
             </div>
         );
     } else {

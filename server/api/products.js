@@ -29,6 +29,19 @@ router.get("/:productId", async (req, res, next) => {
   }
 });
 
+router.delete("/:productId", async (req, res, next) => {
+  try {
+    const productId = req.params.productId;
+    console.log("req.params", req.params)
+    console.log("req.params.productID", productId)
+    const product = await Product.findByPk(productId);
+    await product.destroy();
+
+    res.send(product);
+  } catch (err) {
+    console.log(err);
+  }
+})
 
 router.post("/", async (req, res, next) => {
   try {
@@ -48,6 +61,7 @@ router.post("/", async (req, res, next) => {
     console.log(err)
   }
 })
+
 
 router.put("/:id", async (req, res, next) => {
   try {
