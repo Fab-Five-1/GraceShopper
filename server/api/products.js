@@ -34,9 +34,12 @@ router.put("/:id", async (req, res, next) => {
     // gets our ids and finds the order with that id
     const productId = req.params.id;
     let { userId } = req.body;
+    //create a guest if the userid is null
+    let newGuest;
     if (!userId) {
-      const newGuest = await User.create();
+      newGuest = await User.create();
       userId = newGuest.dataValues.id;
+      // window.localStorage.setItem(GUEST, newGuest);
     }
     const orders = await Order.findAll({ where: { userId, fulfilled: false } });
     // if there is no order that exists with that id we need to make one
@@ -54,6 +57,9 @@ router.put("/:id", async (req, res, next) => {
         orderId: orderId,
         productId: productId,
       });
+      if (newGuest) {
+        res.send({ orders, newOrderProduct, newGuest });
+      }
       res.send({ orders, newOrderProduct });
       return;
       // else if the order exists find it's id then attach the order product
@@ -69,12 +75,18 @@ router.put("/:id", async (req, res, next) => {
           orderId: orderId,
           productId: productId,
         });
+        if (newGuest) {
+          res.send({ orders, newOrderProduct, newGuest });
+        }
         res.send({ orders, newOrderProduct });
         return;
       }
       // if it does update the quanity plus what was added
       let numberOfItems = orderProducts[0].dataValues.numberOfItems + 1;
       await orderProducts[0].update({ numberOfItems });
+      if (newGuest) {
+        res.send({ orderProducts, newGuest });
+      }
       res.send(orderProducts);
       return;
     }

@@ -4,13 +4,14 @@ import { NavLink } from "react-router-dom";
 //import SingleProduct from "../singleProduct/SingleProduct";
 import { selectProducts } from "./allProductsSlice";
 import { fetchProductsAsync } from "./allProductsSlice";
-import { createOrder } from "../cart/CartSlice";
+import { createOrder, selectCart } from "../cart/CartSlice";
 
 const AllProducts = () => {
   const products = useSelector(selectProducts);
   const dispatch = useDispatch();
+  const test = useSelector(selectCart);
 
-  const userId = useSelector((state) => state.auth.me.id);
+  let userId = useSelector((state) => state.auth.me.id);
   const isAdmin = useSelector((state) => state.auth.me.isAdmin);
 
   useEffect(() => {
@@ -20,6 +21,8 @@ const AllProducts = () => {
   const handleCartCreate = async (userId, productId) => {
     dispatch(createOrder({ userId, productId }));
   };
+
+  console.log(test);
 
   if (isAdmin) {
     const renderProducts = () => {
