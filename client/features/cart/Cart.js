@@ -128,11 +128,19 @@ const Cart = () => {
               })}
             </div>
           ) : (
-            <h2>Cart is empty</h2>
+            <h2 style={{ margin: "100px" }}>Cart is empty</h2>
           )}
         </section>
         <section id="checkoutCart">
-          <h3 style={{ fontSize: "25px" }}>Total: ${calculateTotal()}</h3>
+          <label style={{ marginTop: "7px" }}>ENTER PROMO CODE</label>
+          <input
+            style={{ marginTop: "15px", padding: "5px" }}
+            type="text"
+            placeholder="Promo Code"
+          ></input>
+          <button style={{ padding: "5px" }}>SUBMIT</button>
+          <h3 style={{ fontSize: "20px" }}>Discount: $0</h3>
+          <h3 style={{ fontSize: "20px" }}>Total: ${calculateTotal()}</h3>
           <h3 style={{ fontSize: "25px" }}>Ready to checkout?</h3>
           <Link to="/checkout">
             <button

@@ -79,17 +79,13 @@ form div {
 
 #loginCart{
   display: flex;
-  justify-content: center;
   align-items: center;
   border: 5px solid black;
 }
 
-#items {
-  border: 5px solid red;
-}
-
 #checkoutCart{
-  border: 5px solid blue;
+  background-color: rgba(48, 216, 210, 0.268);
+  padding: 35px;
 }
 
 .neon{
