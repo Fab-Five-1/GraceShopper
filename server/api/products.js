@@ -29,6 +29,26 @@ router.get("/:productId", async (req, res, next) => {
   }
 });
 
+
+router.post("/", async (req, res, next) => {
+  try {
+    console.log(req.body)
+    const { name, description, price, quantity, category, imageUrl } = req.body
+    const newProduct = await Product.create({
+      name: name,
+      description: description,
+      price: price,
+      quantity: quantity,
+      category: category,
+      imageUrl: imageUrl
+    })
+    res.send(newProduct)
+  }
+  catch (err) {
+    console.log(err)
+  }
+})
+
 router.put("/:id", async (req, res, next) => {
   try {
     // gets our ids and finds the order with that id

@@ -41,12 +41,11 @@ const AllProducts = () => {
                 <h3>${product.price / 100}</h3>
               </div>
             </div>
+            <button>Edit Product</button>
           </NavLink>
           <button onClick={() => handleCartCreate(userId, product.id)}>
             Add to Cart
           </button>
-          <button>Delete Product</button>
-          <button>Edit Product</button>
         </div>
       ));
     };
