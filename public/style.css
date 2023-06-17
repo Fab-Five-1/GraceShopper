@@ -93,7 +93,7 @@ form div {
 
 .neon:hover {
   transition: .7s;
-  animation: neon 2.3s ease infinite;
+  animation: neon 2.5s ease infinite;
 }
 
 @keyframes neon {
