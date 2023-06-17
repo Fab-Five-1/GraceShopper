@@ -9,7 +9,7 @@ router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     console.log(id);
-    const user = await User.findByPk(req.headers.authorization);
+    const user = await User.findByPk(id);
     const userId = user.dataValues.id;
     const orders = await Order.findAll({
       where: { userId, fulfilled: false },
