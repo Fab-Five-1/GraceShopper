@@ -12,6 +12,9 @@ const AllProducts = () => {
   const test = useSelector(selectCart);
 
   let userId = useSelector((state) => state.auth.me.id);
+  if (!userId) {
+    userId = window.localStorage.guest;
+  }
   const isAdmin = useSelector((state) => state.auth.me.isAdmin);
 
   useEffect(() => {
@@ -21,8 +24,6 @@ const AllProducts = () => {
   const handleCartCreate = async (userId, productId) => {
     dispatch(createOrder({ userId, productId }));
   };
-
-  console.log("TEST", test);
 
   if (isAdmin) {
     const renderProducts = () => {
