@@ -5,9 +5,11 @@ const Order = require("../db/models/Order");
 const OrderProduct = require("../db/models/OrderProduct");
 const Product = require("../db/models/Product");
 
-router.get("/", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
-    const user = await User.findByToken(req.headers.authorization);
+    const { id } = req.params;
+    console.log(id);
+    const user = await User.findByPk(req.headers.authorization);
     const userId = user.dataValues.id;
     const orders = await Order.findAll({
       where: { userId, fulfilled: false },

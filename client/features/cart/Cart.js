@@ -10,7 +10,10 @@ import {
 } from "./CartSlice";
 
 const Cart = () => {
-  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  let userId = useSelector((state) => state.auth.me.id);
+  if (!userId) {
+    userId = window.localStorage.guest;
+  }
   const firstName = useSelector((state) => state.auth.me.firstName);
   const dispatch = useDispatch();
   const { orders, products, orderProducts } = useSelector(selectCart);
@@ -18,10 +21,8 @@ const Cart = () => {
   const orderId = orders.map((info) => info.id);
 
   useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(fetchUsersCart());
-    }
-  }, [dispatch, fetchUsersCart, isLoggedIn]);
+    dispatch(fetchUsersCart(userId));
+  }, [dispatch, fetchUsersCart]);
 
   const handleQuantityChange = (event, orderProductId) => {
     const newQuantity = parseInt(event.target.value);
@@ -55,7 +56,7 @@ const Cart = () => {
   return (
     <div id="cart">
       <div id="loginCart">
-        {isLoggedIn ? (
+        {firstName ? (
           <h1 style={{ borderBottom: "5px solid black" }}>
             Welcome to your cart, {firstName} 😎
           </h1>

@@ -9,7 +9,6 @@ import { createOrder, selectCart } from "../cart/CartSlice";
 const AllProducts = () => {
   const products = useSelector(selectProducts);
   const dispatch = useDispatch();
-  const test = useSelector(selectCart);
 
   let userId = useSelector((state) => state.auth.me.id);
   if (!userId) {
