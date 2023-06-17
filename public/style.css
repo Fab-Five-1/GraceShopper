@@ -87,17 +87,19 @@ form div {
   padding: 25px 20%;
 }
 
+.neon{
+  font-size: 1.1rem;
+}
+
 .neon:hover {
   transition: .7s;
-  font-size: 1.1rem;
-  margin: 15px;
   animation: neon 2.3s ease infinite;
 }
 
 @keyframes neon {
   0%,
   100% {
-      text-shadow: 0 0 10px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 2px #fed128, 2px 2px 2px #806914;
+      text-shadow: 0 0 10px #ef00e3a8, 0 0 10px #ef00e3a8, 0 0 10px #ef00e3a8, 0 0 10px #ef00e3a8, 0 0 2px #fed128, 2px 2px 2px #806914;
       color: #f5efcb;
   }
   50% {
