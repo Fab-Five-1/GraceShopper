@@ -1,11 +1,14 @@
 const router = require("express").Router();
+const { or } = require("sequelize");
 const Order = require("../db/models/Order");
 
 router.put("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
+    const { fulfilled } = req.body;
     const order = await Order.findByPk(id);
-    console.log(order);
+    await order.update({ fulfilled });
+    res.send(order);
   } catch (err) {
     console.error(err);
     next(err);
