@@ -72,20 +72,47 @@ form div {
 
 /* Cart */
 
-#cart{
+#cartHolder{
   text-align: center;
   height: auto;
 }
 
-#loginCart{
+#cart{
   display: flex;
-  align-items: center;
+  justify-content: center;
+}
+
+#loginCart {
+  display: flex;
+  align-items: stretch;
   border: 5px solid black;
+  padding: 20px;
+}
+
+#items{
+  display: flex;
+  flex-wrap: wrap;
+  border: 5px solid red;
+}
+
+#loginCart > * {
+  flex-grow: 1;
 }
 
 #checkoutCart{
-  background-color: rgba(48, 216, 210, 0.268);
-  padding: 35px;
+  background-color: #f19a53bc;
+  padding: 45px;
+}
+
+#deleteBtn{
+  background-color: black;
+  border-radius: 10px;
+  color: white;
+  font-size: 25px
+}
+
+#deleteBtn:hover{
+  background-color: rgba(0, 0, 0, 0.774);
 }
 
 .neon{
