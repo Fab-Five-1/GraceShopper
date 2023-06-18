@@ -14,7 +14,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <h1 className="logo">Grandad's Tech</h1>
+      {/* <h1 className="logo">Grandad's Tech</h1> */}
       <nav>
         {isLoggedIn ? (
           <div>
@@ -26,17 +26,49 @@ const Navbar = () => {
             </button>
           </div>
         ) : (
-          <div>
+          <div id="navBar">
             {/* The navbar will show these links before you log in */}
-            <Link to="/home">Home</Link>
-            <Link to="/cart">Cart🛒</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign Up</Link>
+            <div>
+              <Link className="logo" to="/home">Grandad's Tech</Link>
+            </div>
+            <div>
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Sign Up</Link>
+              <Link to="/cart">Cart🛒</Link>
+            </div>
           </div>
         )}
       </nav>
       <hr />
     </div>
+    // );
+
+
+    //   return (
+    //     <div>
+    //       <nav>
+    //       <h1 className="logo">Grandad's Tech</h1>
+    //         {isLoggedIn ? (
+    //           <div>
+    //             {/* The navbar will show these links after you log in */}
+    //             <Link to="/home">Home</Link>
+    //             <Link to="/cart">Cart 🛒</Link>
+    //             <button type="button" onClick={logoutAndRedirectHome}>
+    //               Logout
+    //             </button>
+    //           </div>
+    //         ) : (
+    //           <div>
+    //             {/* The navbar will show these links before you log in */}
+    //             <Link to="/home">Home</Link>
+    //             <Link to="/cart">Cart🛒</Link>
+    //             <Link to="/login">Login</Link>
+    //             <Link to="/signup">Sign Up</Link>
+    //           </div>
+    //         )}
+    //       </nav>
+    //       <hr />
+    //     </div>
   );
 };
 

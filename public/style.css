@@ -1,5 +1,10 @@
-body{
+body {
   height: 100%;
+  margin: 0;
+}
+
+html {
+  margin: 0;
 }
 
 body,
@@ -30,8 +35,28 @@ form div {
 
 .logo {
   font-family: 'VT323', monospace;
+  font-size: 2em;
+  margin: 0 16px;
 }
 
+/* home */
+
+#homeBackgroundImg {
+  width: 100vw;
+  /* height: 100vh; */
+  position: fixed;
+  background-size: auto;
+  z-index: -1;
+  margin: 0;
+}
+
+/* navBar */
+
+#navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 /* all product */
 
@@ -72,7 +97,7 @@ form div {
 
 /* Cart */
 
-#cart{
+#cart {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -82,7 +107,7 @@ form div {
   height: 70vh;
 }
 
-#loginCart{
+#loginCart {
   background-color: rgba(240, 248, 255, 0.632);
   padding: 25px 20%;
 }
@@ -92,14 +117,17 @@ form div {
   margin: 15px;
   animation: neon 1.2s ease infinite;
 }
+
 @keyframes neon {
+
   0%,
   100% {
-      text-shadow: 0 0 10px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 2px #fed128, 2px 2px 2px #806914;
-      color: #f5efcb;
+    text-shadow: 0 0 10px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 2px #fed128, 2px 2px 2px #806914;
+    color: #f5efcb;
   }
+
   50% {
-      text-shadow: 0 0 2px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 2px #800e0b, 4px 4px 2px #40340a;
-      color: #eda0d3;
+    text-shadow: 0 0 2px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 2px #800e0b, 4px 4px 2px #40340a;
+    color: #eda0d3;
   }
 }

@@ -8,9 +8,9 @@ import Home from "../features/home/Home";
 const App = () => {
   return (
     <div>
-      <Home />
-      {/* <Navbar />
-      <AppRoutes /> */}
+      {/* <Home /> */}
+      <Navbar />
+      <AppRoutes />
       {/* <AddUser /> */}
     </div>
   );
