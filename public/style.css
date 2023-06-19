@@ -175,6 +175,8 @@ form div {
     font-size: 20px;
   }
   #checkoutCart{
+    border-radius: 0px;
+    box-shadow: none;
     padding: 5px;
   }
   #loginCart {
