@@ -135,7 +135,14 @@ const Cart = () => {
               ENTER PROMO CODE
             </label>
             <input
-              style={{ marginTop: "15px", padding: "5px", fontSize: "15px" }}
+              style={{
+                marginTop: "15px",
+                padding: "5px",
+                fontSize: "15px",
+                backgroundColor: "white",
+                border: "2px solid black",
+                borderRadius: "5px",
+              }}
               type="text"
               placeholder="Promo Code"
             ></input>
