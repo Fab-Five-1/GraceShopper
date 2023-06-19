@@ -56,7 +56,6 @@ router.put("/:id", async (req, res, next) => {
     if (!count) {
       count = 1;
     }
-    console.log(count);
     //create a guest if the userid is null
     let newGuest;
     if (!userId) {

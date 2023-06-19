@@ -101,9 +101,7 @@ const Cart = () => {
                           alt={product.name}
                         />
                       </Link>
-                      <span style={{ margin: "15px", fontSize: "35px" }}>
-                        {product.name}
-                      </span>
+                      <span className="cartSpan ">{product.name}</span>
                       <input
                         style={{
                           margin: "0px 5px",
@@ -117,9 +115,7 @@ const Cart = () => {
                           handleQuantityChange(event, orderProduct.id)
                         }
                       />
-                      <span style={{ margin: "15px", fontSize: "30px" }}>
-                        Total: ${productTotal}
-                      </span>
+                      <span className="cartSpan ">Total: ${productTotal}</span>
                       <button
                         id="deleteBtn"
                         type="button"
