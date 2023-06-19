@@ -45,11 +45,12 @@ const AuthForm = ({ name, displayName }) => {
           {error && <div> {error} </div>}
         </form>
       </div>
+      <hr className="loginHR"></hr>
       <div className="createContainer">
         <h4>New here?</h4>
         <Link to="/signup">
-        <button>Create an Account</button>
-       </Link>
+          <button>Create an Account</button>
+        </Link>
       </div>
     </div>
   );

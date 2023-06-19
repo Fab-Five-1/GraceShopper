@@ -22,13 +22,15 @@ const AllProducts = () => {
   };
 
   if (isAdmin) {
+    <button>Add New Product</button>
     const renderProducts = () => {
       return products.map((product) => (
         <div className="product" key={`All Products ${product.id}`}>
           <NavLink to={`/products/${product.id}`} className="product">
-            <div className="product">
+
+            <div className="productContainer">
               <img
-                className="productImg"
+                className="allProductImg"
                 src={product.imageUrl}
                 alt={product.name}
               />
@@ -38,11 +40,11 @@ const AllProducts = () => {
                 <h3>${product.price / 100}</h3>
               </div>
             </div>
-            <button>Edit Product</button>
+            <button className="editProductBtn">Edit Product</button>
           </NavLink>
-          <button onClick={() => handleCartCreate(userId, product.id)}>
+          {/* <button onClick={() => handleCartCreate(userId, product.id)}>
             Add to Cart
-          </button>
+          </button> */}
         </div>
       ));
     };
@@ -64,9 +66,9 @@ const AllProducts = () => {
       return products.map((product) => (
         <div className="product" key={`All Products ${product.id}`}>
           <NavLink to={`/products/${product.id}`} className="product">
-            <div className="product">
+            <div className="productContainer">
               <img
-                className="productImg"
+                className="allProductImg"
                 src={product.imageUrl}
                 alt={product.name}
               />
@@ -77,9 +79,9 @@ const AllProducts = () => {
               </div>
             </div>
           </NavLink>
-          <button onClick={() => handleCartCreate(userId, product.id)}>
+          {/* <button onClick={() => handleCartCreate(userId, product.id)}>
             Add to Cart
-          </button>
+          </button> */}
         </div>
       ));
     };

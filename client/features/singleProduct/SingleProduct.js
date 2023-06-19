@@ -44,7 +44,6 @@ const SingleProduct = () => {
     if (isAdmin) {
         return (
             <div id="singleProductContainer">
-                <p>ADMIN VIEW</p>
                 <div id="singleProdText">
                     <h1>{name}</h1>
                     <p>{description}</p>
@@ -93,7 +92,7 @@ const SingleProduct = () => {
                     </button>
                 </div>
                 <div>
-                    <img src={imageUrl} />
+                    <img className="productImg" src={imageUrl} />
                 </div>
             </div>
         );
