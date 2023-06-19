@@ -104,8 +104,8 @@ const Cart = () => {
                       <input
                         style={{
                           margin: "0px 5px",
-                          width: "40px",
-                          fontSize: "35px",
+                          width: "35px",
+                          fontSize: "30px",
                         }}
                         type="number"
                         value={orderProduct.numberOfItems}
@@ -139,13 +139,23 @@ const Cart = () => {
               type="text"
               placeholder="Promo Code"
             ></input>
-            <button style={{ padding: "5px" }}>SUBMIT</button>
+            <button
+              className="checkoutCartButtons"
+              style={{
+                padding: "5px",
+              }}
+            >
+              SUBMIT
+            </button>
             <h3 style={{ fontSize: "20px" }}>Discount: $0</h3>
             <h3 style={{ fontSize: "20px" }}>Total: ${calculateTotal()}</h3>
             <h3 style={{ fontSize: "25px" }}>Ready to checkout?</h3>
             <Link to="/checkout">
               <button
-                style={{ fontSize: "20px" }}
+                className="checkoutCartButtons"
+                style={{
+                  fontSize: "20px",
+                }}
                 type="button"
                 onClick={() => handleCheckout(calculateTotal())}
               >
@@ -155,7 +165,7 @@ const Cart = () => {
           </section>
         </div>
       </div>
-      <h1>Thank you 💘</h1>
+      <h1 style={{ marginTop: "75px" }}>Thank you 💘</h1>
       <h5>
         Price excludes delivery, taxes, and shipping which are calculated at
         checkout
