@@ -65,31 +65,28 @@ router.put("/:id", async (req, res, next) => {
     const orders = await Order.findAll({ where: { userId, fulfilled: false } });
     // if there is no order that exists with that id we need to make one
     if (orders.length === 0) {
-      // create the order and the order  product
+      // create the order and the order product
       const newOrder = await Order.create({
         userId: userId,
       });
-      const orders = await Order.findAll({
-        where: { userId, fulfilled: false },
-      });
-      const orderId = orders[0].dataValues.id;
+      const orderId = newOrder.dataValues.id;
       const newOrderProduct = await OrderProduct.create({
         numberOfItems: count,
         orderId: orderId,
         productId: productId,
       });
       if (newGuest) {
-        res.send({ orders, newOrderProduct, newGuest });
+        // send the response with newGuest included
+        return res.send({ orders, newOrderProduct, newGuest });
       }
-      res.send({ orders, newOrderProduct });
-      return;
-      // else if the order exists find it's id then attach the order product
+      // send the response without newGuest
+      return res.send({ orders, newOrderProduct });
     } else {
       const orderId = orders[0].dataValues.id;
       const orderProducts = await OrderProduct.findAll({
         where: { orderId, productId },
       });
-      // if the orderpoduct doesn't exist create one
+      // if the orderproduct doesn't exist create one
       if (orderProducts.length === 0) {
         const newOrderProduct = await OrderProduct.create({
           numberOfItems: count,
@@ -97,19 +94,21 @@ router.put("/:id", async (req, res, next) => {
           productId: productId,
         });
         if (newGuest) {
-          res.send({ orders, newOrderProduct, newGuest });
+          // send the response with newGuest included
+          return res.send({ orders, newOrderProduct, newGuest });
         }
-        res.send({ orders, newOrderProduct });
-        return;
+        // send the response without newGuest
+        return res.send({ orders, newOrderProduct });
       }
       // if it does update the quanity plus what was added
       let numberOfItems = orderProducts[0].dataValues.numberOfItems + count;
       await orderProducts[0].update({ numberOfItems });
       if (newGuest) {
-        res.send({ orderProducts, newGuest });
+        // send the response with newGuest included
+        return res.send({ orderProducts, newGuest });
       }
-      res.send(orderProducts);
-      return;
+      // send the response without newGuest
+      return res.send(orderProducts);
     }
   } catch (err) {
     console.error(err);
