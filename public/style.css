@@ -1,5 +1,5 @@
 body {
-  height: 100%;
+  /* height: 100%; */
   margin: 0;
 }
 
@@ -27,7 +27,7 @@ label {
 
 nav a {
   display: inline-block;
-  margin: 1em;
+  margin: .75em 1.5em;
 }
 
 form div {
@@ -38,7 +38,7 @@ form div {
 .logo {
   font-family: 'VT323', monospace;
   font-size: 2em;
-  margin: 0 16px;
+  margin: 0 24px;
   color: #A9581A
 }
 
@@ -62,11 +62,13 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* position: fixed; */
 }
 
-nav {
-  border-bottom: 1px solid #56351E;
-}
+
+/* nav {
+  border-bottom: 1px solid #c8b8ab;
+} */
 
 /* all product */
 
@@ -90,20 +92,33 @@ nav {
 }
 
 .allProductImg {
-  width: 400px;
-  height: 400px;
-  border-radius: 4px;
+  width: 375px;
+  height: 375px;
+  border-radius: 20%;
   object-fit: cover;
 }
 
-.editProductBtn {
+.allProductImg:hover {
+  border: 1px rgb(20, 73, 231) solid;
+}
+
+#editProductBtn {
   width: 40%;
+  border: none;
+  background-color: #f4f1eb;
+
+}
+
+#editProductBtn:hover {
+  color: rgb(20, 73, 231);
+  background-color: none;
 }
 
 .adminAllProd {
   display: flex;
   flex-direction: column;
   align-items: end;
+  margin-bottom: 36px;
 }
 
 #addNewBtn {
@@ -117,13 +132,15 @@ nav {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #A9581A;
+  background-color: #f4f1eb;
+  border: 1px #56351E solid;
   border-radius: 4px;
 }
 
 .addProduct,
-.popupHead {
-  margin: 24px
+.popupHead,
+.successMessage {
+  margin: 40px
 }
 
 .popupHead {
@@ -136,15 +153,17 @@ nav {
   height: 0 24px
 }
 
-.successMessage {
+/* .successMessage {
   margin: 24px
-}
+} */
 
 /* single product page */
 
 #singleProductContainer {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
   margin: 24px;
 }
 
@@ -164,6 +183,7 @@ nav {
 
 .productImg {
   margin: 32px;
+  border-radius: 20%;
 }
 
 .singleBreak {
@@ -217,10 +237,10 @@ nav {
   align-items: center;
 }
 
-/* 
+
 .logInContainer {
-  border-bottom: 1px solid black;
-} */
+  width: 100%
+}
 
 
 
@@ -235,7 +255,7 @@ nav {
 }
 
 input {
-  width: 400px;
+  width: 300px;
   height: 25px;
   padding-left: 8px;
   margin-bottom: 16px

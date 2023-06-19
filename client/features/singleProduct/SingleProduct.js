@@ -63,7 +63,7 @@ const SingleProduct = () => {
                     </button>
                     <br></br>
                     <div className="singleBreak">
-                        <button>Edit Product</button>
+                        <button >Edit Product</button>
                         <button onClick={() => handleDelete(id)}>Delete Product</button>
                     </div>
                 </div>
