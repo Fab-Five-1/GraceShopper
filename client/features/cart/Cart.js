@@ -59,11 +59,11 @@ const Cart = () => {
     <div id="cartHolder">
       {firstName ? (
         <h1 style={{ borderBottom: "5px dotted black" }}>
-          Welcome to your cart, {firstName} 😎
+          Welcome to your cart, {firstName}
         </h1>
       ) : (
         <h1 style={{ borderBottom: "5px solid black" }}>
-          Welcome to your cart 😎
+          Welcome to your cart
         </h1>
       )}
       <div id="cart">
@@ -131,11 +131,11 @@ const Cart = () => {
             )}
           </section>
           <section id="checkoutCart">
-            <label style={{ marginTop: "7px", fontSize: "20px" }}>
+            <label style={{ marginTop: "7px", fontSize: "22px" }}>
               ENTER PROMO CODE
             </label>
             <input
-              style={{ marginTop: "15px", padding: "5px" }}
+              style={{ marginTop: "15px", padding: "5px", fontSize: "15px" }}
               type="text"
               placeholder="Promo Code"
             ></input>

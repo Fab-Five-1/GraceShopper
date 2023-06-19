@@ -88,7 +88,9 @@ form div {
 #loginCart {
   display: flex;
   align-items: stretch;
-  border: 5px solid black;
+  border: 3px solid black;
+  border-radius: 4px;
+  box-shadow: black 3px 3px 5px;
   padding: 20px;
 }
 
@@ -102,14 +104,15 @@ form div {
 }
 
 #checkoutCart{
-  background-color: #538df1bc;
+  background-color: #ae9472;
   border: 3px solid black;
   box-shadow: black 7px 7px;
+  border-radius: 5px;
   padding: 45px;
 }
 
 #deleteBtn{
-  background-color: #e78879;
+  background-color: #f09f93;
   border: 3px solid black;
   padding: 3px 6px;
   border-radius: 10px;
@@ -129,12 +132,13 @@ form div {
 
 .cartImg{
   box-shadow: black 5px 5px;
-  border: 3px solid black;
-  width: 100px;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 120px;
 }
 
 .checkoutCartButtons{
-  background-color: #e78879;
+  background-color: #f09f93;
   border: 2px solid black;
   border-radius: 7px;
 }
@@ -174,6 +178,7 @@ form div {
     padding: 5px;
   }
   #loginCart {
+    box-shadow: none;
     padding: 0px;
   }
   .cartImg{
