@@ -157,7 +157,7 @@ const Cart = () => {
       </div>
       <h1>Thank you 💘</h1>
       <h5>
-        Price excludes delivery, Taxes, and shipping which calculated at
+        Price excludes delivery, taxes, and shipping which calculated at
         checkout
       </h5>
     </div>
