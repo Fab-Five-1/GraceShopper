@@ -1,5 +1,7 @@
 body{
   height: 100%;
+  background-color: #FAF9F6;
+  /* OFF WHITE 🥶*/
 }
 
 body,
@@ -73,6 +75,7 @@ form div {
 /* Cart */
 
 #cartHolder{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   text-align: center;
   height: auto;
 }
@@ -99,7 +102,9 @@ form div {
 }
 
 #checkoutCart{
-  background-color: #f19a53bc;
+  background-color: #538df1bc;
+  border: 3px solid black;
+  box-shadow: black 7px 7px 0px;
   padding: 45px;
 }
 
@@ -117,6 +122,12 @@ form div {
 .cartSpan{
   margin: 15px; 
   font-size: 35px;
+}
+
+.cartImg{
+  box-shadow: black 5px 5px 0px;
+  border: 3px solid black;
+  width: 100px;
 }
 
 .neon{
@@ -150,5 +161,8 @@ form div {
   }
   #loginCart {
     padding: 0px;
+  }
+  .cartImg{
+    width: 70px;
   }
 }

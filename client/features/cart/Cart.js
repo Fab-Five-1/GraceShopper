@@ -95,9 +95,8 @@ const Cart = () => {
                         to={`/products/${product.id}`}
                       >
                         <img
+                          className="cartImg"
                           src={product.imageUrl}
-                          width="100px"
-                          style={{ border: "3px solid black" }}
                           alt={product.name}
                         />
                       </Link>
@@ -156,6 +155,11 @@ const Cart = () => {
           </section>
         </div>
       </div>
+      <h1>Thank you 💘</h1>
+      <h5>
+        Price excludes delivery, Taxes, and shipping which calculated at
+        checkout
+      </h5>
     </div>
   );
 };
