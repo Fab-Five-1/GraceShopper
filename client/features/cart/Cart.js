@@ -58,7 +58,7 @@ const Cart = () => {
   return (
     <div id="cartHolder">
       {firstName ? (
-        <h1 style={{ borderBottom: "5px solid black" }}>
+        <h1 style={{ borderBottom: "5px dotted black" }}>
           Welcome to your cart, {firstName} 😎
         </h1>
       ) : (
