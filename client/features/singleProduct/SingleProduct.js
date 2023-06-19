@@ -62,11 +62,13 @@ const SingleProduct = () => {
                         Add to Cart
                     </button>
                     <br></br>
-                    <button>Edit Product</button>
-                    <button onClick={() => handleDelete(id)}>Delete Product</button>
+                    <div className="singleBreak">
+                        <button>Edit Product</button>
+                        <button onClick={() => handleDelete(id)}>Delete Product</button>
+                    </div>
                 </div>
                 <div>
-                    <img src={imageUrl} />
+                    <img className="productImg" src={imageUrl} />
                 </div>
             </div>
         );
