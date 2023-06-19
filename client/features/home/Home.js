@@ -17,7 +17,7 @@ const Home = (props) => {
   return (
     <>
       <div id="homeDiv">
-        <img id="homeBackgroundImg" src="/images/computerShop.jpg" alt="Computer Shop" />
+        {/* <img id="homeBackgroundImg" src="/images/computerShop.jpg" alt="Computer Shop" /> */}
         {/* <Navbar /> */}
         {/* <div>{isLoggedIn ? <h3>Welcome, {username}</h3> : <h3>Welcome!</h3>}</div> */}
         {/* <AllProducts />

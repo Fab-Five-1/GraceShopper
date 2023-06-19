@@ -3,9 +3,6 @@ body {
   margin: 0;
 }
 
-html {
-  margin: 0;
-}
 
 body,
 button {
@@ -17,6 +14,10 @@ button {
 a {
   text-decoration: none;
   color: black
+}
+
+h2 {
+  text-align: center;
 }
 
 label {
@@ -41,21 +42,23 @@ form div {
 
 /* home */
 
-#homeBackgroundImg {
-  width: 100vw;
-  /* height: 100vh; */
-  position: fixed;
-  background-size: auto;
-  z-index: -1;
-  margin: 0;
+#homeDiv {
+  background-image: url("/images/computerShop.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 95vh;
 }
 
 /* navBar */
 
-#navBar {
+.navBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+nav {
+  border-bottom: 1px solid black;
 }
 
 /* all product */
@@ -64,7 +67,6 @@ form div {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* margin: 0 10%; */
 }
 
 .product {
@@ -130,4 +132,44 @@ form div {
     text-shadow: 0 0 2px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 2px #800e0b, 4px 4px 2px #40340a;
     color: #eda0d3;
   }
+}
+
+
+/* login */
+
+.logIn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logInContainer {
+  border-bottom: 1px solid black;
+}
+
+.createContainer {
+  text-align: center;
+}
+
+
+#logOutButton {
+  margin-right: 16px;
+}
+
+input {
+  width: 400px;
+  height: 25px;
+  padding-left: 8px
+}
+
+
+button {
+  background-color: #e31411;
+  color: white;
+  border: 1px black solid
+}
+
+.formButton {
+  width: 400px;
 }

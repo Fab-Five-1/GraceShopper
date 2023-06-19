@@ -13,62 +13,37 @@ const Navbar = () => {
   };
 
   return (
-    <div>
-      {/* <h1 className="logo">Grandad's Tech</h1> */}
-      <nav>
-        {isLoggedIn ? (
+    <nav>
+      {isLoggedIn ? (
+        <div className="navBar">
+          {/* The navbar will show these links after you log in */}
+
           <div>
-            {/* The navbar will show these links after you log in */}
-            <Link to="/home">Home</Link>
+            <Link className="logo" to="/home">Grandad's Tech</Link>
+          </div>
+          <div>
+            <Link to="/products">Shop</Link>
             <Link to="/cart">Cart 🛒</Link>
-            <button type="button" onClick={logoutAndRedirectHome}>
+            <button id="logOutButton" type="button" onClick={logoutAndRedirectHome}>
               Logout
             </button>
           </div>
-        ) : (
-          <div id="navBar">
-            {/* The navbar will show these links before you log in */}
-            <div>
-              <Link className="logo" to="/home">Grandad's Tech</Link>
-            </div>
-            <div>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
-              <Link to="/cart">Cart🛒</Link>
-            </div>
+        </div>
+      ) : (
+        <div className="navBar">
+          {/* The navbar will show these links before you log in */}
+          <div>
+            <Link className="logo" to="/home">Grandad's Tech</Link>
           </div>
-        )}
-      </nav>
-      <hr />
-    </div>
-    // );
-
-
-    //   return (
-    //     <div>
-    //       <nav>
-    //       <h1 className="logo">Grandad's Tech</h1>
-    //         {isLoggedIn ? (
-    //           <div>
-    //             {/* The navbar will show these links after you log in */}
-    //             <Link to="/home">Home</Link>
-    //             <Link to="/cart">Cart 🛒</Link>
-    //             <button type="button" onClick={logoutAndRedirectHome}>
-    //               Logout
-    //             </button>
-    //           </div>
-    //         ) : (
-    //           <div>
-    //             {/* The navbar will show these links before you log in */}
-    //             <Link to="/home">Home</Link>
-    //             <Link to="/cart">Cart🛒</Link>
-    //             <Link to="/login">Login</Link>
-    //             <Link to="/signup">Sign Up</Link>
-    //           </div>
-    //         )}
-    //       </nav>
-    //       <hr />
-    //     </div>
+          <div>
+            <Link to="/products">Shop</Link>
+            <Link to="/login">Login</Link>
+            {/* <Link to="/signup">Sign Up</Link> */}
+            <Link to="/cart">Cart🛒</Link>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 };
 

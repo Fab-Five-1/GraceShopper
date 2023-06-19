@@ -3,9 +3,6 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProductAsync, fetchSingleProduct, selectSingleProduct } from "./singleProductSlice";
 import { createOrder } from "../cart/CartSlice";
-import { fetchProductsAsync } from "../allProducts/allProductsSlice";
-import AllProducts from "../allProducts/AllProducts";
-
 
 const SingleProduct = () => {
     const productId = useParams();
@@ -72,9 +69,6 @@ const SingleProduct = () => {
                 <div>
                     <img src={imageUrl} />
                 </div>
-                {/* <button onClick={() => handleCartCreate(userId, id)}>
-                    Add to Cart
-                </button> */}
             </div>
         );
     } else {
