@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addNewUser } from "./AddUserSlice";
 
-
 export default function AddUser() {
   // Define state variables using the useState hook
   const [username, setUserName] = useState("");
@@ -12,7 +11,6 @@ export default function AddUser() {
   const [lastName, setLastName] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [PasswordMatchError, setPasswordMatchError] = useState(false); // New state variable for password match error
-  
 
   // Get the dispatch function from the Redux store
   const dispatch = useDispatch();

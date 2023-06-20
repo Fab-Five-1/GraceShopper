@@ -15,7 +15,7 @@ const store = configureStore({
     cartSlice: cartSlice,
     addUser: AddUserSlice,
     allProducts: allProductsSlice,
-    allUsers: allUsersSlice
+    allUsers: allUsersSlice,
     CheckoutSlice: CheckoutSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
