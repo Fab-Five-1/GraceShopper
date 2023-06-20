@@ -10,7 +10,7 @@ export default function AddUser() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [PasswordMatchError, setPasswordMatchError] = useState(false); // New state variable for password match error
+  const [passwordMatchError, setPasswordMatchError] = useState(false);
 
   // Get the dispatch function from the Redux store
   const dispatch = useDispatch();
@@ -19,11 +19,21 @@ export default function AddUser() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Check if the password and passwordConfirmation match
-    if (password != passwordConfirmation) {
-      setPasswordMatchError(true); // Set the password match error to true
-      // console.log("Passwords do not match");
-      // prompt("Passwords do not match, please try again");
+    // Check if any form inputs are blank
+    if (
+      !username ||
+      !password ||
+      !email ||
+      !firstName ||
+      !lastName ||
+      !passwordConfirmation
+    ) {
+      alert("All form fields must be filled in");
+      return;
+    }
+
+    if (password !== passwordConfirmation) {
+      setPasswordMatchError(true);
       return;
     }
 
@@ -37,18 +47,18 @@ export default function AddUser() {
     };
 
     try {
-      // reduxx land
       // Dispatch an action to add the new user to the store
       dispatch(addNewUser(newUser));
 
       // Reset the form fields to empty
       setUserName("");
       setPassword("");
-      setPasswordConfirmation(""); // added Password confirmation
+      setPasswordConfirmation("");
       setEmail("");
       setFirstName("");
       setLastName("");
-      setPasswordMatchError(false); // Reset the password match error to false
+      setPasswordMatchError(false);
+
       console.log("submit", newUser);
     } catch (error) {
       console.log(error);
@@ -57,10 +67,10 @@ export default function AddUser() {
 
   return (
     <div>
-      <h1> Welcome to Your Grandaddy's Tech. Create your account here.</h1>
+      <h1>Welcome to Grandaddy's Tech. Create your account here!</h1>
       <form onSubmit={handleSubmit}>
         <div id={"add-user-form"}>
-          <label htmlFor="firstName"> First Name </label>
+          <label htmlFor="firstName">First Name</label>
           <input
             type="text"
             name="firstName"
@@ -74,9 +84,9 @@ export default function AddUser() {
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
-          <label htmlFor="email"> Email </label>
+          <label htmlFor="email">Email</label>
           <input
-            type="text" // for security "type=password"
+            type="text"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -88,32 +98,28 @@ export default function AddUser() {
             value={username}
             onChange={(e) => setUserName(e.target.value)}
           />
-
-          <label htmlFor="password"> Password </label>
+          <label htmlFor="password">Password</label>
           <input
-            type="text" // Can change the input type to "password" for security
+            type="text"
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <label htmlFor="passwordConfirmation">Confirm Password</label>
           <input
-            type="text" // Can change the input type to "password" for security
+            type="text"
             name="passwordConfirmation"
             value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)}
           />
-          {/* added user experience and security - can also re-enter password twice to match */}
           {/* Display an error message if passwords do not match */}
-          {PasswordMatchError && (
+          {passwordMatchError && (
             <div style={{ color: "red" }}>
-              Passwords do not match, please try again{" "}
+              Passwords do not match, please try again
             </div>
           )}
-
           <br />
-
-          <button type="submit"> Create </button>
+          <button type="submit">Create</button>
         </div>
       </form>
     </div>
