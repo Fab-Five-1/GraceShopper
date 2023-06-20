@@ -51,7 +51,6 @@ const singleProductSlice = createSlice({
             return newState
         })
         builder.addCase(editProductAsync.fulfilled, (state, action) => {
-            console.log("action.payload")
             return action.payload
         })
     }

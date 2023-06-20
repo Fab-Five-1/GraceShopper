@@ -50,6 +50,16 @@ const SingleProduct = () => {
         await dispatch(editProductAsync(productId))
     }
 
+    const [popUp, setPopup] = useState(false);
+    const handleClickOpen = () => {
+        setPopup(!popUp);
+    };
+
+    const closePopup = () => {
+        setPopup(false);
+    };
+
+
     if (isAdmin) {
         return (
             <div id="singleProductContainer">
@@ -73,8 +83,22 @@ const SingleProduct = () => {
                     <br></br>
                     <div className="singleBreak">
                         {/* <button onClick={() => handleEdit(id)}>Edit Product</button> */}
-                        {<EditProduct />}
-                        <button>Edit Product</button>
+                        <button onClick={handleClickOpen}>Edit Product</button>
+                        <div className="addNewPopup">
+                            {popUp ? (
+                                <div>
+                                    <div className="popupHead">
+                                        <h3>Edit A Product</h3>
+                                        <button id="X" onClick={closePopup}>
+                                            X
+                                        </button>
+                                    </div>
+                                    <EditProduct />
+                                </div>
+                            ) : (
+                                ""
+                            )}
+                        </div>
                         <button onClick={() => handleDelete(id)}>Delete Product</button>
                     </div>
                 </div>

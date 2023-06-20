@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 const EditProduct = () => {
     const { id } = useParams()
-    const productId = useParams();
+    // const productId = useParams();
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [price, setPrice] = useState("")
@@ -15,17 +15,16 @@ const EditProduct = () => {
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     const dispatch = useDispatch()
-    console.log("front end product Id", id)
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // const finalPrice = price * 100
+        const finalPrice = price * 100
         dispatch(
             editProductAsync({
                 name,
                 description,
-                price,
-                // price: finalPrice,
+                // price,
+                price: finalPrice,
                 quantity,
                 category,
                 imageUrl,
