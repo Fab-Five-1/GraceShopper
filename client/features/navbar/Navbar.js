@@ -26,6 +26,7 @@ const Navbar = () => {
           <div>
             <Link to="/products">Shop</Link>
             <Link to="/cart">Cart 🛒</Link>
+            <Link to="/admin">Admin </Link>
             <button
               id="logOutButton"
               type="button"

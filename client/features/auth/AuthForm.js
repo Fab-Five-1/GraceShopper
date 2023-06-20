@@ -20,6 +20,7 @@ const AuthForm = ({ name, displayName }) => {
     const username = evt.target.username.value;
     const password = evt.target.password.value;
     dispatch(authenticate({ username, password, method: formName }));
+    // need to write logic that navigate them to admin if not admin navigate them to homepage or elsewhere its in 'navigate' in reactor-router dom
   };
 
   return (
