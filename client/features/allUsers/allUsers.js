@@ -1,29 +1,34 @@
+//imports the necessary dependencies and actions from various modules.
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { Link } from "react-router-dom";
 import { fetchAllUsers, selectAllUsers } from "./allUsersSlice.js";
 
 // Your goal is to display all Users on admin site only
 
 export default function AllUsers() {
-  const dispatch = useDispatch(); // calls every function in my redux // need this to call 'fetchAllStudents' from slice
+  const dispatch = useDispatch(); // Hook to acess the Redux dispatch function // calls every function in my redux // 
+  
+  const allUsers = useSelector(selectAllUsers) || []; // Retrieves allUsers state from Redux store
+  // If allUsers is null or undefined, set it to an empty array
+  // This ensures we have an empty array instead of a falsy value
+  // Note selectAllUsers is a selector function that extracts the allUsers state from the Redux store 
 
-  const allUsers = useSelector(selectAllUsers) || []; // selectAllUsers is not the right color should be light blue/grey instead of yellow
   console.log("1 ---------> req from server");
 
   useEffect(() => {
-    dispatch(fetchAllUsers()); // import this slice at beginning of this file
+    // useEffect hook runs once when the component is mounted
+    // Dispatches the fetchAllUsers action to fetch all users from the server and update the state
+    dispatch(fetchAllUsers()); 
   }, []);
 
+   // Conditional rendering when allUsers is still undefined
   if (!allUsers) {
-    return <div>Loading...</div>; // Handle the case when allUsers is still undefined
+    return <div>Loading...</div>; // Display a loading message until the data is fetched
   }
 
   console.log("This is allUsers----->", allUsers);
 
-  //   return (
-  //     <div>AllUsers is Route is working</div>
-  //   )
+// Render the user list
   return (
     <div id="users">
       <div id="user-list">
@@ -46,3 +51,19 @@ export default function AllUsers() {
     </div>
   );
 }
+
+
+
+// This code imports the necessary dependencies and actions from various modules. It imports React and the useEffect hook from the "react" package. It also imports useDispatch and useSelector hooks from the "react-redux" package. Additionally, it imports the fetchAllUsers action and selectAllUsers selector from the "./allUsersSlice.js" file.
+
+
+// This is a functional component called AllUsers. It initializes the dispatch function using the useDispatch hook from React Redux. It also retrieves the allUsers state using the useSelector hook and the selectAllUsers selector. If allUsers is null or undefined, it sets it to an empty array. The console.log statement logs a message to the console.
+
+
+// This is an effect hook, useEffect, that runs only once when the component is mounted. It dispatches the fetchAllUsers action, which is responsible for fetching all users from the server and updating the state.
+
+
+// This conditional statement checks if allUsers is falsy (null, undefined, or an empty array). If it is, it returns a loading message to be displayed until the data is fetched.
+
+
+// Finally, this code renders the user list. It uses the allUsers.map() function to iterate over each user in the allUsers array and render the user's information. Each user is displayed in a <div> element with a gray bottom border. The user's ID, username, email, first name, and last name are displayed using <span> elements with appropriate styles.
