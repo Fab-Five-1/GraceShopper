@@ -10,7 +10,7 @@ import AddUser from "../features/users/AddUser";
 import SingleProduct from "../features/singleProduct/SingleProduct";
 import AllUsers from "../features/allUsers/allUsers"; // it does work though
 import AllProducts from "../features/allProducts/AllProducts";
-import Order from "../features/orders/order";
+import Order from "../features/orders/Order";
 
 /**
  * COMPONENT
