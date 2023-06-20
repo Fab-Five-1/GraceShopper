@@ -13,9 +13,13 @@ router.get("/:id", async (req, res, next) => {
     const orders = await Order.findAll({
       where: { userId, fulfilled: true },
     });
-    const orderId = orders[0].dataValues.id;
+    const orderIds = orders.map((info) => info.dataValues.id);
     const orderProducts = await OrderProduct.findAll({
-      where: { orderId },
+      where: {
+        id: {
+          [Op.in]: orderIds,
+        },
+      },
     });
     const productIds = orderProducts.map((info) => info.dataValues.productId);
     const products = await Product.findAll({
