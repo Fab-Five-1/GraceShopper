@@ -278,29 +278,6 @@ img {
   padding: 20px;
 }
 
-.neon{
-  font-size: 1.1rem;
-}
-
-.neon:hover {
-  transition: .7s;
-  animation: neon 2.5s ease infinite;
-}
-
-@keyframes neon {
-
-  0%,
-  100% {
-      text-shadow: 0 0 10px #ef00e3a8, 0 0 10px #ef00e3a8, 0 0 10px #ef00e3a8, 0 0 10px #ef00e3a8, 0 0 2px #fed128, 2px 2px 2px #806914;
-      color: #f5efcb;
-  }
-
-  50% {
-    text-shadow: 0 0 2px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 2px #800e0b, 4px 4px 2px #40340a;
-    color: #eda0d3;
-  }
-}
-
 @media (max-width: 600px){
   .cartSpan{
     margin: 10px; 
