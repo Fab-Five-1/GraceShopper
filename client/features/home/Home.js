@@ -5,6 +5,8 @@ import SingleProduct from "../singleProduct/SingleProduct"
 import AllProducts from "../allProducts/AllProducts";
 import AddProduct from "../allProducts/AddProduct";
 
+import Navbar from "../navbar/Navbar";
+
 /**
  * COMPONENT
  */
@@ -14,9 +16,8 @@ const Home = (props) => {
 
   return (
     <>
-      <div>{isLoggedIn ? <h3>Welcome, {username}</h3> : <h3>Welcome!</h3>}</div>
-      <AllProducts />
-      <AddProduct />
+      <div id="homeDiv">
+      </div>
     </>
   );
 };
