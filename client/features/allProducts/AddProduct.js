@@ -9,6 +9,7 @@ const AddProduct = () => {
     const [quantity, setQuantity] = useState("")
     const [category, setCategory] = useState("")
     const [imageUrl, setImageUrl] = useState("")
+    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     const dispatch = useDispatch()
 
@@ -32,11 +33,15 @@ const AddProduct = () => {
         setQuantity("");
         setCategory("");
         setImageUrl("");
+        setShowSuccessMessage(true);
     };
+
+    if (showSuccessMessage) {
+        return <p className="successMessage">Product added Successfully!</p>
+    }
 
     return (
         <div className="addProduct">
-            <h3>Add A New Product</h3>
             <form className="formContainer" onSubmit={handleSubmit}>
                 <label htmlFor="name">Name</label>
                 <input className="inputField" type="text" name="name" value={name} onChange={ev => setName(ev.target.value)} />
@@ -55,7 +60,7 @@ const AddProduct = () => {
 
                 <label htmlFor="imageUrl">Image Url</label>
                 <input className="inputField" type="text" name="imageUrl" value={imageUrl} onChange={ev => setImageUrl(ev.target.value)} />
-
+                <br></br>
                 <button className="submitButton" type="submit">Submit</button>
             </form>
         </div>

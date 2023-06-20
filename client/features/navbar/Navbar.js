@@ -13,42 +13,45 @@ const Navbar = () => {
   };
 
   return (
-    <div>
-      <h1 className="logo">Grandad's Tech</h1>
-      <nav>
-        {isLoggedIn ? (
+    <nav>
+      {isLoggedIn ? (
+        <div className="navBar">
+          {/* The navbar will show these links after you log in */}
+
           <div>
-            {/* The navbar will show these links after you log in */}
-            <Link className="neon" to="/home">
-              Home
+            <Link className="logo" to="/home">
+              Grandad's Tech
             </Link>
-            <Link className="neon" to="/cart">
-              Cart 🛒
-            </Link>
-            <button type="button" onClick={logoutAndRedirectHome}>
+          </div>
+          <div>
+            <Link to="/products">Shop</Link>
+            <Link to="/cart">Cart 🛒</Link>
+            <button
+              id="logOutButton"
+              type="button"
+              onClick={logoutAndRedirectHome}
+            >
               Logout
             </button>
           </div>
-        ) : (
+        </div>
+      ) : (
+        <div className="navBar">
+          {/* The navbar will show these links before you log in */}
           <div>
-            {/* The navbar will show these links before you log in */}
-            <Link className="neon" to="/home">
-              Home
-            </Link>
-            <Link className="neon" to="/cart">
-              Cart🛒
-            </Link>
-            <Link className="neon" to="/login">
-              Login
-            </Link>
-            <Link className="neon" to="/signup">
-              Sign Up
+            <Link className="logo" to="/home">
+              Grandad's Tech
             </Link>
           </div>
-        )}
-      </nav>
-      <hr />
-    </div>
+          <div>
+            <Link to="/products">Shop</Link>
+            <Link to="/login">Login</Link>
+            {/* <Link to="/signup">Sign Up</Link> */}
+            <Link to="/cart">Cart🛒</Link>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 };
 

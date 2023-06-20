@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSingleProduct, selectSingleProduct } from "./singleProductSlice";
+import {
+  deleteProductAsync,
+  fetchSingleProduct,
+  selectSingleProduct,
+} from "./singleProductSlice";
 import { createOrder } from "../cart/CartSlice";
 
 const SingleProduct = () => {
@@ -33,25 +37,42 @@ const SingleProduct = () => {
     dispatch(createOrder({ userId, productId, count }));
   };
 
-  // if statement for if admin if true
+  const navigate = useNavigate();
+
+  const handleDelete = async (productId) => {
+    await dispatch(deleteProductAsync(productId));
+    navigate("/products");
+  };
 
   if (isAdmin) {
     return (
       <div id="singleProductContainer">
-        <p>ADMIN VIEW</p>
         <div id="singleProdText">
           <h1>{name}</h1>
           <p>{description}</p>
           <p>${price / 100}</p>
-          <button>Edit Product</button>
-          <button>Delete Product</button>
+          <button className="countBtn" onClick={handleDecrement}>
+            -
+          </button>
+          <span className="countSpace">{count}</span>
+          <button className="countBtn" onClick={handleIncrement}>
+            +
+          </button>
+          <button
+            className="buttonSpace"
+            onClick={() => handleCartCreate(userId, id, count)}
+          >
+            Add to Cart
+          </button>
+          <br></br>
+          <div className="singleBreak">
+            <button>Edit Product</button>
+            <button onClick={() => handleDelete(id)}>Delete Product</button>
+          </div>
         </div>
         <div>
-          <img src={imageUrl} />
+          <img className="productImg" src={imageUrl} />
         </div>
-        <button onClick={() => handleCartCreate(userId, id)}>
-          Add to Cart
-        </button>
       </div>
     );
   } else {
@@ -76,7 +97,7 @@ const SingleProduct = () => {
           </button>
         </div>
         <div>
-          <img src={imageUrl} />
+          <img className="productImg" src={imageUrl} />
         </div>
       </div>
     );
