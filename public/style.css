@@ -206,6 +206,7 @@ img {
 #loginCart {
   display: flex;
   align-items: stretch;
+  flex-direction: column;
   border: 3px solid black;
   border-radius: 4px;
   box-shadow: black 3px 3px 5px;
@@ -222,15 +223,15 @@ img {
 }
 
 #checkoutCart{
-  background-color: #177A55;
+  background-color: #f4f1eb;
   border: 3px solid black;
-  box-shadow: black 7px 7px;
+  box-shadow: black 5px 5px;
   border-radius: 5px;
   padding: 45px;
 }
 
 #deleteBtn{
-  background-color: #BE3C5F;
+  background-color: #2660A4;
   border: 3px solid black;
   padding: 3px 6px;
   border-radius: 10px;
@@ -244,7 +245,8 @@ img {
 }
 
 .cartSpan{
-  margin: 15px; 
+  margin: 5px;
+  text-align: left;
   font-size: 30px;
 }
 
@@ -256,7 +258,8 @@ img {
 }
 
 .checkoutCartButtons{
-  background-color: #BE3C5F;
+  color: #f4f1eb;
+  background-color: #2660A4;
   border: 2px solid black;
   border-radius: 7px;
 }
@@ -264,6 +267,15 @@ img {
 .checkoutCartButtons:hover{
   background-color: #A11F42;
   box-shadow: black 3px 3px;
+}
+
+.oneItem{
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.53);
+  padding: 20px;
 }
 
 .neon{
@@ -304,7 +316,7 @@ img {
     padding: 0px;
   }
   .cartImg{
-    width: 70px;
+    width: 80px;
   }
 }
 

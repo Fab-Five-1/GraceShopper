@@ -83,13 +83,7 @@ const Cart = () => {
                     (orderProduct.numberOfItems * product.price) / 100;
 
                   return (
-                    <div
-                      key={product.id}
-                      style={{
-                        borderBottom: "2px solid rgba(0, 0, 0, 0.53)",
-                        padding: "20px",
-                      }}
-                    >
+                    <div key={product.id} className="oneItem">
                       <Link
                         style={{ marginRight: "7px" }}
                         to={`/products/${product.id}`}
