@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-//import SingleProduct from "../singleProduct/SingleProduct";
 import { selectProducts } from "./allProductsSlice";
 import { fetchProductsAsync } from "./allProductsSlice";
 import { createOrder } from "../cart/CartSlice";

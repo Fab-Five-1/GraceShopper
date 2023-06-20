@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { fetchUsersCart, selectCart } from "./CartSlice";
 import { updateOrder } from "./CheckoutSlice";
 
@@ -12,6 +12,8 @@ const Checkout = () => {
   const name = useSelector((state) => state.auth.me.firstName);
   const dispatch = useDispatch();
   const { orders } = useSelector(selectCart);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchUsersCart(userId));
@@ -40,6 +42,7 @@ const Checkout = () => {
       .then(() => {
         setOrderNumber(orderId);
         setPurchaseSuccess(true);
+        navigate("/products");
       })
       .catch((error) => {
         console.log("Error updating order:", error);
