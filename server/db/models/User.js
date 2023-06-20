@@ -9,36 +9,24 @@ const SALT_ROUNDS = 5;
 const User = db.define("user", {
   username: {
     type: Sequelize.STRING,
-    allowNull: false,
-    notEmpty: true,
     unique: true,
   },
   password: Sequelize.STRING,
   email: {
     type: Sequelize.STRING,
-    allowNull: false,
-    notEmpty: true,
     isEmail: true,
     unique: true,
   },
   firstName: {
     type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
   },
   lastName: {
     type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,
-    defaultValue: false
-  }
+    defaultValue: false,
+  },
 });
 
 module.exports = User;
@@ -52,7 +40,7 @@ User.prototype.correctPassword = function (candidatePwd) {
 };
 
 User.prototype.generateToken = function () {
-  return jwt.sign({ id: this.id }, process.env.JWT);
+  return jwt.sign({ id: this.id }, process.env.JWT_SECRET);
 };
 
 /**
@@ -70,7 +58,7 @@ User.authenticate = async function ({ username, password }) {
 
 User.findByToken = async function (token) {
   try {
-    const { id } = await jwt.verify(token, process.env.JWT);
+    const { id } = await jwt.verify(token, process.env.JWT_SECRET);
     const user = User.findByPk(id);
     if (!user) {
       throw "nooo";

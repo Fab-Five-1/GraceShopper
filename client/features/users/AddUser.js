@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addNewUser } from "./AddUserSlice";
 
@@ -38,7 +37,7 @@ export default function AddUser() {
       firstName: firstName,
       lastName: lastName,
     };
-    console.log("submit", newUser);
+
     try {
       // reduxx land
       // Dispatch an action to add the new user to the store
@@ -58,10 +57,7 @@ export default function AddUser() {
     }
   };
 
-  console.log("value of user info ----->", {});
-
   return (
-    // <div>User</div>
     <div>
       <h1> Welcome to Your Grandaddy's Tech. Create your account here.</h1>
       <form onSubmit={handleSubmit}>
@@ -73,7 +69,7 @@ export default function AddUser() {
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
-          <label htmlFor="lastName"> Last Name </label>
+          <label htmlFor="lastName">Last Name</label>
           <input
             type="text"
             name="lastName"

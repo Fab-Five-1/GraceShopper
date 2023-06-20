@@ -1,17 +1,24 @@
-body{
-  height: 100%;
+body {
+  /* height: 100%; */
+  margin: 0;
 }
+
 
 body,
 button {
   /* font-family: sans-serif; */
   font-family: 'Spline Sans Mono', monospace;
-  /* background-color: #f3eee0 */
+  background-color: #f4f1eb;
+  color: #56351E
 }
 
 a {
   text-decoration: none;
-  color: black
+  color: #56351E
+}
+
+h2 {
+  text-align: center;
 }
 
 label {
@@ -20,7 +27,7 @@ label {
 
 nav a {
   display: inline-block;
-  margin: 1em;
+  margin: .75em 1.5em;
 }
 
 form div {
@@ -30,8 +37,38 @@ form div {
 
 .logo {
   font-family: 'VT323', monospace;
+  font-size: 2em;
+  margin: 0 24px;
+  color: #A9581A
 }
 
+img {
+  border: 1px solid #56351E;
+}
+
+/* home */
+
+#homeDiv {
+  background-image: url("/images/computerShop.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 95vh;
+}
+
+
+/* navBar */
+
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* position: fixed; */
+}
+
+
+/* nav {
+  border-bottom: 1px solid #c8b8ab;
+} */
 
 /* all product */
 
@@ -39,30 +76,99 @@ form div {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* margin: 0 10%; */
 }
 
 .product {
-  margin: 0 24px;
+  margin: 8px 24px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }
 
 .productInfo {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
+.allProductImg {
+  width: 375px;
+  height: 375px;
+  border-radius: 20%;
+  object-fit: cover;
+}
 
+.allProductImg:hover {
+  border: 1px rgb(20, 73, 231) solid;
+}
+
+#editProductBtn {
+  width: 40%;
+  border: none;
+  background-color: #f4f1eb;
+
+}
+
+#editProductBtn:hover {
+  color: rgb(20, 73, 231);
+  background-color: none;
+}
+
+.adminAllProd {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin-bottom: 36px;
+}
+
+#addNewBtn {
+  margin: 16px;
+  width: 10%
+}
+
+/* popup */
+.addNewPopup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f4f1eb;
+  border: 1px #56351E solid;
+  border-radius: 4px;
+}
+
+.addProduct,
+.popupHead,
+.successMessage {
+  margin: 40px
+}
+
+.popupHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#X {
+  height: 0 24px
+}
+
+/* .successMessage {
+  margin: 24px
+} */
 
 /* single product page */
 
 #singleProductContainer {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 24px;
 }
 
 #singleProdText {
-  width: 50%
+  width: 40%
 }
 
 .countSpace,
@@ -70,36 +176,188 @@ form div {
   margin: 0 16px;
 }
 
+.countBtn {
+  padding: 4px 8px;
+
+}
+
+.productImg {
+  margin: 32px;
+  border-radius: 20%;
+}
+
+.singleBreak {
+  margin-top: 32px;
+}
+
 /* Cart */
+
+#cartHolder{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: center;
+  height: auto;
+}
 
 #cart{
   display: flex;
   justify-content: center;
-  text-align: center;
-  background-image: url("https://www.rollingstone.com/wp-content/uploads/2022/10/cassette-tape-comeback.jpg");
-  background-size: cover;
-  border: 5px solid black;
-  height: 70vh;
 }
 
-#loginCart{
-  background-color: rgba(240, 248, 255, 0.632);
-  padding: 25px 20%;
+#loginCart {
+  display: flex;
+  align-items: stretch;
+  border: 3px solid black;
+  border-radius: 4px;
+  box-shadow: black 3px 3px 5px;
+  padding: 20px;
 }
 
-.neon {
-  font-size: 1.7rem;
-  margin: 15px;
-  animation: neon 1.2s ease infinite;
+#items{
+  display: flex;
+  flex-wrap: wrap;
 }
+
+#loginCart > * {
+  flex-grow: 1;
+}
+
+#checkoutCart{
+  background-color: #177A55;
+  border: 3px solid black;
+  box-shadow: black 7px 7px;
+  border-radius: 5px;
+  padding: 45px;
+}
+
+#deleteBtn{
+  background-color: #BE3C5F;
+  border: 3px solid black;
+  padding: 3px 6px;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px
+}
+
+#deleteBtn:hover{
+  background-color: #A11F42;
+  box-shadow: black 3px 3px;
+}
+
+.cartSpan{
+  margin: 15px; 
+  font-size: 30px;
+}
+
+.cartImg{
+  box-shadow: black 5px 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 120px;
+}
+
+.checkoutCartButtons{
+  background-color: #BE3C5F;
+  border: 2px solid black;
+  border-radius: 7px;
+}
+
+.checkoutCartButtons:hover{
+  background-color: #A11F42;
+  box-shadow: black 3px 3px;
+}
+
+.neon{
+  font-size: 1.1rem;
+}
+
+.neon:hover {
+  transition: .7s;
+  animation: neon 2.5s ease infinite;
+}
+
 @keyframes neon {
+
   0%,
   100% {
-      text-shadow: 0 0 10px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 2px #fed128, 2px 2px 2px #806914;
+      text-shadow: 0 0 10px #ef00e3a8, 0 0 10px #ef00e3a8, 0 0 10px #ef00e3a8, 0 0 10px #ef00e3a8, 0 0 2px #fed128, 2px 2px 2px #806914;
       color: #f5efcb;
   }
+
   50% {
-      text-shadow: 0 0 2px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 2px #800e0b, 4px 4px 2px #40340a;
-      color: #eda0d3;
+    text-shadow: 0 0 2px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 5px #800e0b, 0 0 2px #800e0b, 4px 4px 2px #40340a;
+    color: #eda0d3;
   }
+}
+
+@media (max-width: 600px){
+  .cartSpan{
+    margin: 10px; 
+    font-size: 20px;
+  }
+  #checkoutCart{
+    border-radius: 0px;
+    box-shadow: none;
+    padding: 5px;
+  }
+  #loginCart {
+    box-shadow: none;
+    padding: 0px;
+  }
+  .cartImg{
+    width: 70px;
+  }
+}
+
+/* login */
+
+.logIn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.logInContainer {
+  width: 100%
+}
+
+
+
+
+.createContainer {
+  text-align: center;
+}
+
+
+#logOutButton {
+  margin-right: 16px;
+}
+
+input {
+  width: 300px;
+  height: 25px;
+  padding-left: 8px;
+  margin-bottom: 16px
+}
+
+
+button {
+  /* background-color: #f78615; */
+  /* color: white; */
+  border: 1px #56351E solid;
+  color: #56351E;
+  box-shadow: none;
+  border-radius: 2px;
+  padding: 4px 16px;
+}
+
+button:hover {
+  background-color: #A9581A;
+  border: 1px #A9581A solid;
+  color: white
+}
+
+.formButton {
+  width: 300px;
 }

@@ -9,6 +9,11 @@ import { me } from "./store";
 import AddUser from "../features/users/AddUser";
 import SingleProduct from "../features/singleProduct/SingleProduct";
 import AllUsers from "../features/allUsers/allUsers"; // it does work though
+import AllProducts from "../features/allProducts/AllProducts";
+
+/**
+ * COMPONENT
+ */
 
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -36,6 +41,7 @@ const AppRoutes = () => {
           <Route to="/home" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:id" element={<SingleProduct />} />
         </Routes>
       ) : (
@@ -44,6 +50,7 @@ const AppRoutes = () => {
           <Route to="/home" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:id" element={<SingleProduct />} />
           <Route
             path="/login"
