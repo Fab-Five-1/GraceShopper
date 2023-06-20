@@ -14,12 +14,19 @@ export const getAllOrders = createAsyncThunk("getAllOrders", async (id) => {
 const orderSlice = createSlice({
   name: "orderSlice",
   initialState: {
-    order: [],
+    user: [],
+    orders: [],
+    orderProducts: [],
+    products: [],
   },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getAllOrders.fulfilled, (state, action) => {
-      state.order = action.payload;
+      const { user, orders, orderProducts, products } = action.payload;
+      state.user = user;
+      state.orders = orders;
+      state.orderProducts = orderProducts;
+      state.products = products;
     });
   },
 });
