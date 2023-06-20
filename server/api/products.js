@@ -32,8 +32,6 @@ router.get("/:productId", async (req, res, next) => {
 router.delete("/:productId", async (req, res, next) => {
   try {
     const productId = req.params.productId;
-    console.log("req.params", req.params)
-    console.log("req.params.productID", productId)
     const product = await Product.findByPk(productId);
     await product.destroy();
 

@@ -30,8 +30,6 @@ const singleProductSlice = createSlice({
             return action.payload;
         })
         builder.addCase(deleteProductAsync.fulfilled, (state, action) => {
-            // const newState = state.filter((product) => product.id !== action.payload.id)
-            // return newState
             const productId = action.payload.id;
             const newState = { ...state }
             delete newState[productId]
