@@ -5,13 +5,25 @@ const Order = require("../db/models/Order");
 const OrderProduct = require("../db/models/OrderProduct");
 const Product = require("../db/models/Product");
 
-router.get("/", async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
-    const user = await User.findByToken(req.headers.authorization);
+    const { id } = req.params;
+    const user = await User.findByPk(id);
     const userId = user.dataValues.id;
     const orders = await Order.findAll({
       where: { userId, fulfilled: false },
     });
+    if (orders.length === 0) {
+      const newOrder = await Order.create({
+        userId: userId,
+      });
+      const orders = await Order.findAll({
+        where: { userId, fulfilled: false },
+      });
+      const orderProducts = [];
+      const products = [];
+      res.send({ user, orders, orderProducts, products });
+    }
     const orderId = orders[0].dataValues.id;
     const orderProducts = await OrderProduct.findAll({
       where: { orderId },

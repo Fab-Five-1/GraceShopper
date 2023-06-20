@@ -10,7 +10,10 @@ import {
 } from "./CartSlice";
 
 const Cart = () => {
-  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  let userId = useSelector((state) => state.auth.me.id);
+  if (!userId) {
+    userId = window.localStorage.guest;
+  }
   const firstName = useSelector((state) => state.auth.me.firstName);
   const dispatch = useDispatch();
   const { orders, products, orderProducts } = useSelector(selectCart);
@@ -18,10 +21,8 @@ const Cart = () => {
   const orderId = orders.map((info) => info.id);
 
   useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(fetchUsersCart());
-    }
-  }, [dispatch, fetchUsersCart, isLoggedIn]);
+    dispatch(fetchUsersCart(userId));
+  }, [dispatch, fetchUsersCart]);
 
   const handleQuantityChange = (event, orderProductId) => {
     const newQuantity = parseInt(event.target.value);
@@ -39,7 +40,8 @@ const Cart = () => {
         (op) => op.productId === product.id
       );
       const productTotal = (orderProduct.numberOfItems * product.price) / 100;
-      return total + productTotal;
+      let results = total + productTotal;
+      return results;
     }, 0);
   };
 
@@ -48,20 +50,31 @@ const Cart = () => {
     dispatch(fetchUsersCart());
   };
 
-  const handleCheckout = async (total, id) => {
+  const handleCheckout = async (total) => {
+    const id = orderId[0];
     dispatch(setTotalPrice({ total, id }));
   };
 
   return (
-    <div id="cart">
-      {isLoggedIn ? (
+    <div id="cartHolder">
+      {firstName ? (
+        <h1 style={{ borderBottom: "5px dotted black" }}>
+          Welcome to your cart, {firstName}
+        </h1>
+      ) : (
+        <h1 style={{ borderBottom: "5px solid black" }}>
+          Welcome to your cart
+        </h1>
+      )}
+      <div id="cart">
         <div id="loginCart">
-          <h1 style={{ borderBottom: "5px solid black" }}>
-            Welcome to your cart, {firstName} 😎
-          </h1>
-          <section>
+          <section
+            style={{
+              padding: "20px",
+            }}
+          >
             {orderProducts.length > 0 ? (
-              <div>
+              <div className="items">
                 {products.map((product) => {
                   const orderProduct = orderProducts.find(
                     (op) => op.productId === product.id
@@ -73,16 +86,26 @@ const Cart = () => {
                     <div
                       key={product.id}
                       style={{
-                        display: "inline-block",
-                        borderBottom: "5px solid rgba(0, 0, 0, 0.53)",
+                        borderBottom: "2px solid rgba(0, 0, 0, 0.53)",
                         padding: "20px",
                       }}
                     >
+                      <Link
+                        style={{ marginRight: "7px" }}
+                        to={`/products/${product.id}`}
+                      >
+                        <img
+                          className="cartImg"
+                          src={product.imageUrl}
+                          alt={product.name}
+                        />
+                      </Link>
+                      <span className="cartSpan ">{product.name}</span>
                       <input
                         style={{
                           margin: "0px 5px",
-                          width: "30px",
-                          fontSize: "25px",
+                          width: "35px",
+                          fontSize: "30px",
                         }}
                         type="number"
                         value={orderProduct.numberOfItems}
@@ -91,23 +114,9 @@ const Cart = () => {
                           handleQuantityChange(event, orderProduct.id)
                         }
                       />
-                      <span className="neon">{product.name}</span>
-                      <Link
-                        style={{ marginRight: "7px" }}
-                        to={`/products/${product.id}`}
-                      >
-                        <img
-                          src={product.imageUrl}
-                          width="70px"
-                          style={{ border: "4px solid black" }}
-                          alt={product.name}
-                        />
-                      </Link>
-                      <span style={{ margin: "15px", fontSize: "25px" }}>
-                        ${productTotal}
-                      </span>
+                      <span className="cartSpan ">Total: ${productTotal}</span>
                       <button
-                        style={{ fontSize: "20px" }}
+                        id="deleteBtn"
                         type="button"
                         onClick={() => handleDelete(orderProduct.id)}
                       >
@@ -118,32 +127,56 @@ const Cart = () => {
                 })}
               </div>
             ) : (
-              <h2>Cart is empty</h2>
+              <h2 style={{ margin: "100px" }}>Cart is empty</h2>
             )}
           </section>
-          <h3 style={{ fontSize: "25px" }}>Total: ${calculateTotal()}</h3>
-          <h3 style={{ fontSize: "25px" }}>Ready to checkout?</h3>
-          <Link to="/checkout">
+          <section id="checkoutCart">
+            <label style={{ marginTop: "7px", fontSize: "22px" }}>
+              ENTER PROMO CODE
+            </label>
+            <input
+              style={{
+                marginTop: "15px",
+                padding: "5px",
+                fontSize: "15px",
+                backgroundColor: "white",
+                border: "2px solid black",
+                borderRadius: "5px",
+              }}
+              type="text"
+              placeholder="Promo Code"
+            ></input>
             <button
-              style={{ fontSize: "20px" }}
-              type="button"
-              onClick={() => handleCheckout(calculateTotal(), orderId[0])}
+              className="checkoutCartButtons"
+              style={{
+                padding: "5px",
+              }}
             >
-              Checkout
+              SUBMIT
             </button>
-          </Link>
+            <h3 style={{ fontSize: "20px" }}>Discount: $0</h3>
+            <h3 style={{ fontSize: "20px" }}>Total: ${calculateTotal()}</h3>
+            <h3 style={{ fontSize: "25px" }}>Ready to checkout?</h3>
+            <Link to="/checkout">
+              <button
+                className="checkoutCartButtons"
+                style={{
+                  fontSize: "20px",
+                }}
+                type="button"
+                onClick={() => handleCheckout(calculateTotal())}
+              >
+                Checkout
+              </button>
+            </Link>
+          </section>
         </div>
-      ) : (
-        <div>
-          <h1>Hi, you're not signed in!</h1>
-          <h3>Would you like to login or sign up?</h3>
-          <Link to="/login">Login</Link>
-          <br />
-          <Link to="/signup">Sign Up</Link>
-          <h3>Or continue as a guest</h3>
-          <Link to="/guestcheckout">Continue</Link>
-        </div>
-      )}
+      </div>
+      <h1 style={{ marginTop: "75px" }}>Thank you 💘</h1>
+      <h5>
+        Price excludes delivery, taxes, and shipping which are calculated at
+        checkout
+      </h5>
     </div>
   );
 };

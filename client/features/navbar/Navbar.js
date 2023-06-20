@@ -19,12 +19,18 @@ const Navbar = () => {
           {/* The navbar will show these links after you log in */}
 
           <div>
-            <Link className="logo" to="/home">Grandad's Tech</Link>
+            <Link className="logo" to="/home">
+              Grandad's Tech
+            </Link>
           </div>
           <div>
             <Link to="/products">Shop</Link>
             <Link to="/cart">Cart 🛒</Link>
-            <button id="logOutButton" type="button" onClick={logoutAndRedirectHome}>
+            <button
+              id="logOutButton"
+              type="button"
+              onClick={logoutAndRedirectHome}
+            >
               Logout
             </button>
           </div>
@@ -33,7 +39,9 @@ const Navbar = () => {
         <div className="navBar">
           {/* The navbar will show these links before you log in */}
           <div>
-            <Link className="logo" to="/home">Grandad's Tech</Link>
+            <Link className="logo" to="/home">
+              Grandad's Tech
+            </Link>
           </div>
           <div>
             <Link to="/products">Shop</Link>

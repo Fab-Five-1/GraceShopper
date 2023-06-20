@@ -192,33 +192,95 @@ img {
 
 /* Cart */
 
-#cart {
+#cartHolder{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-align: center;
+  height: auto;
+}
+
+#cart{
   display: flex;
   justify-content: center;
-  text-align: center;
-  background-image: url("https://www.rollingstone.com/wp-content/uploads/2022/10/cassette-tape-comeback.jpg");
-  background-size: cover;
-  border: 5px solid black;
-  height: 70vh;
 }
 
 #loginCart {
-  background-color: rgba(240, 248, 255, 0.632);
-  padding: 25px 20%;
+  display: flex;
+  align-items: stretch;
+  border: 3px solid black;
+  border-radius: 4px;
+  box-shadow: black 3px 3px 5px;
+  padding: 20px;
 }
 
-.neon {
-  font-size: 1.7rem;
-  margin: 15px;
-  animation: neon 1.2s ease infinite;
+#items{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#loginCart > * {
+  flex-grow: 1;
+}
+
+#checkoutCart{
+  background-color: #177A55;
+  border: 3px solid black;
+  box-shadow: black 7px 7px;
+  border-radius: 5px;
+  padding: 45px;
+}
+
+#deleteBtn{
+  background-color: #BE3C5F;
+  border: 3px solid black;
+  padding: 3px 6px;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px
+}
+
+#deleteBtn:hover{
+  background-color: #A11F42;
+  box-shadow: black 3px 3px;
+}
+
+.cartSpan{
+  margin: 15px; 
+  font-size: 30px;
+}
+
+.cartImg{
+  box-shadow: black 5px 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 120px;
+}
+
+.checkoutCartButtons{
+  background-color: #BE3C5F;
+  border: 2px solid black;
+  border-radius: 7px;
+}
+
+.checkoutCartButtons:hover{
+  background-color: #A11F42;
+  box-shadow: black 3px 3px;
+}
+
+.neon{
+  font-size: 1.1rem;
+}
+
+.neon:hover {
+  transition: .7s;
+  animation: neon 2.5s ease infinite;
 }
 
 @keyframes neon {
 
   0%,
   100% {
-    text-shadow: 0 0 10px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 20px #ef00e3a8, 0 0 2px #fed128, 2px 2px 2px #806914;
-    color: #f5efcb;
+      text-shadow: 0 0 10px #ef00e3a8, 0 0 10px #ef00e3a8, 0 0 10px #ef00e3a8, 0 0 10px #ef00e3a8, 0 0 2px #fed128, 2px 2px 2px #806914;
+      color: #f5efcb;
   }
 
   50% {
@@ -227,6 +289,24 @@ img {
   }
 }
 
+@media (max-width: 600px){
+  .cartSpan{
+    margin: 10px; 
+    font-size: 20px;
+  }
+  #checkoutCart{
+    border-radius: 0px;
+    box-shadow: none;
+    padding: 5px;
+  }
+  #loginCart {
+    box-shadow: none;
+    padding: 0px;
+  }
+  .cartImg{
+    width: 70px;
+  }
+}
 
 /* login */
 

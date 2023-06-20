@@ -1,21 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const TOKEN = "token";
+const GUEST = "guest";
 
-export const fetchUsersCart = createAsyncThunk("cart", async () => {
-  const token = window.localStorage.getItem(TOKEN);
+export const fetchUsersCart = createAsyncThunk("cart", async (id) => {
   try {
-    if (token) {
-      const { data } = await axios.get("/api/cart", {
-        headers: {
-          authorization: token,
-        },
-      });
-      return data;
-    } else {
-      return {};
-    }
+    const { data } = await axios.get(`/api/cart/${id}`);
+    return data;
   } catch (err) {
     console.error(err);
     throw err;
@@ -63,12 +54,15 @@ export const setTotalPrice = createAsyncThunk(
 
 export const createOrder = createAsyncThunk(
   "createOrder",
-  async ({ userId, productId }) => {
+  async ({ userId, productId, count }) => {
     try {
       const { data } = await axios.put(`/api/products/${productId}`, {
         userId,
+        count,
       });
-      console.log(data);
+      if (data.newGuest) {
+        window.localStorage.setItem(GUEST, data.newGuest.id);
+      }
       return data;
     } catch (err) {
       console.error(err);
