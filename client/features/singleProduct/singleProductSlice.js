@@ -13,8 +13,23 @@ export const fetchSingleProduct = createAsyncThunk(
         }
     });
 
+
 export const deleteProductAsync = createAsyncThunk("deleteProduct", async (productId) => {
     const { data } = await axios.delete(`/api/products/${productId}`);
+    return data
+})
+
+export const editProductAsync = createAsyncThunk("editProduct", async ({ name, description, price, quantity, category, imageUrl, id }) => {
+    console.log(id)
+    const { data } = await axios.put(`/api/products/${id}`, {
+        name,
+        description,
+        price,
+        quantity,
+        category,
+        imageUrl,
+    });
+    console.log(data)
     return data
 })
 
@@ -34,6 +49,9 @@ const singleProductSlice = createSlice({
             const newState = { ...state }
             delete newState[productId]
             return newState
+        })
+        builder.addCase(editProductAsync.fulfilled, (state, action) => {
+            return action.payload
         })
     }
 })
