@@ -9,65 +9,27 @@ import { Link } from "react-router-dom";
 const Order = () => {
   let userId = useSelector((state) => state.auth.me.id);
   const dispatch = useDispatch();
-  const { orders, products, orderProducts } = useSelector(selectOrders);
-
-  const getProductPrice = (productId) => {
-    const product = products.find((p) => p.id === productId);
-    return product ? product.price : 0;
-  };
+  const { orders } = useSelector(selectOrders);
 
   useEffect(() => {
     dispatch(getAllOrders(userId));
   }, [dispatch, userId]);
 
-  const mappedOrders = orders.map((order) => {
-    console.log(orders);
-    const orderedProducts = orderProducts;
-
-    return {
-      id: order.id,
-      products: orderedProducts,
-      total: order.total,
-    };
-  });
-
   return (
     <div style={{ textAlign: "center" }}>
       <h1>Here are your orders...</h1>
-      {mappedOrders.length > 0 ? (
+      {orders.length > 0 ? (
         <div>
-          {mappedOrders.map((mappedOrder) => (
-            <div key={mappedOrder.id}>
-              <h2>Order ID: {mappedOrder.id}</h2>
-              {mappedOrder.products.map((orderProduct) => {
-                const product = products.find(
-                  (p) => p.id === orderProduct.productId
-                );
-                const productTotal = (
-                  orderProduct.numberOfItems *
-                  getProductPrice(orderProduct.productId)
-                ).toFixed(2);
-
-                return (
-                  <div key={orderProduct.productId} className="oneItem">
-                    <img
-                      className="cartImg"
-                      src={product.imageUrl}
-                      alt={product.name}
-                    />
-                    <span className="cartSpan">Item: {product.name}</span>
-                    <span className="cartSpan">
-                      Quantity: {orderProduct.numberOfItems}
-                    </span>
-                    <span className="cartSpan">Total: ${productTotal}</span>
-                  </div>
-                );
-              })}
-              <div className="orderTotal">
-                <h3>Total: ${mappedOrder.total.toFixed(2)}</h3>
-              </div>
-            </div>
-          ))}
+          {orders.map((order) => {
+            return (
+              <Link key={order.id} to={`/order${order.id}`}>
+                <div key={order.id}>
+                  <h2>Order ID: {order.id}</h2>
+                  <h3>Total: ${order.total}</h3>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       ) : (
         <>
