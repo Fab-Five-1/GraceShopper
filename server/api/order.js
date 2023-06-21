@@ -7,13 +7,23 @@ const Product = require("../db/models/Product");
 
 router.get("/", async (req, res, next) => {
   try {
+    console.log(req.query);
     const id = req.query.id;
-    const user = await User.findByPk(id);
-    const userId = user.dataValues.id;
     const orders = await Order.findAll({
-      where: { userId, fulfilled: true },
+      where: { userId: id, fulfilled: true },
     });
     res.send({ orders });
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
+
+router.get("/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const order = await Order.findByPk(id);
+    res.send({ order });
   } catch (err) {
     console.error(err);
     next(err);

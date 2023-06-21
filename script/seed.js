@@ -79,10 +79,6 @@ async function seed() {
       fulfilled: false,
       userId: 1,
     }),
-    Order.create({
-      fulfilled: true,
-      userId: 1,
-    }),
   ]);
 
   const products = await Promise.all([

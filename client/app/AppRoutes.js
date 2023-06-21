@@ -11,6 +11,7 @@ import SingleProduct from "../features/singleProduct/SingleProduct";
 import AllUsers from "../features/allUsers/allUsers"; // it does work though
 import AllProducts from "../features/allProducts/AllProducts";
 import Order from "../features/orders/Order";
+import SingleOrder from "../features/orders/SingleOrder";
 
 /**
  * COMPONENT
@@ -37,6 +38,7 @@ const AppRoutes = () => {
           <Route path="/products/:id" element={<SingleProduct />} />
           <Route path="/admin" element={<AllUsers />} />
           <Route path="/orders" element={<Order />} />
+          <Route path="/orders/:id" element={<SingleOrder />} />
         </Routes>
       ) : isLoggedIn ? (
         <Routes>
@@ -47,6 +49,7 @@ const AppRoutes = () => {
           <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:id" element={<SingleProduct />} />
           <Route path="/orders" element={<Order />} />
+          <Route path="/orders/:id" element={<SingleOrder />} />
         </Routes>
       ) : (
         <Routes>
