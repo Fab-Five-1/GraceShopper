@@ -3,10 +3,12 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteProductAsync,
+  editProductAsync,
   fetchSingleProduct,
   selectSingleProduct,
 } from "./singleProductSlice";
 import { createOrder } from "../cart/CartSlice";
+import EditProduct from "./EditProduct";
 
 const SingleProduct = () => {
   const productId = useParams();
@@ -47,6 +49,19 @@ const SingleProduct = () => {
     navigate("/products");
   };
 
+  const handleEdit = async (productId) => {
+    await dispatch(editProductAsync(productId));
+  };
+
+  const [popUp, setPopup] = useState(false);
+  const handleClickOpen = () => {
+    setPopup(!popUp);
+  };
+
+  const closePopup = () => {
+    setPopup(false);
+  };
+
   if (isAdmin) {
     return (
       <div id="singleProductContainer">
@@ -69,7 +84,23 @@ const SingleProduct = () => {
           </button>
           <br></br>
           <div className="singleBreak">
-            <button>Edit Product</button>
+            {/* <button onClick={() => handleEdit(id)}>Edit Product</button> */}
+            <button onClick={handleClickOpen}>Edit Product</button>
+            <div className="addNewPopup">
+              {popUp ? (
+                <div>
+                  <div className="popupHead">
+                    <h3>Edit A Product</h3>
+                    <button id="X" onClick={closePopup}>
+                      X
+                    </button>
+                  </div>
+                  <EditProduct />
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
             <button onClick={() => handleDelete(id)}>Delete Product</button>
           </div>
         </div>
