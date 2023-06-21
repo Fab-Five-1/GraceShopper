@@ -101,7 +101,7 @@ const SingleProduct = () => {
                 ""
               )}
             </div>
-            <button onClick={() => handleDelete(id)}>Delete Product</button>
+            <button id="deleteButton" onClick={() => handleDelete(id)}>Delete Product</button>
           </div>
         </div>
         <div>

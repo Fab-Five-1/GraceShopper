@@ -48,11 +48,70 @@ img {
 
 /* home */
 
-#homeDiv {
+#homeContainer {
+  position: relative;
+}
+
+#homeSlogan,
+#homeSlogan2 {
+  font-family: 'VT323', monospace;
+  font-size: 3EM;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: rgb(20, 73, 231);
+  letter-spacing: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: rgb(240, 248, 255, .6);
+}
+
+#homeSlogan {
+  transform: translate(-60%, -750%);
+  width: 100%
+}
+
+#homeSlogan2 {
+  transform: translate(-30%, -600%);
+  width: 100%;
+}
+
+#homeImg {
   background-image: url("/images/computerShop.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 95vh;
+  opacity: .8;
+}
+
+.flashingDotsContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.flashingDot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(20, 73, 231);
+  margin: 0 5px;
+  animation: flashAnimation 1s infinite;
+}
+
+@keyframes flashAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 
@@ -96,17 +155,18 @@ img {
   height: 375px;
   border-radius: 20%;
   object-fit: cover;
+  /* box-shadow: #56351E 9px 9px; */
 }
 
 .allProductImg:hover {
   border: 1px rgb(20, 73, 231) solid;
+  /* box-shadow: rgb(20, 73, 231) 9px 9px; */
 }
 
 #editProductBtn {
   width: 40%;
   border: none;
   background-color: #f4f1eb;
-
 }
 
 #editProductBtn:hover {
@@ -123,7 +183,11 @@ img {
 
 #addNewBtn {
   margin: 16px;
-  width: 10%
+  width: 16%
+}
+
+#deleteButton {
+  margin-left: 16px;
 }
 
 /* popup */
@@ -192,13 +256,13 @@ img {
 
 /* Cart */
 
-#cartHolder{
+#cartHolder {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   text-align: center;
   height: auto;
 }
 
-#cart{
+#cart {
   display: flex;
   justify-content: center;
 }
@@ -213,16 +277,16 @@ img {
   padding: 20px;
 }
 
-#items{
+#items {
   display: flex;
   flex-wrap: wrap;
 }
 
-#loginCart > * {
+#loginCart>* {
   flex-grow: 1;
 }
 
-#checkoutCart{
+#checkoutCart {
   background-color: #f4f1eb;
   border: 3px solid black;
   box-shadow: black 5px 5px;
@@ -230,7 +294,7 @@ img {
   padding: 45px;
 }
 
-#deleteBtn{
+#deleteBtn {
   background-color: #2660A4;
   border: 3px solid black;
   padding: 3px 6px;
@@ -239,37 +303,37 @@ img {
   font-size: 20px
 }
 
-#deleteBtn:hover{
+#deleteBtn:hover {
   background-color: #A11F42;
   box-shadow: black 3px 3px;
 }
 
-.cartSpan{
+.cartSpan {
   margin: 5px;
   text-align: left;
   font-size: 30px;
 }
 
-.cartImg{
+.cartImg {
   box-shadow: black 5px 5px;
   border: 2px solid black;
   border-radius: 5px;
   width: 120px;
 }
 
-.checkoutCartButtons{
+.checkoutCartButtons {
   color: #f4f1eb;
   background-color: #2660A4;
   border: 2px solid black;
   border-radius: 7px;
 }
 
-.checkoutCartButtons:hover{
+.checkoutCartButtons:hover {
   background-color: #A11F42;
   box-shadow: black 3px 3px;
 }
 
-.oneItem{
+.oneItem {
   text-align: left;
   display: flex;
   justify-content: space-between;
@@ -278,21 +342,24 @@ img {
   padding: 20px;
 }
 
-@media (max-width: 600px){
-  .cartSpan{
-    margin: 10px; 
+@media (max-width: 600px) {
+  .cartSpan {
+    margin: 10px;
     font-size: 20px;
   }
-  #checkoutCart{
+
+  #checkoutCart {
     border-radius: 0px;
     box-shadow: none;
     padding: 5px;
   }
+
   #loginCart {
     box-shadow: none;
     padding: 0px;
   }
-  .cartImg{
+
+  .cartImg {
     width: 80px;
   }
 }
@@ -344,7 +411,8 @@ button {
 button:hover {
   background-color: #A9581A;
   border: 1px #A9581A solid;
-  color: white
+  color: white;
+  box-shadow: #56351E 7px 7px;
 }
 
 .formButton {
@@ -352,13 +420,51 @@ button:hover {
 }
 
 /*ORDER */
-#orderHolder{
+#orderHolder {
   display: flex;
   text-align: center;
   flex-direction: column;
 }
 
-.orderSpan{
+.orderSpan {
   font-size: 25px;
   margin-right: 20px;
+}
+
+
+#user-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.userFlex {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 32px;
+  margin: 0 16px
+}
+
+
+#userHeading {
+  display: flex;
+  justify-content: space-around;
+  text-align: left;
+  flex: 1
+}
+
+.tableItems {
+  flex: 1;
+  padding: 0 16;
+}
+
+#editHeading {
+  text-align: center;
+}
+
+#adminHeading {
+  text-align: center;
+}
+
+#allProductsHead {
+  margin-top: 32px;
 }
