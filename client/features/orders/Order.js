@@ -19,14 +19,16 @@ const Order = () => {
     <div>
       <h1 style={{ textAlign: "center" }}>Here are your orders...</h1>
       {orders[0] ? (
-        <div>
+        <div id="orderHolder">
           {orders.map((order) => {
             return (
               <div key={order.id}>
-                <span>Order ID: {order.id}</span>
-                <span>Total: ${order.total}</span>
+                <span className="orderSpan">Order ID: {order.id}</span>
+                <span className="orderSpan">Total: ${order.total}</span>
                 <Link to={`/orders/${order.id}`}>
-                  <button>FULL ORDER DETAILS</button>
+                  <button style={{ fontSize: "15px" }}>
+                    FULL ORDER DETAILS
+                  </button>
                 </Link>
               </div>
             );
