@@ -26,6 +26,7 @@ const orderSlice = createSlice({
   initialState: {
     user: [],
     orders: [],
+    order: [],
     orderProducts: [],
     products: [],
   },
@@ -39,7 +40,7 @@ const orderSlice = createSlice({
     builder.addCase(getOrder.fulfilled, (state, action) => {
       const { user, orders, orderProducts, products } = action.payload;
       state.user = user;
-      state.orders = orders;
+      state.order = orders;
       state.orderProducts = orderProducts;
       state.products = products;
     });

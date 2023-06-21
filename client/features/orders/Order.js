@@ -18,7 +18,7 @@ const Order = () => {
   return (
     <div style={{ textAlign: "center" }}>
       <h1>Here are your orders...</h1>
-      {orders.length > 0 ? (
+      {orders[0] ? (
         <div>
           {orders.map((order) => {
             return (
