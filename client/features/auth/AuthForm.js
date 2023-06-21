@@ -42,8 +42,9 @@ const AuthForm = ({ name, displayName }) => {
           </div>
           <div>
             <button className="formButton" type="submit">{displayName}</button>
-          </div>
-          {error && <div> {error} </div>}
+          </div >
+          {/* {error && <div> {error} </div>} */}
+          {error && <div style={{ color: "red" }}>Please fill in correct username/password or Create an Account</div>}
         </form>
       </div>
       <hr className="loginHR"></hr>
