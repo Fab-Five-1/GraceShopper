@@ -8,8 +8,6 @@ const Product = require("../db/models/Product");
 router.get("/", async (req, res, next) => {
   try {
     const id = req.query.id;
-    console.log("PAR", req.params);
-    console.log("BODY", req.query);
     const user = await User.findByPk(id);
     const userId = user.dataValues.id;
     const orders = await Order.findAll({
