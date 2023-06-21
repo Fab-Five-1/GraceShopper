@@ -18,7 +18,7 @@ const EditProduct = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const bool = false;
+    const bool = true;
     const finalPrice = price * 100;
     dispatch(
       editProductAsync({

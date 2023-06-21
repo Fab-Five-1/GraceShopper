@@ -39,7 +39,7 @@ const SingleProduct = () => {
   };
 
   const handleCartCreate = async (userId, productId, count) => {
-    const bool = true;
+    const bool = false;
     dispatch(createOrder({ userId, productId, count, bool }));
   };
 
