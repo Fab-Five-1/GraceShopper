@@ -54,30 +54,25 @@ img {
 
 #homeSlogan,
 #homeSlogan2 {
-  font-size: 2.4EM;
+  font-family: 'VT323', monospace;
+  font-size: 3EM;
   position: absolute;
   top: 50%;
   left: 50%;
-  color: #2660A4;
+  color: rgb(20, 73, 231);
   letter-spacing: 10px;
   text-align: center;
   text-transform: uppercase;
-  /* transform: rotate(-10deg); */
-  text-shadow: #ffffff 4px 3px 0px,
-    #2660A4 4px 3px 0px,
-    #ffffff 5px 4px 0px,
-    #ffffff 6px 5px 0px,
-    #ffffff 4px 7px 8px,
-    #ffffff 4px 7px 8px
+  background-color: rgb(240, 248, 255, .6);
 }
 
 #homeSlogan {
-  transform: translate(-50%, -750%);
+  transform: translate(-60%, -750%);
   width: 100%
 }
 
 #homeSlogan2 {
-  transform: translate(-50%, -600%);
+  transform: translate(-30%, -600%);
   width: 100%;
 }
 
@@ -87,6 +82,36 @@ img {
   background-repeat: no-repeat;
   height: 95vh;
   opacity: .8;
+}
+
+.flashingDotsContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.flashingDot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(20, 73, 231);
+  margin: 0 5px;
+  animation: flashAnimation 1s infinite;
+}
+
+@keyframes flashAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 
@@ -395,13 +420,13 @@ button:hover {
 }
 
 /*ORDER */
-#orderHolder{
+#orderHolder {
   display: flex;
   text-align: center;
   flex-direction: column;
 }
 
-.orderSpan{
+.orderSpan {
   font-size: 25px;
   margin-right: 20px;
 }
