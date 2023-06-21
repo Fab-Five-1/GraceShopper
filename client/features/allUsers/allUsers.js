@@ -2,12 +2,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllUsers, selectAllUsers } from "./allUsersSlice.js";
+import AllProducts from "../allProducts/AllProducts.js";
 
 // Your goal is to display all Users on admin site only
 
 export default function AllUsers() {
   const dispatch = useDispatch(); // Hook to acess the Redux dispatch function // calls every function in my redux // 
-  
+
   const allUsers = useSelector(selectAllUsers) || []; // Retrieves allUsers state from Redux store
   // If allUsers is null or undefined, set it to an empty array
   // This ensures we have an empty array instead of a falsy value
@@ -18,38 +19,70 @@ export default function AllUsers() {
   useEffect(() => {
     // useEffect hook runs once when the component is mounted
     // Dispatches the fetchAllUsers action to fetch all users from the server and update the state
-    dispatch(fetchAllUsers()); 
+    dispatch(fetchAllUsers());
   }, []);
 
-   // Conditional rendering when allUsers is still undefined
+  // Conditional rendering when allUsers is still undefined
   if (!allUsers) {
     return <div>Loading...</div>; // Display a loading message until the data is fetched
   }
 
-  console.log("This is allUsers----->", allUsers);
-
-// Render the user list
+  // Render the user list
   return (
-    <div id="users">
+    <div id="adminPortal">
+      <h1 id="adminHeading">Admin Portal</h1>
       <div id="user-list">
-        <h2>List of all Users</h2>
-        
+        <h2>All Users</h2>
+        <div id="userHeading">
+          <p>UserId</p>
+          <p>UserName</p>
+          <p>Email</p>
+          <p>First Name</p>
+          <p>Last Name</p>
+        </div>
         {allUsers.map((user) => {
           return (
-            <div style = {{borderBottom: "5px solid gray"}} key={user.id}>
+            <div className="userFlex" style={{ borderBottom: "1px solid gray" }} key={user.id}>
               {" "}
-              <span style= {{ marginRight: "25px" }} > {user.id}</span>
-              <span style= {{ marginRight: "25px" }} >Username: {user.username}</span>
-              {/* <span style= {{ marginRight: "25px" }}>Password: {user.password}</span> */}
-              <span style= {{ marginRight: "25px" }}>Email: {user.email}</span>
-              <span style= {{ marginRight: "25px" }}>First Name: {user.firstName}</span>
-              <span style= {{ marginRight: "25px" }}>Last Name: {user.lastName}</span>
+              <p className="tableItems"> {user.id}</p>
+              <p className="tableItems" > {user.username}</p>
+              <p className="tableItems" > {user.email}</p>
+              <p className="tableItems" > {user.firstName}</p>
+              <p className="tableItems" > {user.lastName}</p>
             </div>
           );
         })}
       </div>
+      <br>
+      </br>
+      <h2 id="allProductsHead">All Products</h2>
+      <h3 id="editHeading">Edit, Delete and Add New Products</h3>
+      <AllProducts />
     </div>
   );
+
+
+  // return (
+  //   <div id="users">
+  //     <div id="user-list">
+  //       <h2>List of all Users</h2>
+
+  //       {allUsers.map((user) => {
+  //         return (
+  //           <div style = {{borderBottom: "5px solid gray"}} key={user.id}>
+  //             {" "}
+  //             <span style= {{ marginRight: "25px" }} > {user.id}</span>
+  //             <span style= {{ marginRight: "25px" }} >Username: {user.username}</span>
+  //             {/* <span style= {{ marginRight: "25px" }}>Password: {user.password}</span> */}
+  //             <span style= {{ marginRight: "25px" }}>Email: {user.email}</span>
+  //             <span style= {{ marginRight: "25px" }}>First Name: {user.firstName}</span>
+  //             <span style= {{ marginRight: "25px" }}>Last Name: {user.lastName}</span>
+  //           </div>
+  //         );
+  //       })}
+  //     </div>
+  //   </div>
+  // );
 }
 
 

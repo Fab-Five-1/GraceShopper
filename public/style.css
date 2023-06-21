@@ -54,21 +54,31 @@ img {
 
 #homeSlogan,
 #homeSlogan2 {
-  font-size: 2.5EM;
+  font-size: 2.4EM;
   position: absolute;
   top: 50%;
   left: 50%;
-  color: rgb(20, 73, 231);
-  text-shadow: 1px 1px 2px #f4f1eb, 0 0 1em #f4f1eb, 0 0 0.2em #f4f1eb;
-  /* text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue; */
+  color: #2660A4;
+  letter-spacing: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  /* transform: rotate(-10deg); */
+  text-shadow: #ffffff 4px 3px 0px,
+    #2660A4 4px 3px 0px,
+    #ffffff 5px 4px 0px,
+    #ffffff 6px 5px 0px,
+    #ffffff 4px 7px 8px,
+    #ffffff 4px 7px 8px
 }
 
 #homeSlogan {
-  transform: translate(-70%, -300%);
+  transform: translate(-50%, -750%);
+  width: 100%
 }
 
 #homeSlogan2 {
-  transform: translate(-40%, -400%);
+  transform: translate(-50%, -600%);
+  width: 100%;
 }
 
 #homeImg {
@@ -76,6 +86,7 @@ img {
   background-size: cover;
   background-repeat: no-repeat;
   height: 95vh;
+  opacity: .8;
 }
 
 
@@ -119,17 +130,18 @@ img {
   height: 375px;
   border-radius: 20%;
   object-fit: cover;
+  /* box-shadow: #56351E 9px 9px; */
 }
 
 .allProductImg:hover {
   border: 1px rgb(20, 73, 231) solid;
+  /* box-shadow: rgb(20, 73, 231) 9px 9px; */
 }
 
 #editProductBtn {
   width: 40%;
   border: none;
   background-color: #f4f1eb;
-
 }
 
 #editProductBtn:hover {
@@ -146,7 +158,11 @@ img {
 
 #addNewBtn {
   margin: 16px;
-  width: 10%
+  width: 16%
+}
+
+#deleteButton {
+  margin-left: 16px;
 }
 
 /* popup */
@@ -370,9 +386,48 @@ button {
 button:hover {
   background-color: #A9581A;
   border: 1px #A9581A solid;
-  color: white
+  color: white;
+  box-shadow: #56351E 7px 7px;
 }
 
 .formButton {
   width: 300px;
+}
+
+
+#user-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.userFlex {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 32px;
+  margin: 0 16px
+}
+
+
+#userHeading {
+  display: flex;
+  justify-content: space-around;
+  text-align: left;
+  flex: 1
+}
+
+.tableItems {
+  flex: 1;
+  padding: 0 16;
+}
+
+#editHeading {
+  text-align: center;
+}
+
+#adminHeading {
+  text-align: center;
+}
+
+#allProductsHead {
+  margin-top: 32px;
 }

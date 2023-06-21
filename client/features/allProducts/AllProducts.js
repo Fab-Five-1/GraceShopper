@@ -49,12 +49,8 @@ const AllProducts = () => {
                 <h3>{product.name}</h3>
                 <h3>${product.price / 100}</h3>
               </div>
-              <button id="editProductBtn">Edit Product</button>
             </div>
           </NavLink>
-          {/* <button onClick={() => handleCartCreate(userId, product.id)}>
-            Add to Cart
-          </button> */}
         </div>
       ));
     };
@@ -109,9 +105,6 @@ const AllProducts = () => {
               </div>
             </div>
           </NavLink>
-          {/* <button onClick={() => handleCartCreate(userId, product.id)}>
-            Add to Cart
-          </button> */}
         </div>
       ));
     };
