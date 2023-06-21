@@ -16,7 +16,7 @@ const Order = () => {
   }, [dispatch, userId]);
 
   return (
-    <div style={{ textAlign: "center" }}>
+    <div style={{ textAlign: "left" }}>
       <h1>Here are your orders...</h1>
       {orders[0] ? (
         <div>
@@ -24,7 +24,7 @@ const Order = () => {
             return (
               <Link key={order.id} to={`/orders/${order.id}`}>
                 <div key={order.id}>
-                  <h2>Order ID: {order.id}</h2>
+                  <h2 style={{ textAlign: "left" }}>Order ID: {order.id}</h2>
                   <h3>Total: ${order.total}</h3>
                 </div>
               </Link>
