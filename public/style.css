@@ -350,3 +350,15 @@ button:hover {
 .formButton {
   width: 300px;
 }
+
+/*ORDER */
+#orderHolder{
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+.orderSpan{
+  font-size: 25px;
+  margin-right: 20px;
+}
