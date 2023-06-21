@@ -22,7 +22,7 @@ const Order = () => {
         <div>
           {orders.map((order) => {
             return (
-              <Link key={order.id} to={`/order/${order.id}`}>
+              <Link key={order.id} to={`/orders/${order.id}`}>
                 <div key={order.id}>
                   <h2>Order ID: {order.id}</h2>
                   <h3>Total: ${order.total}</h3>

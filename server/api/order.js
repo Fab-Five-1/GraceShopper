@@ -7,7 +7,6 @@ const Product = require("../db/models/Product");
 
 router.get("/", async (req, res, next) => {
   try {
-    console.log(req.query);
     const id = req.query.id;
     const orders = await Order.findAll({
       where: { userId: id, fulfilled: true },
@@ -23,7 +22,19 @@ router.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const order = await Order.findByPk(id);
-    res.send({ order });
+    const orderId = order.dataValues.id;
+    const orderProducts = await OrderProduct.findAll({
+      where: { orderId },
+    });
+    const productIds = orderProducts.map((info) => info.dataValues.productId);
+    const products = await Product.findAll({
+      where: {
+        id: {
+          [Op.in]: productIds,
+        },
+      },
+    });
+    res.send({ order, orderProducts, products });
   } catch (err) {
     console.error(err);
     next(err);
