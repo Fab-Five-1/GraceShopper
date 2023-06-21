@@ -54,11 +54,12 @@ export const setTotalPrice = createAsyncThunk(
 
 export const createOrder = createAsyncThunk(
   "createOrder",
-  async ({ userId, productId, count }) => {
+  async ({ userId, productId, count, bool }) => {
     try {
       const { data } = await axios.put(`/api/products/${productId}`, {
         userId,
         count,
+        bool,
       });
       if (data.newGuest) {
         window.localStorage.setItem(GUEST, data.newGuest.id);

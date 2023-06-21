@@ -13,23 +13,7 @@ router.get("/:id", async (req, res, next) => {
     const orders = await Order.findAll({
       where: { userId, fulfilled: true },
     });
-    const orderIds = orders.map((info) => info.dataValues.id);
-    const orderProducts = await OrderProduct.findAll({
-      where: {
-        id: {
-          [Op.in]: orderIds,
-        },
-      },
-    });
-    const productIds = orderProducts.map((info) => info.dataValues.productId);
-    const products = await Product.findAll({
-      where: {
-        id: {
-          [Op.in]: productIds,
-        },
-      },
-    });
-    res.send({ user, orders, orderProducts, products });
+    res.send({ orders });
   } catch (err) {
     console.error(err);
     next(err);

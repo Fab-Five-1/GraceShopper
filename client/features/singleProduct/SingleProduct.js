@@ -39,7 +39,8 @@ const SingleProduct = () => {
   };
 
   const handleCartCreate = async (userId, productId, count) => {
-    dispatch(createOrder({ userId, productId, count }));
+    const bool = false;
+    dispatch(createOrder({ userId, productId, count, bool }));
   };
 
   const navigate = useNavigate();
@@ -84,7 +85,6 @@ const SingleProduct = () => {
           </button>
           <br></br>
           <div className="singleBreak">
-            {/* <button onClick={() => handleEdit(id)}>Edit Product</button> */}
             <button onClick={handleClickOpen}>Edit Product</button>
             <div className="addNewPopup">
               {popUp ? (
