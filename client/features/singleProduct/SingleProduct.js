@@ -16,7 +16,10 @@ const SingleProduct = () => {
 
   const [count, setCount] = useState(1);
 
-  const userId = useSelector((state) => state.auth.me.id);
+  let userId = useSelector((state) => state.auth.me.id);
+  if (!userId) {
+    userId = window.localStorage.guest;
+  }
   const isAdmin = useSelector((state) => state.auth.me.isAdmin);
 
   useEffect(() => {
