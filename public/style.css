@@ -48,7 +48,30 @@ img {
 
 /* home */
 
-#homeDiv {
+#homeContainer {
+  position: relative;
+}
+
+#homeSlogan,
+#homeSlogan2 {
+  font-size: 2.5EM;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: rgb(20, 73, 231);
+  text-shadow: 1px 1px 2px #f4f1eb, 0 0 1em #f4f1eb, 0 0 0.2em #f4f1eb;
+  /* text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue; */
+}
+
+#homeSlogan {
+  transform: translate(-70%, -300%);
+}
+
+#homeSlogan2 {
+  transform: translate(-40%, -400%);
+}
+
+#homeImg {
   background-image: url("/images/computerShop.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -192,13 +215,13 @@ img {
 
 /* Cart */
 
-#cartHolder{
+#cartHolder {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   text-align: center;
   height: auto;
 }
 
-#cart{
+#cart {
   display: flex;
   justify-content: center;
 }
@@ -213,16 +236,16 @@ img {
   padding: 20px;
 }
 
-#items{
+#items {
   display: flex;
   flex-wrap: wrap;
 }
 
-#loginCart > * {
+#loginCart>* {
   flex-grow: 1;
 }
 
-#checkoutCart{
+#checkoutCart {
   background-color: #f4f1eb;
   border: 3px solid black;
   box-shadow: black 5px 5px;
@@ -230,7 +253,7 @@ img {
   padding: 45px;
 }
 
-#deleteBtn{
+#deleteBtn {
   background-color: #2660A4;
   border: 3px solid black;
   padding: 3px 6px;
@@ -239,37 +262,37 @@ img {
   font-size: 20px
 }
 
-#deleteBtn:hover{
+#deleteBtn:hover {
   background-color: #A11F42;
   box-shadow: black 3px 3px;
 }
 
-.cartSpan{
+.cartSpan {
   margin: 5px;
   text-align: left;
   font-size: 30px;
 }
 
-.cartImg{
+.cartImg {
   box-shadow: black 5px 5px;
   border: 2px solid black;
   border-radius: 5px;
   width: 120px;
 }
 
-.checkoutCartButtons{
+.checkoutCartButtons {
   color: #f4f1eb;
   background-color: #2660A4;
   border: 2px solid black;
   border-radius: 7px;
 }
 
-.checkoutCartButtons:hover{
+.checkoutCartButtons:hover {
   background-color: #A11F42;
   box-shadow: black 3px 3px;
 }
 
-.oneItem{
+.oneItem {
   text-align: left;
   display: flex;
   justify-content: space-between;
@@ -278,21 +301,24 @@ img {
   padding: 20px;
 }
 
-@media (max-width: 600px){
-  .cartSpan{
-    margin: 10px; 
+@media (max-width: 600px) {
+  .cartSpan {
+    margin: 10px;
     font-size: 20px;
   }
-  #checkoutCart{
+
+  #checkoutCart {
     border-radius: 0px;
     box-shadow: none;
     padding: 5px;
   }
+
   #loginCart {
     box-shadow: none;
     padding: 0px;
   }
-  .cartImg{
+
+  .cartImg {
     width: 80px;
   }
 }
