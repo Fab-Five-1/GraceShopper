@@ -394,6 +394,18 @@ button:hover {
   width: 300px;
 }
 
+/*ORDER */
+#orderHolder{
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+.orderSpan{
+  font-size: 25px;
+  margin-right: 20px;
+}
+
 
 #user-list {
   display: flex;

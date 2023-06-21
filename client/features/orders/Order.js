@@ -16,31 +16,34 @@ const Order = () => {
   }, [dispatch, userId]);
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1>Here are your orders...</h1>
-      {orders.length > 0 ? (
-        <div>
+    <div>
+      <h1 style={{ textAlign: "center" }}>Here are your orders...</h1>
+      {orders[0] ? (
+        <div id="orderHolder">
           {orders.map((order) => {
             return (
-              <Link key={order.id} to={`/order${order.id}`}>
-                <div key={order.id}>
-                  <h2>Order ID: {order.id}</h2>
-                  <h3>Total: ${order.total}</h3>
-                </div>
-              </Link>
+              <div key={order.id}>
+                <span className="orderSpan">Order ID: {order.id}</span>
+                <span className="orderSpan">Total: ${order.total}</span>
+                <Link to={`/orders/${order.id}`}>
+                  <button style={{ fontSize: "15px" }}>
+                    FULL ORDER DETAILS
+                  </button>
+                </Link>
+              </div>
             );
           })}
         </div>
       ) : (
-        <>
+        <div style={{ textAlign: "center" }}>
           <h2>You seem to have never placed an order</h2>
           <p>Back to products?</p>
-          <Link to="/home">
+          <Link to="/products">
             <button style={{ fontSize: "25px" }} type="button">
               Shop
             </button>
           </Link>
-        </>
+        </div>
       )}
     </div>
   );
