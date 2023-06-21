@@ -38,7 +38,7 @@ const Order = () => {
         <div style={{ textAlign: "center" }}>
           <h2>You seem to have never placed an order</h2>
           <p>Back to products?</p>
-          <Link to="/home">
+          <Link to="/products">
             <button style={{ fontSize: "25px" }} type="button">
               Shop
             </button>
